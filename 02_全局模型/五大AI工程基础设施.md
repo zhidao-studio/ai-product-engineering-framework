@@ -4,15 +4,10 @@
 
 ```mermaid
 flowchart LR
-    C[Context
-让 AI 理解] --> H[Harness
-让 AI 受控]
-    H --> S[Skills
-让 AI 会做]
-    S --> A[Agents
-让 AI 协作]
-    A --> L[Loop
-让系统闭环]
+    C[Context<br/>让 AI 理解] --> H[Harness<br/>让 AI 受控]
+    H --> S[Skills<br/>让 AI 会做]
+    S --> A[Agents<br/>让 AI 协作]
+    A --> L[Loop<br/>让系统闭环]
     L -.经验沉淀.-> C
     L -.规则改进.-> H
     L -.能力改进.-> S
