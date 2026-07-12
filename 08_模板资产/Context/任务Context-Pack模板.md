@@ -1,9 +1,10 @@
 # 任务 Context Pack
 
-> 模板状态：候选。高风险任务所有 P0 项必须填写；低风险任务可以裁剪，但不能删除目标、边界、验证和结果记录。
+> 模板状态：`candidate` / 候选。高风险任务所有 P0 项必须填写；低风险任务可以裁剪，但不能删除目标、边界、验证和结果记录。
 
 ```yaml
 task_id:
+task_context_pack_version:
 title:
 status: draft
 project:
@@ -13,11 +14,13 @@ owner:
 executor:
 reviewer:
 human_approver:
-project_context_version:
-stage_context_version:
+project_context_pack_version:
+stage_context_pack_version:
 source_commit:
 created_at:
 ```
+
+> 任务状态使用统一机器枚举；实现类任务通常映射到“受控任务执行”。
 
 ## 1. 目标与价值来源
 
@@ -38,7 +41,7 @@ created_at:
 
 ## 2. 权威事实引用
 
-| 事实 | 来源 | 版本或提交 | 状态 | 用途 |
+| 事实 | 来源 | 来源版本或提交 | 状态 | 用途 |
 |---|---|---|---|---|
 
 ### 明确排除的旧版本或冲突来源
@@ -50,6 +53,7 @@ created_at:
 - [ ] API、Schema 和环境可用；
 - [ ] 依赖任务已完成；
 - [ ] 测试数据和权限已准备；
+- [ ] 项目与阶段 Context Pack 版本已固定；
 - [ ] 当前分支和基线提交已固定。
 
 ### 未满足项
@@ -91,7 +95,7 @@ created_at:
 
 ## 8. 验收断言
 
-- [ ] 
+- [ ]
 
 > 验收项必须描述可观察结果，避免“功能正常”“体验良好”等不可判断表达。
 
@@ -148,6 +152,7 @@ created_at:
 ## 14. Context 就绪检查
 
 - [ ] 目标可追溯；
+- [ ] 生命周期阶段映射正确；
 - [ ] 事实为当前有效版本；
 - [ ] 前置条件满足；
 - [ ] 允许与禁止范围明确；
@@ -157,7 +162,8 @@ created_at:
 - [ ] 风险、权限和人工节点明确；
 - [ ] 停止、回滚和升级条件明确；
 - [ ] 敏感信息已排除或受控；
-- [ ] 回写目标明确。
+- [ ] 回写目标明确；
+- [ ] 机器状态和 Pack 版本字段符合规范。
 
 ## 15. 执行结果
 
@@ -177,6 +183,8 @@ created_at:
 ### 回写完成情况
 
 ### 任务最终状态
+
+使用：`completed` / `blocked` / `cancelled`。
 
 ## 16. 更新记录
 
