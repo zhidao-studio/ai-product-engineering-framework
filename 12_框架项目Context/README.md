@@ -6,7 +6,7 @@
 project_context_id: PROJ-CONTEXT-AIPEF
 project: AI Product Engineering Framework
 status: active
-context_pack_version: 0.2-A.3
+context_pack_version: 0.2-A.4
 owner: zhidao-studio
 current_stage: 工程规格设计
 stable_release: v0.1.2
@@ -42,7 +42,7 @@ sensitivity: proprietary
 
 ### 里程碑 A 退出标准
 
-一个经授权的真实业务任务能够证明：新的人员或 Agent 不依赖历史会话，也能恢复项目背景、识别权威事实、发现冲突、明确范围并完成结果回写。
+一个经授权的真实业务任务能够证明：新的人员或 Agent 不依赖历史会话，也能恢复项目背景、识别权威事实、发现冲突、明确范围，完成三层验证并回写结果；同时能够记录 Context 填写成本、人工修正、遗漏和任务成本。
 
 ### 当前验证位置
 
@@ -50,8 +50,10 @@ sensitivity: proprietary
 - 自应用结果：P0 全通过，Context 成熟度 93/100；
 - v0.1.1 全量复核：**已完成并提交**；
 - v0.1.2 专有许可与阶段清场：**已完成并提交**；
-- 业务参考工程：尚未开始；
-- 自动 Context 门禁：尚未开始。
+- YouYu 首轮业务参考任务：**部分通过**，已形成 Context、修改边界和 GATE-001 至 GATE-004 证据；
+- YouYu 剩余验证：签名真机模拟用户验收、P0/P1 关闭、Context 成本与人工修正复盘；
+- 完整前后端业务闭环：尚未开始；
+- 自动 Context 与 Harness 门禁：尚未开始。
 
 ### 明确不做
 
@@ -59,7 +61,7 @@ sensitivity: proprietary
 - 不建设自动记忆平台；
 - 不批量生成未经验证的 Skills；
 - 不进入无人值守 Agent 编排；
-- 不将自应用结果直接视为跨项目稳定结论；
+- 不将自应用或一次部分业务验证直接视为跨项目稳定结论；
 - 不将仓库内容提供给未授权的外部个人、模型、知识库或第三方服务。
 
 ## 3. 专有许可与访问控制
@@ -99,12 +101,12 @@ sensitivity: proprietary
 | 模块 | 权威入口 | 当前状态 |
 |---|---|---|
 | 角色体系 | [人类与 AI 角色](../03_角色体系/人类与AI角色.md) | v0.1.2 已定义 |
-| Context 工程 | [Context 工程入口](../04_Context工程/README.md) | v0.2.0 / A 规范、模板和自应用已完成，待业务验证 |
-| Harness 工程 | [执行控制与门禁](../05_Harness工程/执行控制与门禁.md) | v0.1.2 总览，待里程碑 B 可执行化 |
+| Context 工程 | [Context 工程入口](../04_Context工程/README.md) | 规范、模板和自应用已完成，YouYu 首轮部分验证已回写，成熟度仍为 candidate |
+| Harness 工程 | [执行控制与门禁](../05_Harness工程/执行控制与门禁.md) | v0.1.2 总览，已从 YouYu 提取候选门禁，待里程碑 B 可执行化 |
 | Skills 与 Agent | [协作模型](../06_Skills与Agent/Skills与Agent协作模型.md) | v0.1.2 总览，待真实验证后细化 |
-| Loop 工程 | [持续反馈与演进闭环](../07_Loop工程/持续反馈与演进闭环.md) | v0.1.2 总览 |
+| Loop 工程 | [持续反馈与演进闭环](../07_Loop工程/持续反馈与演进闭环.md) | v0.1.2 总览，已完成首次业务验证回写 |
 | 模板资产 | [模板入口](../08_模板资产/README.md) | Context 候选模板已建立，状态为 candidate |
-| 参考工程 | [参考工程入口](../09_参考工程/README.md) | 尚未选定首个经授权业务验证任务 |
+| 参考工程 | [参考工程入口](../09_参考工程/README.md) | YouYu 首轮部分验证已完成，完整业务闭环未完成 |
 | 版本路线 | [Roadmap](../10_版本演进/Roadmap.md) | v0.1.2 稳定，v0.2.0 开发中 |
 | 设计决策 | [决策索引](../11_设计决策/README.md) | DEC-001 至 DEC-009 |
 
@@ -113,7 +115,9 @@ sensitivity: proprietary
 - 阶段 Context：[v0.2.0 / A：Context 可执行化](阶段/v0.2-A_Context可执行化.md)；
 - 已完成自应用任务：[TASK-20260712-001](任务/TASK-20260712-001_建立Framework自身Context基线.md)；
 - 已完成 v0.1.1 复核任务：[TASK-20260712-002](任务/TASK-20260712-002_v0.1.1全量复核与版本修订.md)；
+- 已完成业务事实同步任务：[TASK-20260712-003](任务/TASK-20260712-003_同步YouYu业务验证事实.md)；
 - 自应用检查结果：[CTX-CHECK-001](验证/CTX-CHECK-001_Framework自身Context基线.md)；
+- YouYu 首轮业务验证：[REF-CHECK-001](验证/REF-CHECK-001_YouYu首轮业务参考任务验证.md)；
 - [v0.1.1 全量复核报告](../10_版本演进/v0.1.1全量复核报告.md)；
 - [v0.1.2 专有许可与阶段清场报告](../10_版本演进/v0.1.2专有许可与阶段清场报告.md)。
 
@@ -122,9 +126,12 @@ sensitivity: proprietary
 | 风险或事项 | 影响 | 当前处理 | 下一决策点 |
 |---|---|---|---|
 | 仓库仍为 Public | 外部可查看和 Fork，访问控制不足 | 已建立专有许可，待切换 Private | 立即执行 |
-| Context 规范尚未经过业务工程验证 | 模板可能过重或遗漏业务细节 | 已完成自应用，下一步选择经授权业务参考工程 | 里程碑 A 退出前 |
+| YouYu GATE-005 尚未完成 | 首个业务参考任务缺少模拟用户验收 | 保持 partial_pass，不升级模板成熟度 | 里程碑 A 退出前 |
+| Context 填写成本、人工修正和遗漏数据缺失 | 无法判断模板是否过重或真正降低风险 | 对 YouYu 首轮任务补做复盘 | 里程碑 A 退出前 |
+| PR 人工门禁与实际合并行为不一致 | 文档门禁无法保证真实流程受控 | 里程碑 B 建 Required Checks、状态与合并权限一致性控制 | Harness 可执行化 |
 | 文档链接和事实状态尚无自动门禁 | 后续可能再次出现断链或重复事实源 | 当前人工检查，里程碑 B 建门禁 | Harness 可执行化 |
-| 状态、版本和许可证一致性依赖人工维护 | 可能再次出现字段漂移 | v0.1.2 已统一，后续自动检查 | 里程碑 B |
+| 状态、版本和许可证一致性依赖人工维护 | 已出现 Context README 版本漂移 | 本任务已修复，后续自动检查 | 里程碑 B |
+| 前后端、OpenAPI 和 Schema 尚未形成完整参考闭环 | Framework 契约能力未被完整证明 | 选择一个小而完整的端到端业务切片 | 里程碑 B/C |
 | 平台适配尚未验证 | 不同 Agent 读取方式可能不同 | 保持核心标准平台无关 | v0.3.0 |
 
 ## 9. 安全与敏感信息
@@ -143,18 +150,22 @@ sensitivity: proprietary
 - README、AGENTS、CONTRIBUTING、愿景与边界同步专有许可；
 - 明确 Public 风险和 Private 要求；
 - Framework Context 自应用仍保持通过；
-- Context 候选模板继续保持 candidate，等待业务验证。
+- YouYu 首轮业务参考任务已形成部分 Context、边界和工程门禁证据；
+- 新增 `REF-CHECK-001`，记录 GATE-005 缺口和 PR 人工门禁未约束实际合并的问题；
+- 修复 `04_Context工程/README.md` 稳定版本仍为 v0.1.1 的事实漂移；
+- Context 候选模板继续保持 candidate，等待完整业务验证。
 
 详见：[CHANGELOG.md](../CHANGELOG.md)。
 
 ## 11. 下一步
 
 1. 由维护者将仓库切换为 Private；
-2. 选择一个低到中风险、已获得授权的真实业务参考工程任务；
-3. 使用项目、阶段和任务 Context Pack 完整执行；
-4. 记录填写时间、人工修正、Context 缺失、冲突和任务结果；
-5. 根据真实问题交叉启动 Harness 里程碑 B；
-6. 决定哪些模板可以升级为 `single_project_validated`。
+2. 在 YouYu 完成签名真机模拟用户验收并关闭 P0/P1；
+3. 补充 Context 填写时间、人工修正、遗漏、冲突和成本复盘；
+4. 根据完整证据决定里程碑 A 是否退出以及哪些模板是否可升级；
+5. 交叉启动 Harness 里程碑 B，优先解决 PR 状态、人工门禁和实际合并权限不一致；
+6. 选择一个包含前端、后端、OpenAPI 和 Schema 的小型完整业务切片；
+7. 使用端到端任务验证契约、联调、三层验证和 Framework 回写。
 
 ## 12. 更新记录
 
@@ -163,3 +174,4 @@ sensitivity: proprietary
 | 2026-07-12 | 建立 Framework 自身项目 Context Pack | DEC-007 / TASK-20260712-001 |
 | 2026-07-12 | 升级至 v0.1.1 稳定基线并统一版本字段 | DEC-008 / TASK-20260712-002 |
 | 2026-07-12 | 采用专有闭源许可并完成阶段清场 | DEC-009 / v0.1.2 |
+| 2026-07-12 | 回写 YouYu 首轮部分业务验证并修复版本事实漂移 | TASK-20260712-003 / REF-CHECK-001 |
