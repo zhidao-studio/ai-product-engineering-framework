@@ -10,11 +10,8 @@
 
 ```mermaid
 flowchart LR
-    H[Harness
-阶段与边界] --> A[Agent
-承担任务责任]
-    C[Context
-事实与规则] --> A
+    H[Harness<br/>阶段与边界] --> A[Agent<br/>承担任务责任]
+    C[Context<br/>事实与规则] --> A
     A --> S1[Skill A]
     A --> S2[Skill B]
     A --> T[工具]
