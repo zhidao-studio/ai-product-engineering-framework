@@ -2,14 +2,16 @@
 
 > 本目录提供 Context Engineering 的第一批可复制模板。当前机器成熟度为 `candidate`，需要在真实参考工程中使用、发现问题并复验后，才能升级。
 
+中文术语遵循：[术语与易懂表达规范](../../01_框架定义/术语与易懂表达规范.md)。
+
 ## 模板清单
 
 | 模板 | 用途 | 当前成熟度 |
 |---|---|---|
 | [项目 Context Pack 模板](项目Context-Pack模板.md) | 建立项目长期记忆入口 | `candidate` |
-| [阶段 Context 模板](阶段Context模板.md) | 管理生命周期阶段的输入、产物和退出门禁 | `candidate` |
-| [任务 Context Pack 模板](任务Context-Pack模板.md) | 为一次 AI 任务装配目标、事实、边界和验证 | `candidate` |
-| [Context 冲突记录模板](Context冲突记录模板.md) | 记录版本、文档、契约和责任冲突 | `candidate` |
+| [阶段 Context 模板](阶段Context模板.md) | 管理生命周期阶段的输入、产物和退出检查关卡 | `candidate` |
+| [任务 Context Pack 模板](任务Context-Pack模板.md) | 为一次 AI 任务装配目标、事实、边界、约定和验证 | `candidate` |
+| [Context 冲突记录模板](Context冲突记录模板.md) | 记录版本、文档、约定和责任冲突 | `candidate` |
 | [经验回写记录模板](经验回写记录模板.md) | 将验证、失败和人工修正沉淀为长期资产 | `candidate` |
 
 ## 使用规则
