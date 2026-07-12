@@ -1,9 +1,10 @@
 # 阶段 Context
 
-> 模板状态：候选。阶段名称必须映射到 Framework 十阶段生命周期。
+> 模板状态：`candidate` / 候选。阶段名称必须映射 Framework 十阶段生命周期。
 
 ```yaml
 stage_context_id:
+stage_context_pack_version:
 project:
 stage:
 status: preparing
@@ -11,14 +12,17 @@ owner:
 reviewer:
 human_approver:
 started_at:
-project_context_version:
+project_context_pack_version:
 baseline_commit:
 ```
+
+> `status` 使用统一机器枚举；`stage_context_pack_version` 与 `project_context_pack_version` 不得混用。
 
 ## 1. 阶段身份
 
 - 当前阶段：
-- 当前状态：未开始 / 准备中 / 进行中 / 待评审 / 已通过 / 已阻塞
+- 当前状态：`not_started` / `preparing` / `active` / `in_review` / `approved` / `blocked` / `stopped`
+- 中文显示：未开始 / 准备中 / 进行中 / 待评审 / 已通过 / 已阻塞 / 已停止
 - 阶段负责人：
 - 审查人：
 - 人工批准人：
@@ -27,7 +31,7 @@ baseline_commit:
 
 ## 2. 进入依据
 
-| 输入或结论 | 权威来源 | 版本或提交 | 状态 | 批准人 |
+| 输入或结论 | 权威来源 | 来源版本或提交 | 状态 | 批准人 |
 |---|---|---|---|---|
 
 ### 上一阶段退出结论
@@ -96,6 +100,7 @@ baseline_commit:
 ## 11. 阶段结论
 
 - 结论：通过 / 有条件通过 / 退回 / 停止
+- 机器状态：`approved` / `active` / `blocked` / `stopped`
 - 批准人：
 - 日期：
 - 条件或限制：
