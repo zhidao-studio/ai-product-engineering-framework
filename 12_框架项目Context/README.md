@@ -6,10 +6,10 @@
 project_context_id: PROJ-CONTEXT-AIPEF
 project: AI Product Engineering Framework
 status: active
-context_pack_version: 0.2-A.4
+context_pack_version: 0.2-A.5
 owner: zhidao-studio
 current_stage: 工程规格设计
-stable_release: v0.1.2
+stable_release: v0.1.3
 target_release: v0.2.0
 current_milestone: A / Context 可执行化
 working_branch: main
@@ -25,7 +25,7 @@ sensitivity: proprietary
 - **一句话定位**：由 zhidao-studio 专有维护、跨平台、可验证的 AI 产品工程框架；
 - **目标用户**：经授权的个人开发者、创业团队、企业研发与创新团队、AI 工程平台维护者；
 - **核心问题**：如何让 AI Agent 在人的目标与责任下，跨完整产品生命周期受控、可验证、可持续地参与软件产品生产；
-- **当前稳定版本**：v0.1.2；
+- **当前稳定版本**：v0.1.3；
 - **目标发布版本**：v0.2.0；
 - **当前里程碑**：A / Context 可执行化；
 - **当前生命周期阶段**：工程规格设计；
@@ -50,6 +50,7 @@ sensitivity: proprietary
 - 自应用结果：P0 全通过，Context 成熟度 93/100；
 - v0.1.1 全量复核：**已完成并提交**；
 - v0.1.2 专有许可与阶段清场：**已完成并提交**；
+- v0.1.3 业务验证事实同步与版本治理：**已完成并发布**；
 - YouYu 首轮业务参考任务：**部分通过**，已形成 Context、修改边界和 GATE-001 至 GATE-004 证据；
 - YouYu 剩余验证：签名真机模拟用户验收、P0/P1 关闭、Context 成本与人工修正复盘；
 - 完整前后端业务闭环：尚未开始；
@@ -100,14 +101,14 @@ sensitivity: proprietary
 
 | 模块 | 权威入口 | 当前状态 |
 |---|---|---|
-| 角色体系 | [人类与 AI 角色](../03_角色体系/人类与AI角色.md) | v0.1.2 已定义 |
+| 角色体系 | [人类与 AI 角色](../03_角色体系/人类与AI角色.md) | v0.1.3 稳定基线继续沿用 |
 | Context 工程 | [Context 工程入口](../04_Context工程/README.md) | 规范、模板和自应用已完成，YouYu 首轮部分验证已回写，成熟度仍为 candidate |
-| Harness 工程 | [执行控制与门禁](../05_Harness工程/执行控制与门禁.md) | v0.1.2 总览，已从 YouYu 提取候选门禁，待里程碑 B 可执行化 |
-| Skills 与 Agent | [协作模型](../06_Skills与Agent/Skills与Agent协作模型.md) | v0.1.2 总览，待真实验证后细化 |
-| Loop 工程 | [持续反馈与演进闭环](../07_Loop工程/持续反馈与演进闭环.md) | v0.1.2 总览，已完成首次业务验证回写 |
+| Harness 工程 | [执行控制与门禁](../05_Harness工程/执行控制与门禁.md) | 已从 YouYu 提取候选门禁，待里程碑 B 可执行化 |
+| Skills 与 Agent | [协作模型](../06_Skills与Agent/Skills与Agent协作模型.md) | 总览已定义，待真实验证后细化 |
+| Loop 工程 | [持续反馈与演进闭环](../07_Loop工程/持续反馈与演进闭环.md) | 已完成首次业务验证回写 |
 | 模板资产 | [模板入口](../08_模板资产/README.md) | Context 候选模板已建立，状态为 candidate |
 | 参考工程 | [参考工程入口](../09_参考工程/README.md) | YouYu 首轮部分验证已完成，完整业务闭环未完成 |
-| 版本路线 | [Roadmap](../10_版本演进/Roadmap.md) | v0.1.2 稳定，v0.2.0 开发中 |
+| 版本路线 | [Roadmap](../10_版本演进/Roadmap.md) | v0.1.3 稳定，v0.2.0 开发中 |
 | 设计决策 | [决策索引](../11_设计决策/README.md) | DEC-001 至 DEC-009 |
 
 ## 7. 当前阶段与任务
@@ -116,10 +117,12 @@ sensitivity: proprietary
 - 已完成自应用任务：[TASK-20260712-001](任务/TASK-20260712-001_建立Framework自身Context基线.md)；
 - 已完成 v0.1.1 复核任务：[TASK-20260712-002](任务/TASK-20260712-002_v0.1.1全量复核与版本修订.md)；
 - 已完成业务事实同步任务：[TASK-20260712-003](任务/TASK-20260712-003_同步YouYu业务验证事实.md)；
+- 已完成 v0.1.3 发布任务：[TASK-20260712-004](任务/TASK-20260712-004_发布v0.1.3版本.md)；
 - 自应用检查结果：[CTX-CHECK-001](验证/CTX-CHECK-001_Framework自身Context基线.md)；
 - YouYu 首轮业务验证：[REF-CHECK-001](验证/REF-CHECK-001_YouYu首轮业务参考任务验证.md)；
 - [v0.1.1 全量复核报告](../10_版本演进/v0.1.1全量复核报告.md)；
-- [v0.1.2 专有许可与阶段清场报告](../10_版本演进/v0.1.2专有许可与阶段清场报告.md)。
+- [v0.1.2 专有许可与阶段清场报告](../10_版本演进/v0.1.2专有许可与阶段清场报告.md)；
+- [v0.1.3 业务验证事实同步与版本治理报告](../10_版本演进/v0.1.3业务验证事实同步与版本治理报告.md)。
 
 ## 8. 当前风险与待决事项
 
@@ -130,7 +133,7 @@ sensitivity: proprietary
 | Context 填写成本、人工修正和遗漏数据缺失 | 无法判断模板是否过重或真正降低风险 | 对 YouYu 首轮任务补做复盘 | 里程碑 A 退出前 |
 | PR 人工门禁与实际合并行为不一致 | 文档门禁无法保证真实流程受控 | 里程碑 B 建 Required Checks、状态与合并权限一致性控制 | Harness 可执行化 |
 | 文档链接和事实状态尚无自动门禁 | 后续可能再次出现断链或重复事实源 | 当前人工检查，里程碑 B 建门禁 | Harness 可执行化 |
-| 状态、版本和许可证一致性依赖人工维护 | 已出现 Context README 版本漂移 | 本任务已修复，后续自动检查 | 里程碑 B |
+| 状态、版本和许可证一致性依赖人工维护 | 已出现 Context README 版本漂移 | v0.1.3 已修复，后续自动检查 | 里程碑 B |
 | 前后端、OpenAPI 和 Schema 尚未形成完整参考闭环 | Framework 契约能力未被完整证明 | 选择一个小而完整的端到端业务切片 | 里程碑 B/C |
 | 平台适配尚未验证 | 不同 Agent 读取方式可能不同 | 保持核心标准平台无关 | v0.3.0 |
 
@@ -145,14 +148,10 @@ sensitivity: proprietary
 
 ## 10. 最近重要变化
 
-- 发布 v0.1.2 专有许可与阶段清场修订；
-- 新增 LICENSE 和 DEC-009；
-- README、AGENTS、CONTRIBUTING、愿景与边界同步专有许可；
-- 明确 Public 风险和 Private 要求；
-- Framework Context 自应用仍保持通过；
+- 发布 v0.1.3 业务验证事实同步与版本治理修订；
+- `VERSION`、README、AGENTS、CHANGELOG、Roadmap、版本规范和 Context 状态已同步；
 - YouYu 首轮业务参考任务已形成部分 Context、边界和工程门禁证据；
-- 新增 `REF-CHECK-001`，记录 GATE-005 缺口和 PR 人工门禁未约束实际合并的问题；
-- 修复 `04_Context工程/README.md` 稳定版本仍为 v0.1.1 的事实漂移；
+- `REF-CHECK-001` 记录 GATE-005 缺口和 PR 人工门禁未约束实际合并的问题；
 - Context 候选模板继续保持 candidate，等待完整业务验证。
 
 详见：[CHANGELOG.md](../CHANGELOG.md)。
@@ -175,3 +174,4 @@ sensitivity: proprietary
 | 2026-07-12 | 升级至 v0.1.1 稳定基线并统一版本字段 | DEC-008 / TASK-20260712-002 |
 | 2026-07-12 | 采用专有闭源许可并完成阶段清场 | DEC-009 / v0.1.2 |
 | 2026-07-12 | 回写 YouYu 首轮部分业务验证并修复版本事实漂移 | TASK-20260712-003 / REF-CHECK-001 |
+| 2026-07-12 | 发布 v0.1.3 业务验证事实同步与版本治理修订 | TASK-20260712-004 |
