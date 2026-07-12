@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">人机协作与持续反馈</title><desc id="desc">人负责目标与决策，AI Agent 负责受控执行，验证和真实反馈驱动下一轮迭代。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5f8ff"/><stop offset="1" stop-color="#e7eefc"/></linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#255fe8"/><stop offset="1" stop-color="#744de8"/></linearGradient>
+    <filter id="s"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#17336c" flood-opacity="0.17"/></filter>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5 0 10z" fill="#315fd4"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+    <text x="100" y="105" font-size="52" font-weight="760" fill="#142747">人机协作不是一次性交付，而是持续闭环</text>
+    <text x="102" y="151" font-size="22" fill="#60708d">每个循环都有目标、边界、证据、人工确认和下一轮输入</text>
+
+    <g filter="url(#s)">
+      <rect x="105" y="260" width="340" height="330" rx="38" fill="#fff"/>
+      <circle cx="275" cy="345" r="64" fill="#e2efff"/>
+      <circle cx="275" cy="329" r="22" fill="#285fdc"/><path d="M223 400c13-42 91-42 104 0" fill="#285fdc"/>
+      <text x="275" y="460" text-anchor="middle" font-size="29" font-weight="740" fill="#172c51">人类负责人</text>
+      <text x="275" y="506" text-anchor="middle" font-size="19" fill="#657390">目标 · 价值 · 取舍 · 最终责任</text>
+      <rect x="155" y="535" width="240" height="42" rx="14" fill="#edf3ff"/><text x="275" y="562" text-anchor="middle" font-size="17" fill="#285fdc">关键节点必须人工确认</text>
+    </g>
+
+    <g filter="url(#s)">
+      <rect x="630" y="210" width="340" height="430" rx="38" fill="url(#blue)"/>
+      <g fill="#fff">
+        <circle cx="800" cy="305" r="64" fill="#ffffff" fill-opacity="0.17"/>
+        <rect x="760" y="278" width="80" height="58" rx="16" fill="none" stroke="#fff" stroke-width="5"/>
+        <circle cx="782" cy="306" r="6"/><circle cx="818" cy="306" r="6"/><path d="M783 324h34" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        <text x="800" y="410" text-anchor="middle" font-size="29" font-weight="740">AI Agent 团队</text>
+        <text x="800" y="454" text-anchor="middle" font-size="19" fill="#e8e8ff">分析 · 设计 · 实现 · 验证</text>
+        <g font-size="16" text-anchor="middle">
+          <rect x="675" y="492" width="110" height="43" rx="13" fill="#fff" fill-opacity="0.17"/><text x="730" y="519">Context</text>
+          <rect x="815" y="492" width="110" height="43" rx="13" fill="#fff" fill-opacity="0.17"/><text x="870" y="519">Harness</text>
+          <rect x="675" y="552" width="110" height="43" rx="13" fill="#fff" fill-opacity="0.17"/><text x="730" y="579">Skills</text>
+          <rect x="815" y="552" width="110" height="43" rx="13" fill="#fff" fill-opacity="0.17"/><text x="870" y="579">Loop</text>
+        </g>
+      </g>
+    </g>
+
+    <g filter="url(#s)">
+      <rect x="1155" y="260" width="340" height="330" rx="38" fill="#fff"/>
+      <circle cx="1325" cy="345" r="64" fill="#eee8ff"/>
+      <path d="M1284 360c20-58 63-58 83 0M1293 331h64" fill="none" stroke="#704ce2" stroke-width="8" stroke-linecap="round"/>
+      <text x="1325" y="460" text-anchor="middle" font-size="29" font-weight="740" fill="#172c51">真实产品世界</text>
+      <text x="1325" y="506" text-anchor="middle" font-size="19" fill="#657390">用户行为 · 运行数据 · 业务结果</text>
+      <rect x="1205" y="535" width="240" height="42" rx="14" fill="#f2edff"/><text x="1325" y="562" text-anchor="middle" font-size="17" fill="#704ce2">反馈不是意见，而是下一轮证据</text>
+    </g>
+
+    <path d="M445 392h185" stroke="#315fd4" stroke-width="5" marker-end="url(#a)"/>
+    <text x="537" y="366" text-anchor="middle" font-size="18" fill="#315fd4">目标与约束</text>
+    <path d="M970 392h185" stroke="#315fd4" stroke-width="5" marker-end="url(#a)"/>
+    <text x="1062" y="366" text-anchor="middle" font-size="18" fill="#315fd4">产品交付</text>
+    <path d="M1325 590c0 180-1050 180-1050 0" fill="none" stroke="#315fd4" stroke-width="5" marker-end="url(#a)"/>
+    <text x="800" y="790" text-anchor="middle" font-size="22" font-weight="700" fill="#315fd4">观察 → 评估 → 决策 → 改进 → 进入下一轮</text>
+  </g>
+</svg>

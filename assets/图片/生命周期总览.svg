@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">AI 产品交付生命周期</title><desc id="desc">展示价值验证、产品定义、体验设计、高保真预览、工程规格、执行验证、用户验收、发布反馈的完整循环。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07162d"/><stop offset="1" stop-color="#192b52"/></linearGradient>
+    <filter id="s"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity="0.32"/></filter>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5 0 10z" fill="#62dbff"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif" fill="#fff">
+    <text x="100" y="102" font-size="52" font-weight="760">AI 产品交付生命周期</text>
+    <text x="102" y="148" font-size="22" fill="#afc2e4">高保真确认和用户反馈分别把错误前移、把真实结果带回</text>
+    <circle cx="800" cy="500" r="245" fill="none" stroke="#62dbff" stroke-width="5" stroke-dasharray="13 13" opacity="0.45"/>
+    <g filter="url(#s)" text-anchor="middle">
+      <g><circle cx="800" cy="235" r="88" fill="#154463"/><text x="800" y="229" font-size="24" font-weight="720">价值验证</text><text x="800" y="261" font-size="16" fill="#b9e8f7">为什么值得做</text></g>
+      <g><circle cx="1010" cy="310" r="88" fill="#1b446d"/><text x="1010" y="304" font-size="24" font-weight="720">产品定义</text><text x="1010" y="336" font-size="16" fill="#c4ddff">做什么与不做什么</text></g>
+      <g><circle cx="1095" cy="515" r="88" fill="#294477"/><text x="1095" y="509" font-size="24" font-weight="720">体验设计</text><text x="1095" y="541" font-size="16" fill="#d1d8ff">用户怎么使用</text></g>
+      <g><circle cx="990" cy="710" r="88" fill="#3c4581"/><text x="990" y="704" font-size="24" font-weight="720">高保真确认</text><text x="990" y="736" font-size="16" fill="#e1d9ff">编码前确认体验</text></g>
+      <g><circle cx="610" cy="710" r="88" fill="#4c4380"/><text x="610" y="704" font-size="24" font-weight="720">工程与执行</text><text x="610" y="736" font-size="16" fill="#e6d7ff">契约、边界和实现</text></g>
+      <g><circle cx="505" cy="515" r="88" fill="#344678"/><text x="505" y="509" font-size="24" font-weight="720">验证与验收</text><text x="505" y="541" font-size="16" fill="#d4ddff">证据证明完成</text></g>
+      <g><circle cx="590" cy="310" r="88" fill="#22466e"/><text x="590" y="304" font-size="24" font-weight="720">发布与反馈</text><text x="590" y="336" font-size="16" fill="#c3e0ff">真实数据回流</text></g>
+      <circle cx="800" cy="500" r="145" fill="#0d2747" stroke="#62dbff" stroke-opacity="0.5"/>
+      <text x="800" y="475" font-size="31" font-weight="760">持续产品价值</text>
+      <text x="800" y="518" font-size="19" fill="#b7c9e7">不是一次生成</text>
+      <text x="800" y="549" font-size="19" fill="#b7c9e7">而是受控演进</text>
+    </g>
+    <path d="M865 248l65 24M1060 378l25 50M1063 590l-28 52M900 747H700M565 642l-28-52M515 428l25-50M670 272l65-24" fill="none" stroke="#62dbff" stroke-width="5" marker-end="url(#a)"/>
+  </g>
+</svg>
