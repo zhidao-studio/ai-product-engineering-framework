@@ -20,6 +20,7 @@
 
 - [v0.1.1 全量复核报告](10_版本演进/v0.1.1全量复核报告.md)
 - [v0.1.2 专有许可与阶段清场报告](10_版本演进/v0.1.2专有许可与阶段清场报告.md)
+- [YouYu 首轮业务参考任务验证](12_框架项目Context/验证/REF-CHECK-001_YouYu首轮业务参考任务验证.md)
 - [版本管理规范](10_版本演进/版本管理规范.md)
 - [Roadmap](10_版本演进/Roadmap.md)
 
@@ -155,7 +156,7 @@ flowchart TB
 | [参考工程](09_参考工程/README.md) | 用真实产品验证框架，而不是只写概念 |
 | [版本路线](10_版本演进/Roadmap.md) | 稳定版本、开发目标、里程碑和退出门禁 |
 | [设计决策](11_设计决策/README.md) | 保存为什么这样设计以及变更影响 |
-| [Framework 自身 Context](12_框架项目Context/README.md) | 使用 Context 规范管理本仓库自身并记录自应用验证 |
+| [Framework 自身 Context](12_框架项目Context/README.md) | 使用 Context 规范管理本仓库自身并记录自应用与业务验证回写 |
 
 ## 与原实战仓库的关系
 
@@ -175,8 +176,9 @@ flowchart LR
 
 - **v0.1.2**：专有闭源许可、版本与使用边界、阶段清场已经完成；
 - **v0.2.0 / A**：Context 规范、检查清单、候选模板和 Framework 自应用已经完成；
-- **待完成**：真实业务参考工程验证、Harness 可执行门禁、多平台适配；
-- Context 模板当前成熟度仍为 `candidate`，不能宣称稳定。
+- **YouYu 首轮参考任务**：项目、阶段和任务 Context、修改边界以及 GATE-001 至 GATE-004 已形成真实证据；
+- **尚未完成**：签名真机模拟用户验收、Context 成本与人工修正复盘、完整前后端业务闭环、Harness 可执行门禁和多平台适配；
+- Context 模板当前成熟度仍为 `candidate`，不能宣称稳定或升级为 `single_project_validated`。
 
 ## 贡献与治理
 
