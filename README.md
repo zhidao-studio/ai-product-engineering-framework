@@ -11,18 +11,23 @@
 ## 当前版本
 
 ```text
-当前稳定版本：v0.1.4
+当前稳定版本：v0.1.5
 目标开发版本：v0.2.0
 当前开发里程碑：A / Context 可执行化
+当前工作段：A2 / 正式业务参考工程验证准备
+执行状态：blocked
+阻塞原因：YouYu 前后端代码基础框架仍在整理
 许可证：Proprietary / All Rights Reserved
-仓库可见性：当前 Public，必须由维护者切换为 Private
+仓库可见性：Public，待维护者手动切换为 Private
 ```
+
+当前状态的唯一运行入口是：[Framework 项目 Context](12_框架项目Context/README.md)。版本边界与开发路线分别以 [CHANGELOG](CHANGELOG.md) 和 [Roadmap](10_版本演进/Roadmap.md) 为准。
 
 - [v0.1.1 全量复核报告](10_版本演进/v0.1.1全量复核报告.md)
 - [v0.1.2 专有许可与阶段清场报告](10_版本演进/v0.1.2专有许可与阶段清场报告.md)
 - [v0.1.3 业务验证事实同步与版本治理报告](10_版本演进/v0.1.3业务验证事实同步与版本治理报告.md)
 - [v0.1.4 术语易懂化与表达统一报告](10_版本演进/v0.1.4术语易懂化与表达统一报告.md)
-- [YouYu 初步工程证据复核](12_框架项目Context/验证/REF-CHECK-001_YouYu首轮业务参考任务验证.md)
+- [v0.1.5 当前状态收敛与历史边界治理报告](10_版本演进/v0.1.5当前状态收敛与历史边界治理报告.md)
 - [版本管理规范](10_版本演进/版本管理规范.md)
 - [术语与易懂表达规范](01_框架定义/术语与易懂表达规范.md)
 - [Roadmap](10_版本演进/Roadmap.md)
@@ -159,7 +164,7 @@ flowchart TB
 | [参考工程](09_参考工程/README.md) | 用真实产品验证框架，而不是只写概念 |
 | [版本路线](10_版本演进/Roadmap.md) | 稳定版本、开发目标、里程碑和退出检查关卡 |
 | [设计决策](11_设计决策/README.md) | 保存为什么这样设计以及变更影响 |
-| [Framework 自身 Context](12_框架项目Context/README.md) | 使用 Context 规范管理本仓库自身并记录自应用与业务验证回写 |
+| [Framework 项目 Context](12_框架项目Context/README.md) | 当前运行状态、阻塞、下一步和权威事实入口 |
 
 ## 与原实战仓库的关系
 
@@ -177,12 +182,13 @@ flowchart LR
 
 ## 当前进展
 
-- **v0.1.4**：中文表述统一使用“约定”和“检查关卡”，保留必要技术名称与机器标识；
-- **v0.1.3**：完成 YouYu 初步工程证据的事实同步、版本状态修正和 Framework 回写治理；
-- **v0.2.0 / A**：Context 规范、检查清单、候选模板和 Framework 自应用已经完成；
-- **YouYu 当前状态**：代码基础框架仍在整理，正式业务参考工程验证尚未开始；此前 PR #1 仅作为初步工程证据，不计入里程碑 A 正式业务验证通过；
-- **尚未完成**：选择正式参考任务、完整使用 Context、签名真机模拟用户验收、Context 成本复盘、完整前后端业务闭环、Harness 可执行检查关卡和多平台适配；
-- Context 模板当前成熟度仍为 `candidate`，不能宣称稳定或升级为 `single_project_validated`。
+- Context 规范、检查清单、候选模板和 Framework 自应用已经完成；
+- 当前进入里程碑 A 的正式业务参考工程验证准备段；
+- YouYu 基础框架仍在整理，因此正式业务参考任务尚未建立；
+- YouYu PR #1 只作为初步工程证据，不代表正式验证已经开始或部分通过；
+- Context 模板保持 `candidate`；Harness 里程碑 B 尚未正式开始。
+
+详细执行状态、阻塞和下一步只在 [Framework 项目 Context](12_框架项目Context/README.md) 维护。
 
 ## 贡献与治理
 
@@ -195,4 +201,4 @@ flowchart LR
 
 本仓库采用专有闭源许可，版权所有，保留全部权利。任何使用、复制、修改、分发、商业化、模型训练或衍生使用均须事先取得 zhidao-studio 的书面授权。详见 [LICENSE](LICENSE)。
 
-> 当前仓库仍为 Public。若要真正限制访问，而不只是限制法律上的使用权，必须由维护者在 GitHub `Settings → General → Danger Zone → Change repository visibility` 中将仓库改为 Private。
+> GitHub 已核验当前仓库可见性为 Public。若要真正限制访问，而不只是限制法律上的使用权，必须由维护者在 GitHub `Settings → General → Danger Zone → Change repository visibility` 中将仓库改为 Private。
