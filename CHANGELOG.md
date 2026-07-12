@@ -24,11 +24,50 @@
 
 ### 当前开发状态
 
-- YouYu PR #1 的 Xcode 注册、资源、mPaaS 真机架构和 Debug 路由等初步工程证据已经记录。
-- YouYu 前后端代码基础框架仍在整理，正式业务参考工程验证尚未开始。
+- 里程碑 A 的 A1“Context 规范、模板与 Framework 自应用”已经完成。
+- 当前进入 A2“正式业务参考工程验证准备”，执行状态为 `blocked`。
+- 阻塞原因是 YouYu 前后端代码基础框架仍在整理。
+- YouYu PR #1 只作为初步工程证据，不代表正式业务参考工程已经开始或部分通过。
+- YouYu 正式业务参考工程验证状态为 `not_started`。
 - Context 模板成熟度继续为 `candidate`。
 - 尚未建设自动 Context 装配器、向量知识库、版本检查关卡或完整 Harness 脚本。
 - 尚未完成包含前端、后端、OpenAPI 和 Schema 的正式端到端业务验证。
+
+## [0.1.5] - 2026-07-12
+
+版本定位：在 v0.1.4 基础上收敛当前状态入口、区分历史快照与当前事实，并补齐项目和阶段 Context 的仓库基线，不改变 Framework 核心模型和候选资产成熟度。
+
+### 当前状态收敛
+
+- 明确 `12_框架项目Context/README.md` 是当前运行状态、阻塞和下一步的唯一入口；
+- README 和 AGENTS 只保留必要摘要，并链接到项目 Context；
+- Roadmap 将里程碑 A 区分为 A1“规范与自应用”和 A2“正式业务验证准备”；
+- 明确 A1 已完成、A2 因 YouYu 基础框架整理而阻塞；
+- 明确 Harness 里程碑 B 尚未正式开始。
+
+### 历史边界治理
+
+- 为早期任务、验证和发布报告增加“历史快照”说明；
+- 明确历史文件保留当时版本、术语和判断，不作为当前运行状态依据；
+- 历史 YouYu `partial_pass` 记录继续保留，但当前正式验证状态仍为 `not_started`；
+- 当前状态冲突时，以当前项目 Context、CHANGELOG 和 Roadmap 为准。
+
+### Context 可追溯性
+
+- 项目 Context Pack 升级为 `0.2-A.8`；
+- 阶段 Context Pack 升级为 `1.7`；
+- 项目 Context 和阶段 Context 补充 `source_commit` / `baseline_commit`；
+- 新增 TASK-20260712-007 和 v0.1.5 专项报告；
+- GitHub 已核验仓库当前可见性为 Public，切换 Private 仍需维护者手动执行。
+
+### 版本边界
+
+- 根目录 `VERSION` 更新为 `0.1.5`；
+- 不改变框架宪法、三平面模型、十阶段生命周期和五大基础设施；
+- 不发布新的 Context、Harness、Skill 或平台适配能力；
+- Context 模板继续保持 `candidate`；
+- YouYu 正式业务验证继续为 `not_started`；
+- v0.2.0 / A 的正式业务验证和退出条件保持未完成。
 
 ## [0.1.4] - 2026-07-12
 
