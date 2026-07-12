@@ -68,9 +68,9 @@
     <g transform="translate(296 0)">
       <rect width="276" height="265" rx="24" fill="#fff8ea" stroke="#dc9f32" stroke-width="2" filter="url(#shadow)"/>
       <circle cx="48" cy="48" r="25" fill="#dc9f32"/><path d="M35 40 l13-8 13 8 v11 c0 9-6 16-13 20-7-4-13-11-13-20z" fill="none" stroke="#fff" stroke-width="3"/>
-      <text x="84" y="44" class="pillarTitle" fill="#946114">Harness</text><text x="84" y="69" class="pillarSub">约束、契约与门禁</text>
+      <text x="84" y="44" class="pillarTitle" fill="#946114">Harness</text><text x="84" y="69" class="pillarSub">约束、约定与检查关卡</text>
       <text x="30" y="115" class="stage">让 AI 遵守什么</text>
-      <text x="30" y="153" class="pillarSub">阶段控制 · 修改边界</text><text x="30" y="181" class="pillarSub">输入输出契约</text><text x="30" y="209" class="pillarSub">权限、依赖与质量门禁</text><text x="30" y="237" class="pillarSub">人工确认 · 失败停止</text>
+      <text x="30" y="153" class="pillarSub">阶段控制 · 修改边界</text><text x="30" y="181" class="pillarSub">输入输出约定</text><text x="30" y="209" class="pillarSub">权限、依赖与质量检查</text><text x="30" y="237" class="pillarSub">人工确认 · 失败停止</text>
     </g>
     <g transform="translate(592 0)">
       <rect width="276" height="265" rx="24" fill="#f5f1ff" stroke="#8c6cd3" stroke-width="2" filter="url(#shadow)"/>
@@ -84,7 +84,7 @@
       <circle cx="48" cy="48" r="25" fill="#4b96cf"/><circle cx="42" cy="43" r="7" fill="#fff"/><circle cx="57" cy="50" r="6" fill="#fff"/><path d="M31 64c2-10 20-10 22 0 M48 67c2-8 17-8 19 0" fill="none" stroke="#fff" stroke-width="3"/>
       <text x="84" y="44" class="pillarTitle" fill="#24689c">Agents</text><text x="84" y="69" class="pillarSub">角色、协作与工具</text>
       <text x="30" y="115" class="stage">由谁协作执行</text>
-      <text x="30" y="153" class="pillarSub">角色职责 · 任务分配</text><text x="30" y="181" class="pillarSub">Agent 协作协议</text><text x="30" y="209" class="pillarSub">工具集成 · 人工介入</text><text x="30" y="237" class="pillarSub">状态、证据与冲突处理</text>
+      <text x="30" y="153" class="pillarSub">角色职责 · 任务分配</text><text x="30" y="181" class="pillarSub">Agent 协作约定</text><text x="30" y="209" class="pillarSub">工具集成 · 人工介入</text><text x="30" y="237" class="pillarSub">状态、证据与冲突处理</text>
     </g>
     <g transform="translate(1184 0)">
       <rect width="276" height="265" rx="24" fill="#fff3ed" stroke="#de7650" stroke-width="2" filter="url(#shadow)"/>
