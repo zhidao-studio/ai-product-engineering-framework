@@ -45,6 +45,7 @@ sensitivity: public
 
 - Framework 自应用：**已通过并由项目维护者确认**；
 - 自应用结果：P0 全通过，Context 成熟度 93/100；
+- v0.1.1 全量复核：**已完成并提交**；
 - 业务参考工程：尚未开始；
 - 自动 Context 门禁：尚未开始。
 
@@ -93,8 +94,9 @@ sensitivity: public
 
 - 阶段 Context：[v0.2.0 / A：Context 可执行化](阶段/v0.2-A_Context可执行化.md)；
 - 已完成自应用任务：[TASK-20260712-001](任务/TASK-20260712-001_建立Framework自身Context基线.md)；
+- 已完成 v0.1.1 复核任务：[TASK-20260712-002](任务/TASK-20260712-002_v0.1.1全量复核与版本修订.md)；
 - 自应用检查结果：[CTX-CHECK-001](验证/CTX-CHECK-001_Framework自身Context基线.md)；
-- v0.1.1 全量复核：见 `10_版本演进/v0.1.1全量复核报告.md`。
+- [v0.1.1 全量复核报告](../10_版本演进/v0.1.1全量复核报告.md)。
 
 ## 7. 当前风险与待决事项
 
@@ -121,6 +123,7 @@ sensitivity: public
 - 建立版本管理规范和 DEC-008；
 - 统一 Context 状态枚举和 Pack 版本字段；
 - 完成 Framework 自应用并由项目维护者确认；
+- 将 v0.1.1 全量 Review 作为独立任务记录；
 - Context 候选模板继续保持 candidate，等待业务验证。
 
 详见：[CHANGELOG.md](../CHANGELOG.md)。
@@ -139,4 +142,4 @@ sensitivity: public
 | 日期 | 变化 | 关联决策或任务 |
 |---|---|---|
 | 2026-07-12 | 建立 Framework 自身项目 Context Pack | DEC-007 / TASK-20260712-001 |
-| 2026-07-12 | 升级至 v0.1.1 稳定基线并统一版本字段 | DEC-008 / v0.1.1 Review |
+| 2026-07-12 | 升级至 v0.1.1 稳定基线并统一版本字段 | DEC-008 / TASK-20260712-002 |
