@@ -8,19 +8,21 @@
 project_context_id:
 project:
 status: active
+execution_status:
 context_pack_version:
 owner:
 current_stage:
+current_milestone:
+current_work_segment:
 stable_release:
 target_release:
-current_milestone:
 working_branch:
 last_verified_at:
 source_commit:
 sensitivity:
 ```
 
-> `context_pack_version`、`stable_release` 和 `target_release` 含义不同，不得合并为通用 `version` 字段。
+> `context_pack_version`、`stable_release` 和 `target_release` 含义不同，不得合并为通用 `version` 字段。`status` 表示项目长期状态，`execution_status` 表示当前工作是否进行、阻塞或停止。
 
 ## 1. 项目身份
 
@@ -34,6 +36,9 @@ sensitivity:
 - 当前稳定版本：
 - 目标发布版本：
 - 当前开发里程碑：
+- 当前工作段：
+- 项目长期状态：
+- 当前执行状态：
 - 当前开发分支与基线：
 - Agent 规则入口：
 
@@ -56,7 +61,7 @@ sensitivity:
 
 ### 明确不做
 
-### 继续、调整或停止条件
+### 继续、调整、阻塞解除或停止条件
 
 ## 3. 产品与业务事实
 
@@ -138,30 +143,45 @@ sensitivity:
 
 ### 下一步
 
-## 9. 设计决策索引
+## 9. 当前状态权威边界
+
+- 当前运行状态唯一入口：
+- 当前阶段 Context：
+- 当前任务 Context：
+- 历史 TASK、验证和发布报告入口：
+- 历史文件与当前状态冲突时的处理：
+
+> 历史文件中的版本、状态和“下一步”只表示当时判断，不自动覆盖本文件。
+
+## 10. 设计决策索引
 
 | 编号 | 主题 | 状态 | 日期 | 链接 |
 |---|---|---|---|---|
 
-## 10. 事实源总索引
+## 11. 事实源总索引
 
 | Context ID | 名称 | 类型 | 作用域 | 当前来源 | 状态 | 责任人 | 最近确认 |
 |---|---|---|---|---|---|---|---|
 
-## 11. 更新记录
+## 12. 更新记录
 
 | 日期 | 变化 | 影响 | 修改人 | 关联提交或决策 |
 |---|---|---|---|---|
 
-## 12. 自检
+## 13. 自检
 
 - [ ] 陌生人员或 Agent 能说明项目为什么存在；
 - [ ] 当前范围和不做事项明确；
 - [ ] 高保真和人工确认入口有效；
 - [ ] 架构、API 和数据约定可定位；
-- [ ] 稳定版本、目标版本、里程碑和生命周期阶段明确；
+- [ ] 稳定版本、目标版本、里程碑、工作段和生命周期阶段明确；
+- [ ] 项目长期状态和当前执行状态已区分；
+- [ ] 阻塞原因和解除条件清楚；
+- [ ] 当前下一步明确；
 - [ ] 关键事实有来源版本、状态和责任人；
+- [ ] `source_commit` 对应最近复核基线；
 - [ ] 敏感信息已排除或受控；
 - [ ] 没有复制形成平行事实源；
+- [ ] 历史快照没有覆盖当前状态；
 - [ ] Pack 与当前代码、约定和发布状态一致；
 - [ ] 机器状态和版本字段符合统一规范。
