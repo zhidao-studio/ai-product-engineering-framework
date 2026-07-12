@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">AI 产品工程 Context 工程总览</title>
+  <desc id="desc">展示框架级、项目级、阶段级、任务级四级 Context，权威事实源、按任务装配、执行验证和决策经验回写闭环。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f9ff"/>
+      <stop offset="1" stop-color="#eef7ff"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f6feb"/>
+      <stop offset="1" stop-color="#5b8cff"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f9d78"/>
+      <stop offset="1" stop-color="#50c49a"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#17365d" flood-opacity="0.18"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3d6fb6"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1430" cy="100" r="250" fill="#4c7dff" opacity="0.08"/>
+  <circle cx="120" cy="910" r="260" fill="#38b894" opacity="0.07"/>
+
+  <g font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+    <text x="90" y="95" font-size="48" font-weight="750" fill="#14233b">Context Engineering</text>
+    <text x="90" y="140" font-size="25" fill="#50627d">不要让模型负责长期记忆，让工程系统负责事实、装配、冲突与回写</text>
+
+    <g filter="url(#shadow)">
+      <rect x="90" y="205" width="350" height="570" rx="28" fill="#ffffff" stroke="#d7e3f4"/>
+      <text x="135" y="260" font-size="29" font-weight="720" fill="#17365d">四级 Context 作用域</text>
+
+      <rect x="130" y="305" width="270" height="82" rx="18" fill="#eaf2ff"/>
+      <text x="160" y="340" font-size="23" font-weight="700" fill="#2359a9">框架级</text>
+      <text x="160" y="369" font-size="17" fill="#54657d">愿景 · 原则 · 术语 · 核心模型</text>
+
+      <rect x="130" y="415" width="270" height="82" rx="18" fill="#edf7ff"/>
+      <text x="160" y="450" font-size="23" font-weight="700" fill="#236aa9">项目级</text>
+      <text x="160" y="479" font-size="17" fill="#54657d">产品 · 设计 · 架构 · 契约 · 环境</text>
+
+      <rect x="130" y="525" width="270" height="82" rx="18" fill="#edf9f5"/>
+      <text x="160" y="560" font-size="23" font-weight="700" fill="#187b62">阶段级</text>
+      <text x="160" y="589" font-size="17" fill="#54657d">目标 · 产物 · 门禁 · 依赖 · 责任</text>
+
+      <rect x="130" y="635" width="270" height="82" rx="18" fill="#f0f8ef"/>
+      <text x="160" y="670" font-size="23" font-weight="700" fill="#2a7b42">任务级</text>
+      <text x="160" y="699" font-size="17" fill="#54657d">范围 · 输入 · 输出 · 风险 · 验收</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="505" y="205" width="525" height="570" rx="28" fill="#ffffff" stroke="#d7e3f4"/>
+      <text x="550" y="260" font-size="29" font-weight="720" fill="#17365d">按任务装配 Context Pack</text>
+
+      <rect x="550" y="305" width="190" height="82" rx="18" fill="url(#blue)"/>
+      <text x="595" y="354" font-size="23" font-weight="700" fill="#ffffff">权威事实源</text>
+
+      <rect x="790" y="305" width="190" height="82" rx="18" fill="#f1f5fb" stroke="#bdd0eb"/>
+      <text x="832" y="340" font-size="21" font-weight="700" fill="#274b78">版本与状态</text>
+      <text x="825" y="368" font-size="16" fill="#60718b">有效 · 替代 · 归档</text>
+
+      <path d="M645 402v55" stroke="#3d6fb6" stroke-width="4" marker-end="url(#arrow)"/>
+      <path d="M885 402v55" stroke="#3d6fb6" stroke-width="4" marker-end="url(#arrow)"/>
+
+      <rect x="610" y="470" width="310" height="105" rx="22" fill="#eef7ff" stroke="#8bb6ed"/>
+      <text x="660" y="512" font-size="25" font-weight="720" fill="#2359a9">Context 装配器</text>
+      <text x="648" y="547" font-size="17" fill="#54657d">相关 · 最小 · 可追溯 · 安全</text>
+
+      <path d="M765 590v50" stroke="#3d6fb6" stroke-width="4" marker-end="url(#arrow)"/>
+
+      <rect x="610" y="653" width="310" height="82" rx="20" fill="url(#green)"/>
+      <text x="665" y="703" font-size="24" font-weight="720" fill="#ffffff">任务 Context Pack</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="1095" y="205" width="415" height="570" rx="28" fill="#ffffff" stroke="#d7e3f4"/>
+      <text x="1140" y="260" font-size="29" font-weight="720" fill="#17365d">执行、验证与回写</text>
+
+      <rect x="1140" y="315" width="325" height="78" rx="18" fill="#eef3ff"/>
+      <text x="1245" y="363" font-size="23" font-weight="700" fill="#355caa">Agent 执行</text>
+
+      <path d="M1302 405v45" stroke="#3d6fb6" stroke-width="4" marker-end="url(#arrow)"/>
+
+      <rect x="1140" y="465" width="325" height="78" rx="18" fill="#edf9f5"/>
+      <text x="1237" y="513" font-size="23" font-weight="700" fill="#187b62">验证与证据</text>
+
+      <path d="M1302 555v45" stroke="#3d6fb6" stroke-width="4" marker-end="url(#arrow)"/>
+
+      <rect x="1140" y="615" width="325" height="105" rx="20" fill="#fff5e9" stroke="#f0c889"/>
+      <text x="1195" y="655" font-size="22" font-weight="700" fill="#a05f00">决策与经验候选</text>
+      <text x="1185" y="688" font-size="16" fill="#6f604d">审查后回写对应作用域</text>
+    </g>
+
+    <path d="M1090 695C1005 835 640 875 380 735" fill="none" stroke="#2d9b78" stroke-width="5" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+    <text x="650" y="890" font-size="22" font-weight="700" fill="#20765f">回写不是自动成为规则：候选 → 验证 → 批准 → 更新权威事实源</text>
+
+    <g>
+      <rect x="90" y="925" width="1420" height="48" rx="16" fill="#e7eef8"/>
+      <text x="150" y="957" font-size="18" fill="#455b78">质量维度：正确性 · 完整性 · 相关性 · 新鲜度 · 可追溯性 · 最小化 · 安全性</text>
+    </g>
+  </g>
+</svg>
