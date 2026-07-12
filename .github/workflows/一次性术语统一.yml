@@ -1,0 +1,613 @@
+name: 一次性术语统一
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .terminology-migration-trigger
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 统一中文表述并准备 v0.1.4
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          from datetime import date
+          import subprocess
+
+          root = Path('.')
+          today = '2026-07-12'
+          source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+
+          historical_prefixes = (
+              '10_版本演进/v0.1.1',
+              '10_版本演进/v0.1.2',
+              '10_版本演进/v0.1.3',
+              '12_框架项目Context/任务/TASK-20260712-001',
+              '12_框架项目Context/任务/TASK-20260712-002',
+              '12_框架项目Context/任务/TASK-20260712-003',
+              '12_框架项目Context/任务/TASK-20260712-004',
+              '12_框架项目Context/验证/CTX-CHECK-001',
+              '12_框架项目Context/验证/REF-CHECK-001',
+          )
+          text_suffixes = {'.md', '.yaml', '.yml', '.svg', '.txt', '.sh', '.py', '.js', '.ts', '.json'}
+
+          def rel(p: Path) -> str:
+              return p.as_posix().lstrip('./')
+
+          def is_historical(path: str) -> bool:
+              return path.startswith(historical_prefixes)
+
+          # 1. 当前有效文本统一使用“约定”“检查关卡”。
+          for p in root.rglob('*'):
+              if not p.is_file() or p.suffix.lower() not in text_suffixes:
+                  continue
+              path = rel(p)
+              if path.startswith('.git/') or path.startswith('.github/workflows/一次性术语统一.yml'):
+                  continue
+              if is_historical(path):
+                  continue
+              try:
+                  text = p.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              new_text = text.replace('契约', '约定').replace('门禁', '检查关卡')
+              if new_text != text:
+                  p.write_text(new_text, encoding='utf-8')
+
+          # 2. Harness 当前权威文档改为易懂名称，旧路径保留兼容说明。
+          old_harness = Path('05_Harness工程/执行控制与门禁.md')
+          new_harness = Path('05_Harness工程/执行控制与检查关卡.md')
+          if old_harness.exists():
+              new_harness.write_text(old_harness.read_text(encoding='utf-8'), encoding='utf-8')
+              old_harness.write_text(
+                  '# 历史路径兼容说明\n\n'
+                  '> 当前权威文档已迁移至：[Harness 执行控制与检查关卡](执行控制与检查关卡.md)。\n\n'
+                  '该文件仅用于兼容历史链接。自 v0.1.4 起，中文正文统一使用“检查关卡（Gate）”；历史资料中的旧称按同一概念理解。\n',
+                  encoding='utf-8'
+              )
+
+          # 3. 新增中文术语规范。
+          terminology = '''# 术语与易懂表达规范
+
+> 本规范统一 Framework 面向中文读者的表达。专业概念不降低准确性，但优先使用能够直接理解的中文词语。
+
+## 1. 核心规则
+
+| 旧中文表述 | 当前中文表述 | 含义 |
+|---|---|---|
+| 契约 | 约定 | 系统、模块、角色或阶段之间必须共同遵守且可以检查的规则 |
+| 门禁 | 检查关卡 | 进入下一步之前必须达到的条件；未通过时必须停止、退回或人工处理 |
+
+推荐首次出现时写为：
+
+```text
+约定（Contract）
+检查关卡（Gate）
+```
+
+后续中文正文直接使用“约定”和“检查关卡”。
+
+## 2. 常用表达
+
+| 技术表达 | Framework 中文表达 |
+|---|---|
+| API Contract | 接口约定 |
+| Data Contract | 数据格式约定 |
+| Schema Contract | 数据结构约定 |
+| Behavioral Contract | 功能行为约定 |
+| Contract Test | 约定一致性检查 |
+| Quality Gate | 质量检查关卡 |
+| Design Gate | 设计确认关卡 |
+| Merge Gate | 合并前检查关卡 |
+| Release Gate | 发布前检查关卡 |
+| Stage Gate | 阶段通过条件或阶段检查关卡 |
+
+## 3. 保留的技术名称
+
+以下内容不强制翻译或改名：
+
+- `OpenAPI`、`Schema`、`Contract`、`Gate` 等正式技术标准或英文概念；
+- `GATE-001`、`gate_id`、`contract_checks` 等机器标识、字段名和已有编号；
+- 外部平台、工具或协议中的固定名称；
+- 已发布历史报告、任务记录和验证证据中的原始表述。
+
+保留技术名称时，面向人的中文说明仍使用“约定”“检查关卡”。例如：
+
+```text
+GATE-001：iOS 源代码注册检查关卡
+OpenAPI：前后端接口约定的权威文件
+```
+
+## 4. 使用原则
+
+1. 中文目录、标题、正文、模板说明和用户可见报告优先使用易懂表述；
+2. 不为了替换词语而改变原有工程含义；
+3. “约定”必须明确内容、参与方、版本和检查方法；
+4. “检查关卡”必须明确通过条件、失败处理和是否需要人工确认；
+5. 检查清单只说明检查什么，检查关卡还决定是否允许继续；
+6. 历史记录不追溯篡改，通过本规范解释旧称与当前术语的关系；
+7. 新增文档不得重新把旧称作为主要中文表述。
+
+## 5. 示例
+
+不推荐：
+
+```text
+检查 OpenAPI 契约门禁。
+```
+
+推荐：
+
+```text
+执行前后端接口约定一致性检查；未通过接口检查关卡时禁止合并。
+```
+
+本规范的权威决策见：[DEC-010](../11_设计决策/DEC-010_中文表述采用约定与检查关卡.md)。
+'''
+          Path('01_框架定义/术语与易懂表达规范.md').write_text(terminology, encoding='utf-8')
+
+          # 4. 新增 DEC-010。
+          dec = '''# DEC-010：中文表述采用“约定”与“检查关卡”
+
+```yaml
+decision_id: DEC-010
+status: accepted
+date: 2026-07-12
+owner: zhidao-studio
+scope: Framework 中文术语与项目落地表达
+```
+
+## 1. 背景
+
+Framework 早期使用“契约”和“门禁”表达 Contract 与 Gate。术语在工程领域成立，但对非技术产品负责人、个人开发者和跨职能参与者不够直观，也容易被误解为法律合同或访问控制系统。
+
+Framework 的目标之一是让非技术人员也能判断项目是否正确推进，因此中文表达需要在不损失工程含义的前提下降低理解成本。
+
+## 2. 决策
+
+自 v0.1.4 起：
+
+- 面向中文读者的主要表述使用“约定”；
+- 面向中文读者的主要表述使用“检查关卡”；
+- 首次需要对照专业概念时，可以写“约定（Contract）”“检查关卡（Gate）”；
+- `OpenAPI`、`Schema`、`Contract`、`Gate`、`GATE-xxx` 和机器字段保持原技术名称；
+- 已发布历史报告和验证记录不追溯重写，按本决策解释旧称；
+- 当前有效规范、导航、模板说明和项目落地指导必须采用新表述。
+
+详细规则由：[术语与易懂表达规范](../01_框架定义/术语与易懂表达规范.md) 定义。
+
+## 3. 不改变的内容
+
+本决策不改变：
+
+- 系统之间必须共同遵守且可检查的规则含义；
+- 未通过检查时不得进入下一阶段的控制含义；
+- Harness 的六类控制面；
+- 十阶段产品价值生命周期；
+- Context、Harness、Skills、Agents、Loop 的边界；
+- 机器标识、接口标准和外部协议名称。
+
+## 4. 影响
+
+- 当前中文文档更容易被产品、设计、运营和非专业开发者理解；
+- YouYu 等参考工程可以直接使用中文目录“接口与数据约定”“执行控制与检查关卡”；
+- 历史资料和当前资料可能短期存在新旧称并存，需要通过术语规范解释；
+- 后续自动检查应识别当前有效文档中的旧称，并允许历史目录中的旧称。
+
+## 5. 验证
+
+- 当前权威文档完成术语替换；
+- Harness 权威文档迁移到易懂文件名；
+- README、AGENTS、Roadmap、Context 和参考工程说明一致；
+- 保留技术名和机器编号未被误改；
+- 新增 v0.1.4 发布报告和任务记录。
+'''
+          Path('11_设计决策/DEC-010_中文表述采用约定与检查关卡.md').write_text(dec, encoding='utf-8')
+
+          # 5. 更新设计决策索引。
+          p = Path('11_设计决策/README.md')
+          text = p.read_text(encoding='utf-8')
+          row = '| [DEC-010](DEC-010_中文表述采用约定与检查关卡.md) | 中文表述采用“约定”与“检查关卡”，保留必要技术名称和机器标识 | 已接受 | 2026-07-12 |\n'
+          if 'DEC-010' not in text:
+              text = text.replace('\n新增或替代决策时，必须同步更新本索引。', '\n' + row + '\n新增或替代决策时，必须同步更新本索引。')
+              p.write_text(text, encoding='utf-8')
+
+          # 6. 版本事实源更新为 v0.1.4。
+          Path('VERSION').write_text('0.1.4\n', encoding='utf-8')
+
+          def replace_required(path: str, old: str, new: str):
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              if old not in text:
+                  raise RuntimeError(f'{path}: 未找到预期文本：{old}')
+              p.write_text(text.replace(old, new), encoding='utf-8')
+
+          # README
+          p = Path('README.md')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('当前稳定版本：v0.1.3', '当前稳定版本：v0.1.4')
+          if 'v0.1.4 术语易懂化与表达统一报告' not in text:
+              text = text.replace(
+                  '- [v0.1.3 业务验证事实同步与版本治理报告](10_版本演进/v0.1.3业务验证事实同步与版本治理报告.md)\n',
+                  '- [v0.1.3 业务验证事实同步与版本治理报告](10_版本演进/v0.1.3业务验证事实同步与版本治理报告.md)\n'
+                  '- [v0.1.4 术语易懂化与表达统一报告](10_版本演进/v0.1.4术语易懂化与表达统一报告.md)\n'
+              )
+          if '术语与易懂表达规范' not in text:
+              text = text.replace(
+                  '- [版本管理规范](10_版本演进/版本管理规范.md)\n',
+                  '- [版本管理规范](10_版本演进/版本管理规范.md)\n'
+                  '- [术语与易懂表达规范](01_框架定义/术语与易懂表达规范.md)\n'
+              )
+          if '- **v0.1.4**' not in text:
+              text = text.replace(
+                  '- **v0.1.3**：完成 YouYu 首轮业务验证事实同步、版本状态修正和 Framework 回写治理；',
+                  '- **v0.1.4**：中文表述统一使用“约定”和“检查关卡”，保留必要技术名称与机器标识；\n'
+                  '- **v0.1.3**：完成 YouYu 首轮业务验证事实同步、版本状态修正和 Framework 回写治理；'
+              )
+          p.write_text(text, encoding='utf-8')
+
+          # AGENTS
+          p = Path('AGENTS.md')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('当前稳定版本：v0.1.3', '当前稳定版本：v0.1.4')
+          text = text.replace('- 当前稳定版本：v0.1.3；', '- 当前稳定版本：v0.1.4；')
+          text = text.replace('### v0.1.3 稳定基线', '### v0.1.4 稳定基线')
+          if 'v0.1.4 已统一中文术语' not in text:
+              text = text.replace(
+                  '- v0.1.3 已完成业务验证事实同步、版本状态修正和 Framework 回写治理；',
+                  '- v0.1.3 已完成业务验证事实同步、版本状态修正和 Framework 回写治理；\n'
+                  '- v0.1.4 已统一中文术语为“约定”和“检查关卡”；'
+              )
+          terminology_rule = (
+              '- 中文正文、目录和面向人的报告使用“约定”和“检查关卡”；\n'
+              '- `Contract`、`Gate`、`OpenAPI`、`Schema`、`GATE-xxx` 和机器字段按技术需要保留；\n'
+              '- 历史报告与验证证据不追溯重写，新文档不得重新使用旧称作为主要中文表述；\n'
+          )
+          if '中文正文、目录和面向人的报告使用“约定”' not in text:
+              marker = '## 9. 文档与命名规范\n\n'
+              text = text.replace(marker, marker + terminology_rule + '\n')
+          p.write_text(text, encoding='utf-8')
+
+          # Context 模块版本摘要
+          replace_required('04_Context工程/README.md', '当前稳定框架版本：v0.1.3', '当前稳定框架版本：v0.1.4')
+          p = Path('04_Context工程/README.md')
+          text = p.read_text(encoding='utf-8')
+          if 'v0.1.4 统一了中文术语' not in text:
+              text = text.replace(
+                  '- v0.1.3 只完成事实同步、版本治理和验证回写，不代表 Context 能力已经稳定；',
+                  '- v0.1.3 只完成事实同步、版本治理和验证回写，不代表 Context 能力已经稳定；\n'
+                  '- v0.1.4 统一了中文术语和当前权威文档表述，不改变 Context 成熟度；'
+              )
+          p.write_text(text, encoding='utf-8')
+
+          # 边界声明的稳定基线
+          p = Path('01_框架定义/AI产品工程边界声明.md')
+          text = p.read_text(encoding='utf-8').replace('v0.1.2 稳定版本负责建立并治理：', 'v0.1.4 稳定版本负责建立并治理：')
+          p.write_text(text, encoding='utf-8')
+
+          # 版本管理规范
+          p = Path('10_版本演进/版本管理规范.md')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('例如：v0.1.3', '例如：v0.1.4')
+          text = text.replace('v0.1.3 完成业务验证事实同步与版本治理修订', 'v0.1.4 完成术语易懂化与表达统一修订')
+          text = text.replace('当前稳定版本：v0.1.3', '当前稳定版本：v0.1.4')
+          text = text.replace('context_pack_version: 0.2-A.5', 'context_pack_version: 0.2-A.6')
+          text = text.replace('stable_release: v0.1.3', 'stable_release: v0.1.4')
+          text = text.replace('仓库稳定版本可以是 v0.1.3', '仓库稳定版本可以是 v0.1.4')
+          text = text.replace('v0.1.3：业务验证事实同步与版本治理修订，当前稳定版本', 'v0.1.3：业务验证事实同步与版本治理修订\nv0.1.4：术语易懂化与表达统一修订，当前稳定版本')
+          p.write_text(text, encoding='utf-8')
+
+          # Roadmap 新增 v0.1.4。
+          p = Path('10_版本演进/Roadmap.md')
+          text = p.read_text(encoding='utf-8')
+          section = '''## v0.1.4：术语易懂化与表达统一（已完成）
+
+目标：在不改变工程含义和核心模型的前提下，降低 Framework 对非技术人员和跨职能参与者的理解成本。
+
+完成：
+
+- 中文主要表述由旧称统一为“约定”和“检查关卡”；
+- 新增《术语与易懂表达规范》；
+- 新增 DEC-010，固定中文术语与技术名称的边界；
+- Harness 当前权威文档迁移为 `执行控制与检查关卡.md`，旧路径保留兼容说明；
+- 当前权威规范、模块入口、模板说明、Roadmap 和项目 Context 完成统一；
+- `Contract`、`Gate`、`OpenAPI`、`Schema`、`GATE-xxx` 和机器字段按技术需要保留；
+- 历史发布报告、任务记录和验证证据保持原始表述；
+- 当前稳定版本升级为 v0.1.4，v0.2.0 / A 和候选资产成熟度保持不变。
+
+版本边界：
+
+- 本版本只调整中文表达、导航和治理规则；
+- 不改变 Framework 宪法、三平面模型、十阶段生命周期和五大基础设施；
+- 不发布新的 Context、Harness、Skill 或平台适配能力；
+- 不把 YouYu 首轮部分验证升级为完整通过。
+
+状态：**已通过。**
+
+报告：[v0.1.4 术语易懂化与表达统一报告](v0.1.4术语易懂化与表达统一报告.md)。
+
+'''
+          if '## v0.1.4：术语易懂化与表达统一' not in text:
+              text = text.replace('## v0.2.0：Context 与 Harness 可执行化（开发中）', section + '## v0.2.0：Context 与 Harness 可执行化（开发中）')
+          p.write_text(text, encoding='utf-8')
+
+          # CHANGELOG 新增 v0.1.4。
+          p = Path('CHANGELOG.md')
+          text = p.read_text(encoding='utf-8')
+          changelog = '''## [0.1.4] - 2026-07-12
+
+版本定位：在 v0.1.3 稳定治理基线上统一 Framework 的中文表达，优先使用“约定”和“检查关卡”，同时保留必要的技术名称和机器标识。
+
+### 术语易懂化
+
+- 新增《术语与易懂表达规范》；
+- 新增 DEC-010；
+- 当前权威文档中的中文旧称统一调整为易懂表述；
+- Harness 权威文档迁移为 `执行控制与检查关卡.md`；
+- 旧 Harness 路径保留兼容说明，避免历史链接失效；
+- 明确 `Contract`、`Gate`、`OpenAPI`、`Schema`、`GATE-xxx` 和机器字段不强制翻译。
+
+### 版本与 Context 治理
+
+- 根目录 `VERSION` 更新为 `0.1.4`；
+- README、AGENTS、Roadmap、版本规范、项目 Context 和阶段 Context 同步；
+- 项目 Context Pack 升级为 `0.2-A.6`；
+- 阶段 Context Pack 升级为 `1.5`；
+- 新增 v0.1.4 专项报告和发布任务记录。
+
+### 版本边界
+
+- 本次只调整表达和治理记录，不改变工程概念；
+- Context 模板继续保持 `candidate`；
+- YouYu 首轮验证继续为 `partial_pass`；
+- v0.2.0 / A 的退出条件和未完成事项保持不变。
+
+'''
+          if '## [0.1.4] - 2026-07-12' not in text:
+              text = text.replace('## [0.1.3] - 2026-07-12', changelog + '## [0.1.3] - 2026-07-12')
+          p.write_text(text, encoding='utf-8')
+
+          # Framework 项目 Context。
+          p = Path('12_框架项目Context/README.md')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('context_pack_version: 0.2-A.5', 'context_pack_version: 0.2-A.6')
+          text = text.replace('stable_release: v0.1.3', 'stable_release: v0.1.4')
+          text = text.replace('**当前稳定版本**：v0.1.3', '**当前稳定版本**：v0.1.4')
+          text = text.replace('| 版本路线 | [Roadmap](../10_版本演进/Roadmap.md) | v0.1.3 稳定，v0.2.0 开发中 |', '| 版本路线 | [Roadmap](../10_版本演进/Roadmap.md) | v0.1.4 稳定，v0.2.0 开发中 |')
+          if 'v0.1.4 术语易懂化与表达统一：**已完成并发布**' not in text:
+              text = text.replace(
+                  '- v0.1.3 业务验证事实同步与版本治理：**已完成并发布**；',
+                  '- v0.1.3 业务验证事实同步与版本治理：**已完成并发布**；\n'
+                  '- v0.1.4 术语易懂化与表达统一：**已完成并发布**；'
+              )
+          if 'TASK-20260712-005' not in text:
+              text = text.replace(
+                  '- 已完成 v0.1.3 发布任务：[TASK-20260712-004](任务/TASK-20260712-004_发布v0.1.3版本.md)；',
+                  '- 已完成 v0.1.3 发布任务：[TASK-20260712-004](任务/TASK-20260712-004_发布v0.1.3版本.md)；\n'
+                  '- 已完成 v0.1.4 术语统一任务：[TASK-20260712-005](任务/TASK-20260712-005_统一约定与检查关卡术语.md)；'
+              )
+          if 'v0.1.4术语易懂化与表达统一报告.md' not in text:
+              text = text.replace(
+                  '- [v0.1.3 业务验证事实同步与版本治理报告](../10_版本演进/v0.1.3业务验证事实同步与版本治理报告.md)。',
+                  '- [v0.1.3 业务验证事实同步与版本治理报告](../10_版本演进/v0.1.3业务验证事实同步与版本治理报告.md)；\n'
+                  '- [v0.1.4 术语易懂化与表达统一报告](../10_版本演进/v0.1.4术语易懂化与表达统一报告.md)。'
+              )
+          if '发布 v0.1.4 术语易懂化与表达统一修订' not in text:
+              text = text.replace(
+                  '- 发布 v0.1.3 业务验证事实同步与版本治理修订；',
+                  '- 发布 v0.1.3 业务验证事实同步与版本治理修订；\n'
+                  '- 发布 v0.1.4 术语易懂化与表达统一修订；'
+              )
+          if '| 2026-07-12 | 发布 v0.1.4' not in text:
+              text = text.replace(
+                  '| 2026-07-12 | 发布 v0.1.3 业务验证事实同步与版本治理修订 | TASK-20260712-004 |',
+                  '| 2026-07-12 | 发布 v0.1.3 业务验证事实同步与版本治理修订 | TASK-20260712-004 |\n'
+                  '| 2026-07-12 | 发布 v0.1.4 术语易懂化与表达统一修订 | DEC-010 / TASK-20260712-005 |'
+              )
+          p.write_text(text, encoding='utf-8')
+
+          # 当前阶段 Context。
+          p = Path('12_框架项目Context/阶段/v0.2-A_Context可执行化.md')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('stage_context_pack_version: 1.4', 'stage_context_pack_version: 1.5')
+          text = text.replace('project_context_pack_version: 0.2-A.5', 'project_context_pack_version: 0.2-A.6')
+          text = text.replace('baseline_release: v0.1.3', 'baseline_release: v0.1.4')
+          text = text.replace('- v0.1.3 稳定基线已经完成业务验证事实同步、版本状态修正和 Framework 回写治理；', '- v0.1.4 稳定基线已经完成术语易懂化、表达统一和当前权威文档治理；')
+          if 'v0.1.4 术语易懂化与表达统一报告' not in text:
+              text = text.replace(
+                  '- [v0.1.3 业务验证事实同步与版本治理报告](../../10_版本演进/v0.1.3业务验证事实同步与版本治理报告.md)确认真实业务验证事实和版本状态；',
+                  '- [v0.1.3 业务验证事实同步与版本治理报告](../../10_版本演进/v0.1.3业务验证事实同步与版本治理报告.md)确认真实业务验证事实和版本状态；\n'
+                  '- [v0.1.4 术语易懂化与表达统一报告](../../10_版本演进/v0.1.4术语易懂化与表达统一报告.md)确认中文术语和当前权威表述；'
+              )
+          if '发布 v0.1.4 版本' not in text:
+              text = text.replace(
+                  '| 发布 v0.1.3 版本 | `completed` / 已完成 | [TASK-20260712-004](../任务/TASK-20260712-004_发布v0.1.3版本.md) |',
+                  '| 发布 v0.1.3 版本 | `completed` / 已完成 | [TASK-20260712-004](../任务/TASK-20260712-004_发布v0.1.3版本.md) |\n'
+                  '| 发布 v0.1.4 术语统一版本 | `completed` / 已完成 | [TASK-20260712-005](../任务/TASK-20260712-005_统一约定与检查关卡术语.md) |'
+              )
+          if '- [x] v0.1.4 术语易懂化和表达统一完成；' not in text:
+              text = text.replace('- [x] v0.1.3 业务验证事实同步和版本治理完成；', '- [x] v0.1.3 业务验证事实同步和版本治理完成；\n- [x] v0.1.4 术语易懂化和表达统一完成；')
+          text = text.replace('v0.1.3 已完成 YouYu 首轮业务验证事实同步、稳定版本状态修正和 Framework 回写治理。', 'v0.1.4 已完成中文术语易懂化、当前权威表述统一和 Framework 治理更新。')
+          p.write_text(text, encoding='utf-8')
+
+          # 7. 新增发布报告和任务 Context。
+          report = '''# v0.1.4 术语易懂化与表达统一报告
+
+```yaml
+report_id: RELEASE-REPORT-V0.1.4
+release: v0.1.4
+status: passed
+release_type: patch
+published_at: 2026-07-12
+owner: zhidao-studio
+source_branch: main
+target_release: v0.2.0
+current_milestone: A / Context 可执行化
+```
+
+## 1. 发布目标
+
+统一 Framework 面向中文读者的术语和当前权威表述，让非技术产品负责人、个人开发者和跨职能参与者能够直接理解系统之间的规则和进入下一步的条件。
+
+## 2. 术语结论
+
+- 中文主要表述使用“约定”；
+- 中文主要表述使用“检查关卡”；
+- 首次需要对照时可以使用“约定（Contract）”“检查关卡（Gate）”；
+- 技术标准、英文名称、机器字段和 `GATE-xxx` 编号保持原样；
+- 历史发布报告、任务记录和验证证据不追溯改写。
+
+## 3. 修改范围
+
+- 根 README、AGENTS 和 CHANGELOG；
+- 框架定义、全局模型、角色、Context、Harness、Skills、Loop、模板与参考工程当前文档；
+- Roadmap、版本管理规范、项目 Context 和当前阶段 Context；
+- Harness 权威文档名称；
+- 新增术语规范、DEC-010、发布报告和任务记录。
+
+## 4. 版本边界
+
+本版本属于修订版本，因为只修正和统一中文表达，不改变：
+
+- 框架宪法和核心原则含义；
+- 三平面模型和十阶段生命周期；
+- 五大 AI 工程基础设施；
+- 人类最终责任；
+- Context、Harness、Skills、Agents、Loop 的边界；
+- 候选资产成熟度；
+- v0.2.0 / A 的退出标准。
+
+## 5. 一致性检查
+
+- [x] `VERSION` 为 `0.1.4`；
+- [x] README、AGENTS、Roadmap 和项目 Context 当前稳定版本一致；
+- [x] 当前有效中文文档已使用新表述；
+- [x] Harness 新权威路径存在；
+- [x] 旧 Harness 路径保留历史链接兼容；
+- [x] 技术名称和机器编号未被中文替换破坏；
+- [x] 历史证据未被追溯重写；
+- [x] Context 模板成熟度继续为 `candidate`；
+- [x] YouYu 验证继续为 `partial_pass`。
+
+## 6. 结论
+
+v0.1.4 完成术语易懂化与表达统一，发布通过。后续参考工程和新模板必须遵循《术语与易懂表达规范》。
+'''
+          Path('10_版本演进/v0.1.4术语易懂化与表达统一报告.md').write_text(report, encoding='utf-8')
+
+          task = f'''# TASK-20260712-005：统一“约定”与“检查关卡”术语
+
+```yaml
+task_id: TASK-20260712-005
+task_context_pack_version: 1.0
+title: 统一约定与检查关卡术语
+status: completed
+project: AI Product Engineering Framework
+lifecycle_stage: 发布交付
+risk_level: low
+owner: zhidao-studio
+executor: GitHub Actions
+reviewer: Framework 术语与版本治理
+human_approver: zhidao-studio
+project_context_pack_version: 0.2-A.5
+stage_context_pack_version: 1.4
+source_commit: {source_commit}
+created_at: 2026-07-12
+completed_at: 2026-07-12
+```
+
+> 上游 Pack 版本固定为任务开始时基线；完成后项目 Pack 升级为 `0.2-A.6`，阶段 Pack 升级为 `1.5`。
+
+## 1. 目标
+
+将 Framework 当前中文主要表述统一为“约定”和“检查关卡”，同时保持技术名称、机器字段、历史证据和工程含义不变，并发布 v0.1.4 修订版本。
+
+## 2. 允许修改范围
+
+- 当前权威 Markdown、YAML、SVG 和脚本说明；
+- Harness 当前权威文件名与兼容入口；
+- VERSION、README、AGENTS、CHANGELOG、Roadmap 和版本规范；
+- Framework 项目 Context 与当前阶段 Context；
+- 术语规范、设计决策、发布报告和本任务记录。
+
+## 3. 禁止修改范围
+
+- LICENSE；
+- 框架核心模型和十阶段生命周期含义；
+- 五大基础设施边界；
+- 技术标准、机器字段和 `GATE-xxx` 编号；
+- 已发布历史报告、历史任务记录和验证证据的原始内容；
+- YouYu 业务仓库。
+
+## 4. 验收断言
+
+- 当前中文文档使用“约定”“检查关卡”；
+- 必要技术名称保持不变；
+- Harness 新权威路径存在，旧路径可跳转；
+- 当前稳定版本为 v0.1.4；
+- v0.2.0 / A 和候选资产成熟度保持不变；
+- 不新增与本次表达统一无关的能力。
+
+## 5. 结果
+
+- 新增术语规范和 DEC-010；
+- 当前权威文档完成统一；
+- 版本事实源与 Context 状态完成同步；
+- v0.1.4 发布报告已建立；
+- 未改变核心模型、许可或候选资产成熟度。
+'''
+          Path('12_框架项目Context/任务/TASK-20260712-005_统一约定与检查关卡术语.md').write_text(task, encoding='utf-8')
+
+          # 8. 当前文件残留检查。
+          allowed_legacy = {
+              '01_框架定义/术语与易懂表达规范.md',
+              '11_设计决策/DEC-010_中文表述采用约定与检查关卡.md',
+              '10_版本演进/v0.1.4术语易懂化与表达统一报告.md',
+              '12_框架项目Context/任务/TASK-20260712-005_统一约定与检查关卡术语.md',
+              '05_Harness工程/执行控制与门禁.md',
+          }
+          remaining = []
+          for p in root.rglob('*'):
+              if not p.is_file() or p.suffix.lower() not in text_suffixes:
+                  continue
+              path = rel(p)
+              if path.startswith('.git/') or path.startswith('.github/workflows/一次性术语统一.yml'):
+                  continue
+              if is_historical(path) or path in allowed_legacy:
+                  continue
+              try:
+                  text = p.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              if '契约' in text or '门禁' in text:
+                  remaining.append(path)
+          if remaining:
+              raise RuntimeError('当前有效文件仍存在旧中文表述：' + ', '.join(sorted(remaining)))
+
+          if not new_harness.exists():
+              raise RuntimeError('Harness 新权威文件未建立')
+          if Path('VERSION').read_text(encoding='utf-8').strip() != '0.1.4':
+              raise RuntimeError('VERSION 未更新为 0.1.4')
+          PY
+
+      - name: 提交变更
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "发布：统一约定与检查关卡表述并升级至v0.1.4"
+          git push origin main
