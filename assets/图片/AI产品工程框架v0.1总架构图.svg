@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">AI 产品工程框架 v0.1 总架构图</title>
+  <desc id="desc">展示产品价值生命周期、Context、Harness、Skill、Agent、Loop 五类 AI 工程基础设施，以及安全、质量、成本和变更治理。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f9ff"/>
+      <stop offset="1" stop-color="#eef6ff"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#143b76"/>
+      <stop offset="1" stop-color="#315fc7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#16315c" flood-opacity="0.14"/>
+    </filter>
+    <style>
+      .title{font:700 44px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#102746}
+      .subtitle{font:400 20px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#4b607c}
+      .section{font:700 24px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#173c73}
+      .stage{font:600 18px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#18304f}
+      .small{font:400 14px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#5b6b80}
+      .pillarTitle{font:700 20px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+      .pillarSub{font:500 15px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#52657d}
+      .white{fill:#fff}
+    </style>
+  </defs>
+
+  <rect width="1600" height="980" fill="url(#bg)"/>
+
+  <text x="80" y="75" class="title">AI 产品工程框架 v0.1</text>
+  <text x="80" y="112" class="subtitle">让 AI 成为可管理、可验证、可持续的软件产品生产协作者</text>
+  <rect x="1250" y="42" width="270" height="76" rx="18" fill="url(#hero)"/>
+  <text x="1385" y="73" text-anchor="middle" class="white" style="font:700 19px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">Framework Constitution</text>
+  <text x="1385" y="99" text-anchor="middle" class="white" style="font:500 16px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">v0.1 框架宪法</text>
+
+  <rect x="70" y="150" width="1460" height="270" rx="28" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="105" y="194" class="section">产品价值生命周期｜从机会到持续价值</text>
+
+  <g transform="translate(95 230)">
+    <path d="M72 55 H1330" stroke="#b9c9e7" stroke-width="5" stroke-linecap="round"/>
+
+    <g transform="translate(0 0)"><circle cx="72" cy="55" r="31" fill="#e8f0ff" stroke="#4b75cf" stroke-width="3"/><text x="72" y="61" text-anchor="middle" class="stage">1</text><text x="72" y="112" text-anchor="middle" class="stage">价值验证</text><text x="72" y="136" text-anchor="middle" class="small">为什么值得做</text></g>
+    <g transform="translate(140 0)"><circle cx="72" cy="55" r="31" fill="#eaf4ff" stroke="#4e8bd8" stroke-width="3"/><text x="72" y="61" text-anchor="middle" class="stage">2</text><text x="72" y="112" text-anchor="middle" class="stage">产品定义</text><text x="72" y="136" text-anchor="middle" class="small">做什么与不做什么</text></g>
+    <g transform="translate(280 0)"><circle cx="72" cy="55" r="31" fill="#eaf8ff" stroke="#48a1c9" stroke-width="3"/><text x="72" y="61" text-anchor="middle" class="stage">3</text><text x="72" y="112" text-anchor="middle" class="stage">体验设计</text><text x="72" y="136" text-anchor="middle" class="small">用户如何使用</text></g>
+    <g transform="translate(420 0)"><circle cx="72" cy="55" r="31" fill="#edf9f5" stroke="#3da784" stroke-width="3"/><text x="72" y="61" text-anchor="middle" class="stage">4</text><text x="72" y="112" text-anchor="middle" class="stage">高保真预览</text><text x="72" y="136" text-anchor="middle" class="small">实现前确认体验</text></g>
+    <g transform="translate(560 0)"><circle cx="72" cy="55" r="31" fill="#f2f8e9" stroke="#75a83a" stroke-width="3"/><text x="72" y="61" text-anchor="middle" class="stage">5</text><text x="72" y="112" text-anchor="middle" class="stage">工程规格</text><text x="72" y="136" text-anchor="middle" class="small">系统如何实现</text></g>
+    <g transform="translate(700 0)"><circle cx="72" cy="55" r="31" fill="#fff7e8" stroke="#d79b33" stroke-width="3"/><text x="72" y="61" text-anchor="middle" class="stage">6</text><text x="72" y="112" text-anchor="middle" class="stage">受控执行</text><text x="72" y="136" text-anchor="middle" class="small">边界内完成任务</text></g>
+    <g transform="translate(840 0)"><circle cx="72" cy="55" r="31" fill="#fff0ea" stroke="#db754c" stroke-width="3"/><text x="72" y="61" text-anchor="middle" class="stage">7</text><text x="72" y="112" text-anchor="middle" class="stage">质量验证</text><text x="72" y="136" text-anchor="middle" class="small">证明系统正确</text></g>
+    <g transform="translate(980 0)"><circle cx="72" cy="55" r="31" fill="#f9ecf4" stroke="#b85c91" stroke-width="3"/><text x="72" y="61" text-anchor="middle" class="stage">8</text><text x="72" y="112" text-anchor="middle" class="stage">用户验收</text><text x="72" y="136" text-anchor="middle" class="small">真实路径可用</text></g>
+    <g transform="translate(1120 0)"><circle cx="72" cy="55" r="31" fill="#f0edfb" stroke="#806bc3" stroke-width="3"/><text x="72" y="61" text-anchor="middle" class="stage">9</text><text x="72" y="112" text-anchor="middle" class="stage">发布交付</text><text x="72" y="136" text-anchor="middle" class="small">可运行可回退</text></g>
+    <g transform="translate(1260 0)"><circle cx="72" cy="55" r="31" fill="#eaeefa" stroke="#526dbb" stroke-width="3"/><text x="72" y="61" text-anchor="middle" class="stage">10</text><text x="72" y="112" text-anchor="middle" class="stage">反馈迭代</text><text x="72" y="136" text-anchor="middle" class="small">数据驱动下一轮</text></g>
+
+    <path d="M1332 165 C1332 205 72 205 72 165" fill="none" stroke="#7390c7" stroke-width="2.5" stroke-dasharray="8 7"/>
+    <polygon points="72,165 82,158 82,172" fill="#7390c7"/>
+    <text x="702" y="202" text-anchor="middle" class="small">价值与反馈形成完整产品 Loop</text>
+  </g>
+
+  <text x="105" y="470" class="section">AI 工程基础设施｜贯穿整个生命周期</text>
+
+  <g transform="translate(70 500)">
+    <g transform="translate(0 0)">
+      <rect width="276" height="265" rx="24" fill="#f0f8f2" stroke="#67ad78" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="48" cy="48" r="25" fill="#67ad78"/><path d="M36 47 h24 M48 35 v24" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      <text x="84" y="44" class="pillarTitle" fill="#347149">Context</text><text x="84" y="69" class="pillarSub">上下文与项目记忆</text>
+      <text x="30" y="115" class="stage">让 AI 知道什么</text>
+      <text x="30" y="153" class="pillarSub">项目愿景 · 业务规则</text><text x="30" y="181" class="pillarSub">设计与工程规格</text><text x="30" y="209" class="pillarSub">任务上下文 · 决策记录</text><text x="30" y="237" class="pillarSub">经验沉淀 · 分层加载</text>
+    </g>
+    <g transform="translate(296 0)">
+      <rect width="276" height="265" rx="24" fill="#fff8ea" stroke="#dc9f32" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="48" cy="48" r="25" fill="#dc9f32"/><path d="M35 40 l13-8 13 8 v11 c0 9-6 16-13 20-7-4-13-11-13-20z" fill="none" stroke="#fff" stroke-width="3"/>
+      <text x="84" y="44" class="pillarTitle" fill="#946114">Harness</text><text x="84" y="69" class="pillarSub">约束、契约与门禁</text>
+      <text x="30" y="115" class="stage">让 AI 遵守什么</text>
+      <text x="30" y="153" class="pillarSub">阶段控制 · 修改边界</text><text x="30" y="181" class="pillarSub">输入输出契约</text><text x="30" y="209" class="pillarSub">权限、依赖与质量门禁</text><text x="30" y="237" class="pillarSub">人工确认 · 失败停止</text>
+    </g>
+    <g transform="translate(592 0)">
+      <rect width="276" height="265" rx="24" fill="#f5f1ff" stroke="#8c6cd3" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="48" cy="48" r="25" fill="#8c6cd3"/><path d="M38 38 h10 v10 h-10z M50 38 h10 v10 h-10z M38 50 h10 v10 h-10z M50 50 h10 v10 h-10z" fill="#fff"/>
+      <text x="84" y="44" class="pillarTitle" fill="#6643a7">Skills</text><text x="84" y="69" class="pillarSub">标准化可复用能力</text>
+      <text x="30" y="115" class="stage">让 AI 会做什么</text>
+      <text x="30" y="153" class="pillarSub">触发条件 · 标准输入</text><text x="30" y="181" class="pillarSub">执行步骤 · 标准输出</text><text x="30" y="209" class="pillarSub">验证规则 · 失败处理</text><text x="30" y="237" class="pillarSub">示例反例 · 版本维护</text>
+    </g>
+    <g transform="translate(888 0)">
+      <rect width="276" height="265" rx="24" fill="#edf7ff" stroke="#4b96cf" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="48" cy="48" r="25" fill="#4b96cf"/><circle cx="42" cy="43" r="7" fill="#fff"/><circle cx="57" cy="50" r="6" fill="#fff"/><path d="M31 64c2-10 20-10 22 0 M48 67c2-8 17-8 19 0" fill="none" stroke="#fff" stroke-width="3"/>
+      <text x="84" y="44" class="pillarTitle" fill="#24689c">Agents</text><text x="84" y="69" class="pillarSub">角色、协作与工具</text>
+      <text x="30" y="115" class="stage">由谁协作执行</text>
+      <text x="30" y="153" class="pillarSub">角色职责 · 任务分配</text><text x="30" y="181" class="pillarSub">Agent 协作协议</text><text x="30" y="209" class="pillarSub">工具集成 · 人工介入</text><text x="30" y="237" class="pillarSub">状态、证据与冲突处理</text>
+    </g>
+    <g transform="translate(1184 0)">
+      <rect width="276" height="265" rx="24" fill="#fff3ed" stroke="#de7650" stroke-width="2" filter="url(#shadow)"/>
+      <circle cx="48" cy="48" r="25" fill="#de7650"/><path d="M36 47a13 13 0 0 1 22-9 M60 38v10H50 M60 50a13 13 0 0 1-22 9 M36 59V49h10" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="84" y="44" class="pillarTitle" fill="#a94f31">Loops</text><text x="84" y="69" class="pillarSub">观察、评估与纠偏</text>
+      <text x="30" y="115" class="stage">如何持续改进</text>
+      <text x="30" y="153" class="pillarSub">开发修复 Loop</text><text x="30" y="181" class="pillarSub">产品反馈 Loop</text><text x="30" y="209" class="pillarSub">Agent / Skill 改进 Loop</text><text x="30" y="237" class="pillarSub">框架演进 Loop</text>
+    </g>
+  </g>
+
+  <rect x="70" y="805" width="1460" height="105" rx="24" fill="#173d73" filter="url(#shadow)"/>
+  <text x="105" y="842" class="white" style="font:700 22px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">贯穿式支撑与治理</text>
+  <g class="white" style="font:600 17px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+    <text x="130" y="883">安全与隐私</text><text x="400" y="883">质量与可观测性</text><text x="730" y="883">成本与效率</text><text x="980" y="883">版本与变更管理</text><text x="1270" y="883">审计、责任与合规</text>
+  </g>
+
+  <text x="800" y="952" text-anchor="middle" class="subtitle">人负责目标、取舍与最终责任　·　AI 负责受控执行　·　Framework 负责约束、验证与持续演进</text>
+</svg>
