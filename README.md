@@ -1,6 +1,8 @@
 # AI 产品工程框架
 
-> **AI Product Engineering Framework**：一套开放、跨平台、可验证的 AI 产品工程框架，用工程化方式组织人、AI Agent、上下文、技能、门禁和反馈闭环，将产品目标持续转化为可维护、可验证、可演进的软件产品。
+> **AI Product Engineering Framework**：一套由 zhidao-studio 专有维护、跨平台、可验证的 AI 产品工程框架，用工程化方式组织人、AI Agent、上下文、技能、门禁和反馈闭环，将产品目标持续转化为可维护、可验证、可演进的软件产品。
+
+> **专有权利声明：** 本仓库不是开源项目。除 GitHub 平台条款允许的有限浏览行为外，未经 zhidao-studio 事先书面授权，禁止使用、复制、修改、分发、商业化、模型训练或创建衍生作品。正式条款见 [LICENSE](LICENSE)。
 
 ![AI 产品工程框架 v0.1 概念总览](assets/图片/AI产品工程框架v0.1概念总览.png)
 
@@ -9,12 +11,15 @@
 ## 当前版本
 
 ```text
-当前稳定版本：v0.1.1
+当前稳定版本：v0.1.2
 目标开发版本：v0.2.0
 当前开发里程碑：A / Context 可执行化
+许可证：Proprietary / All Rights Reserved
+仓库可见性：当前 Public，必须由维护者切换为 Private
 ```
 
 - [v0.1.1 全量复核报告](10_版本演进/v0.1.1全量复核报告.md)
+- [v0.1.2 专有许可与阶段清场报告](10_版本演进/v0.1.2专有许可与阶段清场报告.md)
 - [版本管理规范](10_版本演进/版本管理规范.md)
 - [Roadmap](10_版本演进/Roadmap.md)
 
@@ -155,31 +160,33 @@ flowchart TB
 ## 与原实战仓库的关系
 
 - `ai-product-engineering-framework`：定义标准、模型、模板、Skills、门禁和平台适配；
-- `ai-product-engineering-in-action`：面向学习和实践，展示如何理解、使用和验证框架；
-- 具体业务仓库：作为参考工程，用真实交付结果反向改进 Framework。
+- `ai-product-engineering-in-action`：面向维护者内部学习和实践，展示如何理解、使用和验证框架；
+- 经授权的具体业务仓库：作为参考工程，用真实交付结果反向改进 Framework。
 
 ```mermaid
 flowchart LR
-    F[Framework：定义方法] --> T[In Action：教学与实践]
-    T --> P[真实产品工程：验证方法]
+    F[Framework：定义方法] --> T[In Action：内部教学与实践]
+    T --> P[经授权的真实产品工程：验证方法]
     P --> R[数据、问题与经验]
     R --> F
 ```
 
 ## 当前进展
 
-- **v0.1.1**：框架宪法、三平面模型、十阶段生命周期、角色、基础设施定位和治理修订已经通过全量 Review；
+- **v0.1.2**：专有闭源许可、版本与使用边界、阶段清场已经完成；
 - **v0.2.0 / A**：Context 规范、检查清单、候选模板和 Framework 自应用已经完成；
 - **待完成**：真实业务参考工程验证、Harness 可执行门禁、多平台适配；
 - Context 模板当前成熟度仍为 `candidate`，不能宣称稳定。
 
 ## 贡献与治理
 
-- 参与贡献前请阅读：[CONTRIBUTING.md](CONTRIBUTING.md)；
+- 本仓库不接受未经邀请的外部贡献；受邀协作者请阅读：[CONTRIBUTING.md](CONTRIBUTING.md)；
 - AI 执行规则：[AGENTS.md](AGENTS.md)；
 - 版本变化：[CHANGELOG.md](CHANGELOG.md)；
 - 重大取舍：[设计决策索引](11_设计决策/README.md)。
 
-## 许可证状态
+## 专有许可证
 
-当前仓库尚未提交正式 `LICENSE` 文件。许可证由项目维护者单独决定，Agent 不得自行选择或更换。
+本仓库采用专有闭源许可，版权所有，保留全部权利。任何使用、复制、修改、分发、商业化、模型训练或衍生使用均须事先取得 zhidao-studio 的书面授权。详见 [LICENSE](LICENSE)。
+
+> 当前仓库仍为 Public。若要真正限制访问，而不只是限制法律上的使用权，必须由维护者在 GitHub `Settings → General → Danger Zone → Change repository visibility` 中将仓库改为 Private。
