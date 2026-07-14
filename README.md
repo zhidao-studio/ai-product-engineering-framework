@@ -14,9 +14,9 @@
 当前稳定版本：v0.1.5
 目标开发版本：v0.2.0
 当前开发里程碑：A / Context 可执行化
-当前工作段：A2 / 正式业务参考工程验证准备
+当前工作段：A2 / YouYu 基础问题关闭
 执行状态：blocked
-阻塞原因：YouYu 前后端代码基础框架仍在整理
+阻塞原因：YouYu 工程基础复核已完成但整体为 blocked；历史敏感信息、后端身份信任边界与采集待审入库控制尚未关闭
 许可证：Proprietary / All Rights Reserved
 仓库可见性：Public，待维护者手动切换为 Private
 ```
@@ -183,8 +183,9 @@ flowchart LR
 ## 当前进展
 
 - Context 规范、检查清单、候选模板和 Framework 自应用已经完成；
-- 当前进入里程碑 A 的正式业务参考工程验证准备段；
-- YouYu 基础框架仍在整理，因此正式业务参考任务尚未建立；
+- YouYu 三个代码工程基础复核已经完成：iOS 真机构建、安装与启动结论为 `conditional_pass`，服务端构建与基础接口结论为 `conditional_pass`，采集工程构建通过但启动受本地数据库登录阻塞；
+- 当前进入里程碑 A 的基础问题关闭段；工程基础验收结论为 `blocked`；
+- 正式业务参考任务尚未建立；
 - YouYu PR #1 只作为初步工程证据，不代表正式验证已经开始或部分通过；
 - Context 模板保持 `candidate`；Harness 里程碑 B 尚未正式开始。
 

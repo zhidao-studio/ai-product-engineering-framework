@@ -6,23 +6,25 @@
 project_context_id: PROJ-CONTEXT-AIPEF
 project: AI Product Engineering Framework
 status: active
-execution_status: in_progress
-context_pack_version: 0.2-A.9
+execution_status: blocked
+context_pack_version: 0.2-A.10
 owner: zhidao-studio
 current_stage: 工程规格设计
-current_work_segment: A2 / YouYu 工程基础复核
+current_work_segment: A2 / YouYu 基础问题关闭
 stable_release: v0.1.5
 target_release: v0.2.0
 current_milestone: A / Context 可执行化
 working_branch: main
-source_commit: 6929dc7ec30ba78a2de71c05f955a75097ff78e2
+source_commit: 4362d906e531e11b3bd660b03834190928f1ae34
+youyu_engineering_review_result_commit: c656ea0e93696fc1a5ad5e24364f2b96d5dcf6ef
+youyu_problem_closure_commit: 8d539464f8a49adbe94a1b0b30f7d53c30d549e5
 repository_visibility: public_pending_private
 license_model: proprietary_all_rights_reserved
-last_verified_at: 2026-07-13
+last_verified_at: 2026-07-14
 sensitivity: proprietary
 ```
 
-> `source_commit` 是本次 YouYu 工程基础复核进度同步开始时已经核验的 Framework `main` 基线。任务结果和后续元数据提交通过本 Pack 版本与任务记录追溯。
+> `source_commit` 是本次状态同步开始时已经核验的 Framework `main` 基线。`youyu_engineering_review_result_commit` 固定工程基础复核结果，`youyu_problem_closure_commit` 固定首轮基础问题关闭提交；三者不代替正式业务验证结论。
 
 ## 1. 当前结论
 
@@ -31,10 +33,10 @@ sensitivity: proprietary
 | 稳定版本 | v0.1.5 |
 | 目标版本 | v0.2.0 |
 | 当前里程碑 | A / Context 可执行化 |
-| 当前工作段 | A2 / YouYu 工程基础复核 |
+| 当前工作段 | A2 / YouYu 基础问题关闭 |
 | 里程碑状态 | `active` |
-| 当前执行状态 | `in_progress` |
-| 当前执行内容 | Codex 正在复核 YouYu 的 iOS、服务端和采集工程基础可运行性 |
+| 当前执行状态 | `blocked` |
+| 当前执行内容 | 工程基础复核已完成，正在关闭进入正式业务验证前的基础问题 |
 | YouYu 产品工程目录 | 已建立并完成目录完整性检查 |
 | YouYu 正式业务验证 | `not_started` |
 | YouYu PR #1 | 历史初步工程证据，不计为正式验证 |
@@ -61,18 +63,18 @@ sensitivity: proprietary
 - YouYu 已建立项目 Context、工程设计、接口与数据约定、检查关卡、测试验收和部署运维入口；
 - YouYu 已正式确认唯一 iOS 工程并放弃 mPaaS；
 - YouYu 已完成第一轮静态工程复核；
-- 已建立 iOS、服务端和采集工程基础复核任务，由 Codex 执行。
-
-进行中：
-
-- iOS 的 CocoaPods 恢复、Workspace/Scheme 识别、模拟器构建和启动；
-- 服务端的 Maven 全模块构建、演示环境启动、网关和基础接口验证；
-- 采集工程的技术栈、依赖、启动入口和最小任务路径确认；
-- 安全 P0、鉴权信任边界和配置问题复核。
+- iOS 已完成 CocoaPods 恢复、真机 Debug 构建、安装与启动，结论 `conditional_pass`；
+- 服务端已完成 Maven 多模块构建、App 直连与网关基础接口验证，结论 `conditional_pass`；
+- 采集工程已完成 Spring Boot 3 依赖修复和构建，但本地开发数据库登录阻塞启动，结论 `blocked`；
+- 工程基础复核已结束，整体结论为 `blocked`；
 
 尚未完成：
 
-- 三个代码工程的最终基础复核结论和人工确认；
+- Git 历史敏感信息的轮换、历史清理和扫描检查关卡；
+- 后端下游直连、内部身份头和共享会话存储的安全验证；
+- 采集结果进入待审区、人工审核后再进入正式钓点数据的控制链路；
+- iOS 环境配置、真机人工视觉验收与网络异常验收；
+- 远程可重复的 CI 证据；
 - 正式业务切片选择；
 - 产品范围、用户流程和高保真人工确认；
 - 接口约定和数据结构约定的完整权威内容；
@@ -116,7 +118,9 @@ sensitivity: proprietary
 |---|---|---|
 | v0.1.5 当前状态收敛与历史边界治理 | `completed` | [TASK-20260712-007](任务/TASK-20260712-007_发布v0.1.5并收敛当前状态.md) |
 | 同步 YouYu 工程基础复核进度 | `completed` | [TASK-20260713-008](任务/TASK-20260713-008_同步YouYu工程基础复核进度.md) |
-| YouYu 三个代码工程基础复核 | `in_progress` | YouYu 仓库 `05_项目Context/任务/TASK-002_复核三个代码工程基础可运行性.md` |
+| YouYu 三个代码工程基础复核 | `completed`，结果 `blocked` | YouYu 仓库 `05_项目Context/任务/TASK-002_复核三个代码工程基础可运行性.md` |
+| 同步工程基础复核结论并进入基础问题关闭 | `completed` | [TASK-20260714-009](任务/TASK-20260714-009_同步YouYu工程基础复核结论并进入基础问题关闭.md) |
+| 关闭 YouYu 工程基础 P0 阻塞 | `blocked` | YouYu 仓库 `05_项目Context/任务/TASK-004_关闭工程基础P0阻塞.md` |
 | 建立正式前后端业务切片任务 | `not_started` | 待工程基础复核通过后建立 |
 
 ### 当前有效证据
@@ -134,8 +138,11 @@ sensitivity: proprietary
 | 风险或事项 | 是否阻塞 | 当前处理 | 下一决策点 |
 |---|---|---|---|
 | 仓库仍为 Public | 阻塞真正访问控制 | 已有专有许可，待维护者切换 Private | 立即执行 |
-| YouYu 工程基础运行证据尚未完成 | 阻塞正式业务切片 | Codex 正在执行依赖恢复、构建和启动验证 | TASK-002 完成后 |
-| YouYu 存在安全与信任边界 P0 候选问题 | 阻塞安全结论 | 在业务仓库中复核、修复并形成证据 | 正式业务任务开始前 |
+| Git 历史敏感信息 | 阻塞安全结论 | 维护者轮换凭据、清理历史并建立扫描检查关卡 | SECURITY-001 关闭后 |
+| 后端身份信任边界未证明 | 阻塞正式业务切片 | 验证下游直连、内部身份头与共享会话存储 | 专项安全任务完成后 |
+| 采集待审入库控制缺失 | 阻塞真实采集与正式业务切片 | 建立候选数据、人工审核与正式数据隔离链路 | 专项采集任务完成后 |
+| iOS 视觉与环境验证未完成 | 阻塞用户体验结论 | 建立环境配置、真机截图比对和网络异常验收 | TASK-006 完成后 |
+| 远程 CI 尚无证据 | 阻塞远程可重复性结论 | 建立可运行的远程检查 | TASK-005 完成后 |
 | 正式业务验证尚未开始 | 阻塞模板成熟度升级 | 保持 `candidate` | 里程碑 A 退出前 |
 | Context 成本与人工修正数据缺失 | 阻塞模板成本判断 | 正式任务中记录 | 里程碑 A 退出前 |
 | PR 人工检查关卡未约束实际合并 | 阻塞检查关卡可信性 | 里程碑 B 建 Required Checks | Harness 可执行化 |
@@ -145,9 +152,8 @@ sensitivity: proprietary
 ## 6. 下一步
 
 ```text
-Codex 完成 YouYu 三个代码工程基础复核
-→ 形成 iOS、服务端、采集工程和总体复核证据
-→ 修复或关闭安全、配置和信任边界 P0/P1
+关闭 YouYu 工程基础 P0/P1
+→ 形成安全、待审入库、环境、真机视觉和远程 CI 证据
 → 人工确认工程基础是否通过
 → 选择一个小而完整的业务切片
 → 建立正式 YouYu 项目、阶段和任务 Context
@@ -160,7 +166,7 @@ Codex 完成 YouYu 三个代码工程基础复核
 → 决定里程碑 A 是否退出
 ```
 
-在工程基础复核完成前，不启动正式业务切片，不提前宣布进入 Harness B，也不升级候选模板成熟度。
+在工程基础问题关闭并经人工确认前，不启动正式业务切片，不提前宣布进入 Harness B，也不升级候选模板成熟度。
 
 ## 7. 安全与敏感信息
 
@@ -181,3 +187,4 @@ Codex 完成 YouYu 三个代码工程基础复核
 | 2026-07-12 | 修正 YouYu 正式验证状态为未开始 | TASK-20260712-006 |
 | 2026-07-12 | 收敛当前状态入口、标记历史快照并补充基线提交 | TASK-20260712-007 / v0.1.5 |
 | 2026-07-13 | YouYu 进入工程基础复核，Codex 开始真实构建与启动验证 | TASK-20260713-008 |
+| 2026-07-14 | YouYu 工程基础复核结束，整体为 blocked，进入基础问题关闭 | TASK-20260714-009 |
