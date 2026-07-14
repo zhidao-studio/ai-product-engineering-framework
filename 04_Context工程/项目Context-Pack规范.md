@@ -56,16 +56,16 @@
 project_context_id: PROJ-CONTEXT-001
 project: 项目名称
 status: active
-execution_status: blocked
-context_pack_version: 0.2-A.8
+execution_status: active
+context_pack_version: 0.2-A.11
 owner: 项目负责人
 current_stage: 工程规格设计
 current_milestone: A / Context 可执行化
-current_work_segment: A2 / 正式业务参考工程验证准备
-stable_release: v0.1.5
+current_work_segment: A2 / YouYu 业务功能准备
+stable_release: v0.1.6
 target_release: v0.2.0
 working_branch: main
-last_verified_at: 2026-07-12
+last_verified_at: 2026-07-14
 source_commit: abc1234
 sensitivity: internal
 ```
@@ -73,7 +73,7 @@ sensitivity: internal
 字段要求：
 
 - `status` 使用项目或阶段长期状态，例如 `active`；
-- `execution_status` 说明当前工作是否 `active`、`blocked` 或 `stopped`；
+- `execution_status` 说明当前工作是否 `active`、`blocked` 或 `stopped`；当业务准备可以推进、正式实现仍被安全或体验问题阻塞时，必须在正文分别表达两个状态；
 - `context_pack_version` 只表示 Pack 自身版本；
 - `stable_release` 表示当前稳定发布；
 - `target_release` 表示当前开发目标；

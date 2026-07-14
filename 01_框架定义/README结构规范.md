@@ -112,12 +112,14 @@ README 不得：
 README 必须同时写清：
 
 ```text
-当前稳定版本：v0.1.5
+当前稳定版本：v0.1.6
 目标开发版本：v0.2.0
 当前开发里程碑：A / Context 可执行化
-当前工作段：A2 / 正式业务参考工程验证准备
-执行状态：blocked
-阻塞原因：YouYu 前后端代码基础框架仍在整理
+当前工作段：A2 / YouYu 业务功能准备
+执行状态：active
+业务准备：in_progress
+正式业务实现：blocked
+阻塞原因：历史敏感信息、共享会话与下游网络隔离、采集待审入库运行验证和 iOS 真机人工体验验收尚未关闭
 许可证：Proprietary / All Rights Reserved
 ```
 
