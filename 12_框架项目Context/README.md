@@ -7,7 +7,7 @@ project_context_id: PROJ-CONTEXT-AIPEF
 project: AI Product Engineering Framework
 status: active
 execution_status: active
-context_pack_version: 0.2-A.16
+context_pack_version: 0.2-A.17
 owner: zhidao-studio
 current_stage: 工程规格设计
 current_work_segment: A2 / YouYu 高保真确认与工程规格基线
@@ -36,8 +36,9 @@ youyu_candidate_data_model_commit: 7a3be9e7f9f672661a65820815e117f8832bc1d5
 youyu_candidate_api_contract_commit: d365313c9b33209196446dd29dbcde1b4c0e4145
 youyu_candidate_error_code_commit: aa56d434cb16a6c82d9538da9bdd393fa1f59981
 youyu_candidate_field_mapping_commit: 22e048dea26a6e60a0a2a1444aa1cb7b66e4e9f7
-youyu_state_commit: 91fe316fee804b00fa1e23c6b90aeb898396344f
-youyu_repository_head_at_sync: 320cab0ece70fffc752d568b74770a31f88e395d
+youyu_existing_reference_scan_commit: b689002f3650a5b4ed52f60f0d0c0b9904737b36
+youyu_state_commit: b689002f3650a5b4ed52f60f0d0c0b9904737b36
+youyu_repository_head_at_sync: b689002f3650a5b4ed52f60f0d0c0b9904737b36
 repository_visibility: public_pending_private
 license_model: proprietary_all_rights_reserved
 last_verified_at: 2026-07-15
@@ -60,7 +61,7 @@ sensitivity: proprietary
 | 体验定义 | `confirmed` |
 | 数据库基础规范 | YouYu 已采用；Framework 中为 `candidate` |
 | 高保真候选 | `v0.1.0-draft.6`，检查 `conditional_pass`，待维护者逐页批准 |
-| 工程规格准备 | `in_progress`，差异、候选数据模型、接口、错误码和字段映射已建立 |
+| 工程规格准备 | `in_progress`，差异、候选数据模型、接口、错误码、字段映射和既有引用扫描已完成；正式迁移与 OpenAPI 尚未建立 |
 | YouYu 正式业务实现 | `blocked` |
 | YouYu 正式业务验证 | `not_started` |
 | Context 模板成熟度 | `candidate` |
@@ -96,12 +97,12 @@ sensitivity: proprietary
 - 发送验证码、统一短信登录、退出、当前用户、资料修改、账号信息、协议和地区候选接口；
 - 候选错误码以及数据库、Java、OpenAPI、Swift 字段映射；
 - YouYu TASK-009 工程规格基线任务启动。
+- `sys_user`、`BaseEntity`、登录 ID、Controller、Service、Mapper 和 SQL 的既有引用扫描；扫描确认 App 用户账号必须与管理员 `sys_user` 隔离，字符串登录 ID 不能直接沿用现有 `Long` 身份上下文。
 
 尚未完成：
 
 - 维护者逐页批准 `v0.1.0-draft.6`；
 - 候选原型远程成功证据按维护者决定暂缓，恢复 GitHub Actions 服务后重跑；
-- 既有 `sys_user`、`BaseEntity`、登录 ID、Controller、Service、Mapper 和 SQL 引用扫描；
 - 验证码、Token、手机号范围、用户编号、账号状态、资料字段、头像、地区和协议版本关键参数确认；
 - 正式数据库迁移、回滚、触发器和实体定义；
 - 正式 OpenAPI YAML、示例数据和契约自动检查；
@@ -143,6 +144,7 @@ sensitivity: proprietary
 | 记录候选原型远程检查暂缓处理 | `completed` | [TASK-20260715-013](任务/TASK-20260715-013_记录候选原型远程检查暂缓处理.md) |
 | 同步 YouYu 高保真 draft.6 与检查拆分 | `completed` | [TASK-20260715-014](任务/TASK-20260715-014_同步YouYu高保真draft.6与检查拆分.md) |
 | 同步 YouYu 工程规格基线启动 | `completed` | [TASK-20260715-015](任务/TASK-20260715-015_同步YouYu工程规格基线启动.md) |
+| 同步 YouYu 既有引用扫描完成 | `completed` | [TASK-20260715-016](任务/TASK-20260715-016_同步YouYu既有引用扫描完成.md) |
 | YouYu TASK-008 高保真人工确认 | `in_review` | YouYu 仓库 `05_项目Context/任务/TASK-008_建设账号与个人中心高保真候选原型.md` |
 | YouYu TASK-009 工程规格基线 | `in_progress` | YouYu 仓库 `05_项目Context/任务/TASK-009_建立账号与个人资料工程规格基线.md` |
 | 关闭 YouYu 工程基础 P0 阻塞 | `blocked` | YouYu 仓库 `05_项目Context/任务/TASK-004_关闭工程基础P0阻塞.md` |
@@ -155,7 +157,7 @@ sensitivity: proprietary
 | Framework 仓库仍为 Public | 阻塞真正访问控制 | 已有专有许可，待维护者切换 Private | 立即执行 |
 | 高保真尚未人工批准 | 阻塞客户端实现依据 | `draft.6` 已达人工评审条件 | 维护者逐页确认后 |
 | 候选原型远程检查被外部服务阻塞 | 不阻塞人工评审，阻塞自动证据闭环 | 维护者决定暂缓恢复与重跑 | 维护者重新排期后 |
-| 工程规格仅为候选 | 阻塞正式联合实现 | 差异、数据模型、接口、错误码和映射已建立；正式迁移和 OpenAPI 未完成 | 关键参数和引用扫描完成后 |
+| 工程规格仅为候选 | 阻塞正式联合实现 | 差异、数据模型、接口、错误码、映射和既有引用扫描已完成；正式迁移和 OpenAPI 未完成 | 关键参数确认后 |
 | Git 历史安全问题 | 阻塞安全结论 | 轮换凭据、清理历史并建立扫描检查关卡 | SECURITY-001 关闭后 |
 | 共享会话与下游网络隔离未验证 | 阻塞正式业务实现 | 已有身份签名单元测试，继续运行验证 | 专项安全任务完成后 |
 | 采集待审入库控制缺失 | 阻塞真实采集链路 | 建立候选、审核、正式数据隔离运行证据 | 专项采集任务完成后 |
@@ -165,8 +167,7 @@ sensitivity: proprietary
 ## 7. 下一步
 
 ```text
-扫描 YouYu 现有认证代码、sys_user、BaseEntity、登录 ID 和 SQL 引用
-→ 维护者批准高保真并确认关键业务与安全参数
+维护者批准高保真并确认关键业务与安全参数
 → 将候选数据模型转为正式迁移、回滚和触发器设计并执行 DB-CHECK
 → 将候选接口、错误码和字段映射转为正式 OpenAPI YAML、示例和契约检查
 → 明确 iOS、服务端和数据库实现边界、依赖顺序和三层验证
@@ -189,3 +190,4 @@ sensitivity: proprietary
 | 2026-07-15 | 候选原型远程检查被外部服务阻塞并按维护者决定暂缓 | TASK-20260715-012 / TASK-20260715-013 |
 | 2026-07-15 | YouYu 高保真更新为 `draft.6`，协议双状态和轻量检查拆分完成同步 | TASK-20260715-014 |
 | 2026-07-15 | YouYu 启动 TASK-009，工程差异、候选数据模型、接口、错误码和字段映射完成同步 | TASK-20260715-015 |
+| 2026-07-15 | YouYu 完成既有引用扫描，明确 App 用户账号与管理员身份隔离及字符串登录 ID 改造范围 | TASK-20260715-016 |
