@@ -36,7 +36,7 @@
 高保真候选：v0.1.0-draft.6 / conditional_pass / 待维护者批准
 候选原型远程检查：deferred（GitHub Actions 外部阻塞，维护者决定暂缓远程证据）
 数据库基础规范：YouYu adopted / Framework candidate
-工程规格准备：in_progress（候选资产与既有引用扫描已完成）
+工程规格准备：in_progress（候选资产、既有引用扫描与关键参数确认任务已完成；参数待维护者确认）
 正式业务实现：blocked
 YouYu 正式业务验证：not_started
 Context 模板成熟度：candidate
@@ -60,6 +60,7 @@ Harness 里程碑 B：尚未正式开始
 - **候选接口**：已建立发送验证码、统一短信登录、退出、当前用户、资料修改、账号信息、协议和地区接口语义；
 - **候选契约**：已建立错误码以及数据库、Java、OpenAPI、Swift 字段映射；
 - **既有引用扫描**：已完成 `sys_user`、`BaseEntity`、登录 ID、Controller、Service、Mapper 和 SQL 扫描；App 用户账号必须与管理员身份隔离，字符串登录 ID 需通过正式改造验证；
+- **关键参数确认**：已建立 12 项候选参数确认清单，覆盖验证码、Token、用户编号、资料、头像、地区、协议与退出语义；全部仍待维护者确认、替代或隔离；
 - **尚未完成**：维护者高保真批准、关键参数、正式数据库迁移与回滚、正式 OpenAPI YAML、实现任务边界和三层验证；
 - **当前阻塞**：历史敏感信息、共享会话与下游网络隔离、采集待审入库运行控制、iOS 环境和真机人工体验验收；
 - **正式结论**：正式业务实现继续为 `blocked`，正式业务参考工程验证继续为 `not_started`；

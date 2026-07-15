@@ -7,7 +7,7 @@ project_context_id: PROJ-CONTEXT-AIPEF
 project: AI Product Engineering Framework
 status: active
 execution_status: active
-context_pack_version: 0.2-A.17
+context_pack_version: 0.2-A.18
 owner: zhidao-studio
 current_stage: 工程规格设计
 current_work_segment: A2 / YouYu 高保真确认与工程规格基线
@@ -15,7 +15,7 @@ stable_release: v0.1.6
 target_release: v0.2.0
 current_milestone: A / Context 可执行化
 working_branch: main
-source_commit: 00b963f5f8505218eaabfa02c3a7b4ed22244b85
+source_commit: a410bda32e714e8ba74892ba6a1b884d1d770993
 youyu_engineering_review_result_commit: c656ea0e93696fc1a5ad5e24364f2b96d5dcf6ef
 youyu_engineering_fix_commit: 9aff6d5768442da9530c2547d658eec3aa96be2c
 youyu_ci_result_commit: 25f5e9bd138d0ae4fba0e2552d0298f186d6ee8a
@@ -37,8 +37,9 @@ youyu_candidate_api_contract_commit: d365313c9b33209196446dd29dbcde1b4c0e4145
 youyu_candidate_error_code_commit: aa56d434cb16a6c82d9538da9bdd393fa1f59981
 youyu_candidate_field_mapping_commit: 22e048dea26a6e60a0a2a1444aa1cb7b66e4e9f7
 youyu_existing_reference_scan_commit: b689002f3650a5b4ed52f60f0d0c0b9904737b36
-youyu_state_commit: b689002f3650a5b4ed52f60f0d0c0b9904737b36
-youyu_repository_head_at_sync: b689002f3650a5b4ed52f60f0d0c0b9904737b36
+youyu_parameter_confirmation_task_commit: 1259cc00606e4933608ff9f0c979cf5920ebe761
+youyu_state_commit: 1259cc00606e4933608ff9f0c979cf5920ebe761
+youyu_repository_head_at_sync: 1259cc00606e4933608ff9f0c979cf5920ebe761
 repository_visibility: public_pending_private
 license_model: proprietary_all_rights_reserved
 last_verified_at: 2026-07-15
@@ -61,7 +62,7 @@ sensitivity: proprietary
 | 体验定义 | `confirmed` |
 | 数据库基础规范 | YouYu 已采用；Framework 中为 `candidate` |
 | 高保真候选 | `v0.1.0-draft.6`，检查 `conditional_pass`，待维护者逐页批准 |
-| 工程规格准备 | `in_progress`，差异、候选数据模型、接口、错误码、字段映射和既有引用扫描已完成；正式迁移与 OpenAPI 尚未建立 |
+| 工程规格准备 | `in_progress`，差异、候选数据模型、接口、错误码、字段映射、既有引用扫描和关键参数确认任务已完成；12 项参数仍待维护者确认，正式迁移与 OpenAPI 尚未建立 |
 | YouYu 正式业务实现 | `blocked` |
 | YouYu 正式业务验证 | `not_started` |
 | Context 模板成熟度 | `candidate` |
@@ -98,6 +99,7 @@ sensitivity: proprietary
 - 候选错误码以及数据库、Java、OpenAPI、Swift 字段映射；
 - YouYu TASK-009 工程规格基线任务启动。
 - `sys_user`、`BaseEntity`、登录 ID、Controller、Service、Mapper 和 SQL 的既有引用扫描；扫描确认 App 用户账号必须与管理员 `sys_user` 隔离，字符串登录 ID 不能直接沿用现有 `Long` 身份上下文。
+- YouYu TASK-010 关键参数确认清单：12 项候选参数已集中，等待维护者确认、替代或明确隔离。
 
 尚未完成：
 
@@ -145,8 +147,10 @@ sensitivity: proprietary
 | 同步 YouYu 高保真 draft.6 与检查拆分 | `completed` | [TASK-20260715-014](任务/TASK-20260715-014_同步YouYu高保真draft.6与检查拆分.md) |
 | 同步 YouYu 工程规格基线启动 | `completed` | [TASK-20260715-015](任务/TASK-20260715-015_同步YouYu工程规格基线启动.md) |
 | 同步 YouYu 既有引用扫描完成 | `completed` | [TASK-20260715-016](任务/TASK-20260715-016_同步YouYu既有引用扫描完成.md) |
+| 同步 YouYu 关键参数确认任务 | `completed` | [TASK-20260715-017](任务/TASK-20260715-017_同步YouYu关键参数确认任务.md) |
 | YouYu TASK-008 高保真人工确认 | `in_review` | YouYu 仓库 `05_项目Context/任务/TASK-008_建设账号与个人中心高保真候选原型.md` |
 | YouYu TASK-009 工程规格基线 | `in_progress` | YouYu 仓库 `05_项目Context/任务/TASK-009_建立账号与个人资料工程规格基线.md` |
+| YouYu TASK-010 关键参数确认 | `pending_confirmation` | YouYu 仓库 `05_项目Context/任务/TASK-010_确认账号与个人资料关键参数.md` |
 | 关闭 YouYu 工程基础 P0 阻塞 | `blocked` | YouYu 仓库 `05_项目Context/任务/TASK-004_关闭工程基础P0阻塞.md` |
 | 正式业务实现任务 | `not_created` | 高保真、工程规格和阻塞条件满足后创建 |
 
@@ -191,3 +195,4 @@ sensitivity: proprietary
 | 2026-07-15 | YouYu 高保真更新为 `draft.6`，协议双状态和轻量检查拆分完成同步 | TASK-20260715-014 |
 | 2026-07-15 | YouYu 启动 TASK-009，工程差异、候选数据模型、接口、错误码和字段映射完成同步 | TASK-20260715-015 |
 | 2026-07-15 | YouYu 完成既有引用扫描，明确 App 用户账号与管理员身份隔离及字符串登录 ID 改造范围 | TASK-20260715-016 |
+| 2026-07-15 | YouYu 建立关键参数确认清单与 TASK-010，12 项候选参数等待维护者决定 | TASK-20260715-017 |
