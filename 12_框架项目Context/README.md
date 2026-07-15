@@ -7,7 +7,7 @@ project_context_id: PROJ-CONTEXT-AIPEF
 project: AI Product Engineering Framework
 status: active
 execution_status: active
-context_pack_version: 0.2-A.19
+context_pack_version: 0.2-A.20
 owner: zhidao-studio
 current_stage: 质量与安全验证
 current_work_segment: A2 / YouYu v0.1.1 服务端小版本验证
@@ -18,10 +18,13 @@ working_branch: main
 youyu_release: v0.1.1
 youyu_parameter_confirmation_commit: 67d8465da3bd0b98a4bef419dfe100490806b210
 youyu_database_migration_commit: 363808738e101cea42bc4588237e9959d5b696e0
-youyu_openapi_commit: 2964fe5ba14a302a3e99ee9bf8090ecc5b82f199
+youyu_openapi_commit: 68fa3a3a08df2f30ec6834460979414739b2523e
 youyu_release_version_commit: eb451d5f45b7de121d009f0381d329734a16bbe4
-youyu_context_commit: 88117f392da45c4d03dc321f611b6d9bfbf2c9dd
+youyu_context_commit: 1a8cd2100d84d06a6f74a7bc1ccd7a56ffd98ffa
+youyu_repository_head_at_sync: d60dbfa4a65f7bf53519342a1ff010291521e6d6
 youyu_server_implementation_status: implemented_not_validated
+youyu_shared_session_status: implemented_not_runtime_validated
+youyu_security_hardening_status: implemented_not_runtime_validated
 youyu_formal_business_validation: not_started
 youyu_high_fidelity_version: v0.1.0-draft.6
 youyu_high_fidelity_status: conditional_pass_pending_approval
@@ -44,8 +47,10 @@ sensitivity: proprietary
 | YouYu 工程基础 | `conditional_pass` |
 | YouYu 产品与体验 | 产品 `completed`，体验 `confirmed` |
 | YouYu 高保真 | `v0.1.0-draft.6` / `conditional_pass` / 待维护者批准 |
-| YouYu 工程规格 | 关键参数、迁移、回滚、OpenAPI 和错误码已落地 |
+| YouYu 工程规格 | 关键参数、迁移、回滚、OpenAPI、错误码和字段映射已落地 |
 | YouYu 服务端实现 | `implemented_not_validated` |
+| 共享会话 | Admin、App、Gateway 已接入同一 Sa-Token Redis 方案，尚未联合运行验证 |
+| 安全加固 | 设备令牌必填、HMAC 摘要域隔离、审计时间应用只读和请求校验映射已实现，尚未运行验证 |
 | YouYu 正式业务验证 | `not_started` |
 | Context 模板成熟度 | `candidate` |
 | 数据库规范成熟度 | `candidate` |
@@ -74,10 +79,15 @@ sensitivity: proprietary
 - 旧认证、账号模型、基础实体、字符串身份和 SQL 引用扫描；
 - 12 项账号与个人资料关键参数确认；
 - YouYu `v0.1.1` 四张 App 账号域表迁移、触发器和回滚；
-- v0.1.1 正式 OpenAPI 与数值错误码；
+- v0.1.1 正式 OpenAPI、数值错误码和实际字段映射；
 - App 独立账号域、验证码登录、自动注册、协议确认、当前用户和资料更新服务端基础实现；
 - 字符串 App 身份和旧管理员 Long 身份兼容隔离；
 - Bearer 网关鉴权和精确公开路径；
+- Admin、App 和 Gateway 接入同一 Sa-Token Redis 共享会话方案；
+- 验证码发送设备令牌改为必填；
+- 手机号、设备来源和验证码 HMAC 输入使用独立摘要域；
+- ORM 不写入数据库触发器负责的审计时间；
+- 请求体校验和不可解析请求映射为统一参数错误；
 - 真实短信、头像和地区能力失败关闭；
 - YouYu TASK-011 质量与安全验证任务建立。
 
@@ -86,11 +96,12 @@ sensitivity: proprietary
 - MySQL 迁移、触发器、索引、约束和回滚真实执行；
 - Maven 测试与打包；
 - OpenAPI 自动解析与实现一致性；
-- Gateway、App、MySQL、共享会话和内部身份联合运行；
+- Admin、Gateway、App、MySQL、共享 Redis 和内部身份联合运行；
+- Redis 故障、配置不一致、连接池和会话失效场景验证；
 - 真实短信供应商接入；
 - 高保真逐页批准；
 - iOS 正式实现、Keychain、截图比对和真机验收；
-- 历史安全、共享会话、网络隔离和采集待审链路关闭；
+- 历史安全、网络隔离和采集待审链路关闭；
 - 模拟用户验收与正式业务验证；
 - Context 成本、人工修正、失败归因和 Framework 改进回写；
 - 候选资产成熟度升级和里程碑 A 人工退出批准。
@@ -99,6 +110,7 @@ sensitivity: proprietary
 
 - YouYu 的版本号和代码提交不等于数据库、构建、运行、安全、iOS 或生产验收通过；
 - `implemented_not_validated` 不得写成 `pass`、`ready_for_production` 或 `single_project_validated`；
+- 共享 Redis 的依赖和配置已经落地，但没有联合运行证据，不能写成会话链路通过；
 - 真实短信未接入、密钥缺失、协议配置缺失、头像和地区未接入时必须失败关闭；
 - App 用户账号不得合并进管理员 `sys_user`；
 - 旧管理员认证、AI 数值用户 ID 和存储旧主键不在首个切片中强行迁移；
@@ -139,9 +151,10 @@ sensitivity: proprietary
 | Framework 仓库仍为 Public | 阻塞真正访问控制 | 专有许可已存在，维护者手动切换 Private |
 | GitHub Actions 账单或额度限制 | 阻塞远程证据 | 暂缓，不能写成代码失败或成功 |
 | YouYu v0.1.1 未构建和运行 | 阻塞验证结论 | TASK-011 执行 Maven、SQL 和联合运行 |
+| 共享 Redis 未联合验证 | 阻塞受保护接口结论 | 三端依赖与配置已落地，验证 Token 跨进程、故障与配置一致性 |
 | 真实短信未接入 | 阻塞真实登录验收 | 默认失败关闭，后续独立接入 |
 | 高保真未批准、iOS 未实现 | 阻塞用户体验结论 | 维护者批准后创建 iOS 正式任务 |
-| 共享会话和网络隔离未验证 | 阻塞安全结论 | 专项运行验证 |
+| 网络隔离未验证 | 阻塞完整安全结论 | 专项运行验证 |
 | 历史敏感信息 | 阻塞完整安全结论 | SECURITY-001 继续处理 |
 | 采集待审链路 | 阻塞真实采集业务 | 与账号切片隔离，仍需专项验证 |
 
@@ -149,9 +162,9 @@ sensitivity: proprietary
 
 ```text
 YouYu TASK-011 静态验证
-→ MySQL迁移与回滚
 → Maven测试与打包
-→ Gateway/App/会话/内部身份联合运行
+→ MySQL迁移与回滚
+→ Admin/Gateway/App/Redis/内部身份联合运行
 → 验证码与敏感信息安全场景
 → 修复验证发现的问题
 → 高保真人工批准
@@ -171,3 +184,4 @@ YouYu TASK-011 静态验证
 | 2026-07-14 | 发布 v0.1.6，同步工程修复和业务准备 | TASK-20260714-009 / 010 |
 | 2026-07-15 | 完成产品体验、高保真、工程规格、引用扫描和参数确认任务 | TASK-20260715-011 至 017 |
 | 2026-07-16 | 发布 v0.1.7，同步 YouYu v0.1.1 服务端基础实现并进入 TASK-011 验证 | TASK-20260716-018 |
+| 2026-07-16 | 回写共享 Redis、设备令牌、摘要域和审计字段安全加固 | YouYu 最新提交基线 `d60dbfa` |
