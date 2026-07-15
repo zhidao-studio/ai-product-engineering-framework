@@ -17,11 +17,11 @@
 当前工作段：A2 / YouYu 高保真确认与工程规格准备
 执行状态：active
 业务准备：in_progress
-高保真候选：v0.1.0-draft.5 / conditional_pass / 待维护者批准
-候选原型远程检查：blocked（GitHub Actions 账户账单或额度限制，任务未启动）
+高保真候选：v0.1.0-draft.6 / conditional_pass / 待维护者批准
+候选原型远程检查：deferred（GitHub Actions 外部阻塞，维护者决定暂缓远程证据）
 正式业务实现：blocked
 正式业务验证：not_started
-阻塞原因：高保真人工批准、接口与数据约定、历史敏感信息、共享会话与下游网络隔离、采集待审入库运行验证和 iOS 真机人工体验验收尚未关闭；候选原型远程检查服务恢复暂缓处理
+阻塞原因：高保真人工批准、接口与数据约定、历史敏感信息、共享会话与下游网络隔离、采集待审入库运行验证和 iOS 真机人工体验验收尚未关闭
 许可证：Proprietary / All Rights Reserved
 仓库可见性：Public，待维护者手动切换为 Private
 ```
@@ -189,13 +189,14 @@ flowchart LR
 ## 当前进展
 
 - Context 规范、检查清单、候选模板和 Framework 自应用已经完成；
-- YouYu 工程基础经过修复后为 `conditional_pass`，本地真机和远程可重复构建证据已具备；
+- YouYu 工程基础经过修复后为 `conditional_pass`，本地真机和既有远程可重复构建证据已具备；
 - 首个正式业务切片“手机号验证码登录注册与个人资料管理”已经确认，产品定义和体验定义已经完成；
 - YouYu 已采用统一数据库基础规范，Framework 已将其登记为候选工程规格，尚未经过正式业务表运行验证；
-- 高保真候选已修订至 `v0.1.0-draft.5`，范围和交互检查为 `conditional_pass`，等待维护者逐页批准；
+- 高保真候选已修订至 `v0.1.0-draft.6`，覆盖协议确认双状态，范围和交互检查为 `conditional_pass`，等待维护者逐页批准；
+- 候选原型检查已从完整工程构建中拆分为独立轻量工作流，完整工程检查按代码路径触发；
 - OpenAPI、账号/资料/验证码表、实现任务边界和三层验证尚未完成，正式业务实现仍为 `blocked`；
 - YouYu 正式业务参考工程验证仍为 `not_started`；
-- Context 模板保持 `candidate`，Harness 里程碑 B 尚未正式开始。
+- Context 模板和数据库候选规范保持 `candidate`，Harness 里程碑 B 尚未正式开始。
 
 详细执行状态、阻塞和下一步只在 [Framework 项目 Context](12_框架项目Context/README.md) 维护。
 
