@@ -7,15 +7,15 @@ project_context_id: PROJ-CONTEXT-AIPEF
 project: AI Product Engineering Framework
 status: active
 execution_status: active
-context_pack_version: 0.2-A.15
+context_pack_version: 0.2-A.16
 owner: zhidao-studio
 current_stage: 工程规格设计
-current_work_segment: A2 / YouYu 高保真确认与工程规格准备
+current_work_segment: A2 / YouYu 高保真确认与工程规格基线
 stable_release: v0.1.6
 target_release: v0.2.0
 current_milestone: A / Context 可执行化
 working_branch: main
-source_commit: ae24425af446390fbaa49b0b6810dba299ecc376
+source_commit: 00b963f5f8505218eaabfa02c3a7b4ed22244b85
 youyu_engineering_review_result_commit: c656ea0e93696fc1a5ad5e24364f2b96d5dcf6ef
 youyu_engineering_fix_commit: 9aff6d5768442da9530c2547d658eec3aa96be2c
 youyu_ci_result_commit: 25f5e9bd138d0ae4fba0e2552d0298f186d6ee8a
@@ -30,15 +30,21 @@ youyu_prototype_last_remote_check_head_commit: fb55f154faa4af70c5785f66e4c3964cb
 youyu_prototype_last_remote_check_run_id: 29408643569
 youyu_prototype_remote_check_blocker: GitHub Actions 账户账单或额度限制，任务在执行前未启动
 youyu_prototype_remote_check_follow_up: deferred_by_maintainer
-youyu_state_commit: 36c4d1161bb1d33b093d51b6f07145e1ac33a190
-youyu_repository_head_at_sync: 7fce74b55dd4ed0c65165bb1f55abb9c42e444c6
+youyu_engineering_specification_status: in_progress
+youyu_engineering_gap_baseline_commit: 04ca345332b7b015a185b8e6362cd5917c61b694
+youyu_candidate_data_model_commit: 7a3be9e7f9f672661a65820815e117f8832bc1d5
+youyu_candidate_api_contract_commit: d365313c9b33209196446dd29dbcde1b4c0e4145
+youyu_candidate_error_code_commit: aa56d434cb16a6c82d9538da9bdd393fa1f59981
+youyu_candidate_field_mapping_commit: 22e048dea26a6e60a0a2a1444aa1cb7b66e4e9f7
+youyu_state_commit: 91fe316fee804b00fa1e23c6b90aeb898396344f
+youyu_repository_head_at_sync: 320cab0ece70fffc752d568b74770a31f88e395d
 repository_visibility: public_pending_private
 license_model: proprietary_all_rights_reserved
 last_verified_at: 2026-07-15
 sensitivity: proprietary
 ```
 
-> `source_commit` 固定本轮 Framework 同步开始前的基线。YouYu 的工程复核、数据库规范、高保真候选、候选检查、自动检查定义和项目状态分别使用独立提交字段追溯；这些证据均不代替正式业务实现或正式业务验证结论。
+> `source_commit` 固定本轮 Framework 同步开始前的基线。YouYu 的工程复核、数据库规范、高保真候选、自动检查、工程差异、候选数据模型、候选接口和项目状态分别使用独立提交字段追溯；这些证据均不代替正式业务实现或正式业务验证结论。
 
 ## 1. 当前结论
 
@@ -47,15 +53,14 @@ sensitivity: proprietary
 | 稳定版本 | v0.1.6，本轮不发布新稳定版本 |
 | 目标版本 | v0.2.0 |
 | 当前里程碑 | A / Context 可执行化 |
-| 当前工作段 | A2 / YouYu 高保真确认与工程规格准备 |
+| 当前工作段 | A2 / YouYu 高保真确认与工程规格基线 |
 | YouYu 工程基础 | `conditional_pass` |
 | 首个业务切片 | 手机号验证码登录注册与个人资料管理，已确认 |
 | 产品定义 | `completed` |
 | 体验定义 | `confirmed` |
 | 数据库基础规范 | YouYu 已采用；Framework 中为 `candidate` |
 | 高保真候选 | `v0.1.0-draft.6`，检查 `conditional_pass`，待维护者逐页批准 |
-| 协议确认状态 | 已覆盖需要确认协议与已确认当前版本、无需重复勾选两种候选状态 |
-| 候选原型自动检查 | 已拆分为独立轻量工作流；远程证据因外部阻塞按维护者决定暂缓 |
+| 工程规格准备 | `in_progress`，差异、候选数据模型、接口、错误码和字段映射已建立 |
 | YouYu 正式业务实现 | `blocked` |
 | YouYu 正式业务验证 | `not_started` |
 | Context 模板成熟度 | `candidate` |
@@ -85,20 +90,23 @@ sensitivity: proprietary
 - 首个业务切片、产品范围、业务规则、验收断言、用户流程、信息架构、页面清单和交互说明；
 - YouYu 数据库基础规范采用及 Framework 候选规范登记；
 - HTML 高保真候选 `v0.1.0-draft.6` 和 `conditional_pass` 候选检查；
-- 主导航对齐、空入口删除、重复事实源清理和临时预览地址治理；
-- 登录协议确认两种候选状态；
-- 候选原型检查与完整工程检查拆分，完整工程检查按代码路径触发；
-- 候选原型版本、精确主导航、协议双状态、唯一事实源、本地引用和页面访问检查定义。
+- 登录协议确认两种候选状态和轻量原型检查；
+- 当前用户名密码、独立注册、`Long` 主键、旧基础字段、账号资料混表、手机号普通明文字段和 `Map` 响应的工程差异基线；
+- App 用户账号、个人资料、短信验证码和协议确认候选数据模型；
+- 发送验证码、统一短信登录、退出、当前用户、资料修改、账号信息、协议和地区候选接口；
+- 候选错误码以及数据库、Java、OpenAPI、Swift 字段映射；
+- YouYu TASK-009 工程规格基线任务启动。
 
 尚未完成：
 
 - 维护者逐页批准 `v0.1.0-draft.6`；
 - 候选原型远程成功证据按维护者决定暂缓，恢复 GitHub Actions 服务后重跑；
-- 账号、个人资料和验证码业务表及既有表差异；
-- OpenAPI、错误码、示例数据和客户端字段映射；
-- iOS、服务端和数据库实现任务边界；
+- 既有 `sys_user`、`BaseEntity`、登录 ID、Controller、Service、Mapper 和 SQL 引用扫描；
+- 验证码、Token、手机号范围、用户编号、账号状态、资料字段、头像、地区和协议版本关键参数确认；
+- 正式数据库迁移、回滚、触发器和实体定义；
+- 正式 OpenAPI YAML、示例数据和契约自动检查；
+- iOS、服务端和数据库实现任务边界与依赖顺序；
 - Git 历史安全问题、共享会话、下游网络隔离、采集待审链路和 iOS 真机体验阻塞关闭；
-- 正式项目、阶段和任务 Context；
 - 受控业务实现、静态验证、运行验证和模拟用户验收；
 - Context 成本、人工修正、遗漏和任务成本复盘；
 - 模板成熟度升级判断和里程碑 A 人工退出批准。
@@ -134,7 +142,9 @@ sensitivity: proprietary
 | 同步 YouYu 候选原型远程检查阻塞 | `completed` | [TASK-20260715-012](任务/TASK-20260715-012_同步YouYu候选原型远程检查阻塞.md) |
 | 记录候选原型远程检查暂缓处理 | `completed` | [TASK-20260715-013](任务/TASK-20260715-013_记录候选原型远程检查暂缓处理.md) |
 | 同步 YouYu 高保真 draft.6 与检查拆分 | `completed` | [TASK-20260715-014](任务/TASK-20260715-014_同步YouYu高保真draft.6与检查拆分.md) |
+| 同步 YouYu 工程规格基线启动 | `completed` | [TASK-20260715-015](任务/TASK-20260715-015_同步YouYu工程规格基线启动.md) |
 | YouYu TASK-008 高保真人工确认 | `in_review` | YouYu 仓库 `05_项目Context/任务/TASK-008_建设账号与个人中心高保真候选原型.md` |
+| YouYu TASK-009 工程规格基线 | `in_progress` | YouYu 仓库 `05_项目Context/任务/TASK-009_建立账号与个人资料工程规格基线.md` |
 | 关闭 YouYu 工程基础 P0 阻塞 | `blocked` | YouYu 仓库 `05_项目Context/任务/TASK-004_关闭工程基础P0阻塞.md` |
 | 正式业务实现任务 | `not_created` | 高保真、工程规格和阻塞条件满足后创建 |
 
@@ -145,7 +155,7 @@ sensitivity: proprietary
 | Framework 仓库仍为 Public | 阻塞真正访问控制 | 已有专有许可，待维护者切换 Private | 立即执行 |
 | 高保真尚未人工批准 | 阻塞客户端实现依据 | `draft.6` 已达人工评审条件 | 维护者逐页确认后 |
 | 候选原型远程检查被外部服务阻塞 | 不阻塞人工评审，阻塞自动证据闭环 | 维护者决定暂缓恢复与重跑 | 维护者重新排期后 |
-| 接口和业务数据结构未完成 | 阻塞联合设计与实现 | 下一步建立表、OpenAPI、错误码和映射 | 工程规格确认后 |
+| 工程规格仅为候选 | 阻塞正式联合实现 | 差异、数据模型、接口、错误码和映射已建立；正式迁移和 OpenAPI 未完成 | 关键参数和引用扫描完成后 |
 | Git 历史安全问题 | 阻塞安全结论 | 轮换凭据、清理历史并建立扫描检查关卡 | SECURITY-001 关闭后 |
 | 共享会话与下游网络隔离未验证 | 阻塞正式业务实现 | 已有身份签名单元测试，继续运行验证 | 专项安全任务完成后 |
 | 采集待审入库控制缺失 | 阻塞真实采集链路 | 建立候选、审核、正式数据隔离运行证据 | 专项采集任务完成后 |
@@ -155,13 +165,13 @@ sensitivity: proprietary
 ## 7. 下一步
 
 ```text
-维护者逐页批准 YouYu v0.1.0-draft.6
-→ 设计账号、资料和验证码业务表及既有表差异
-→ 建立 OpenAPI、错误码、示例数据和客户端字段映射
+扫描 YouYu 现有认证代码、sys_user、BaseEntity、登录 ID 和 SQL 引用
+→ 维护者批准高保真并确认关键业务与安全参数
+→ 将候选数据模型转为正式迁移、回滚和触发器设计并执行 DB-CHECK
+→ 将候选接口、错误码和字段映射转为正式 OpenAPI YAML、示例和契约检查
+→ 明确 iOS、服务端和数据库实现边界、依赖顺序和三层验证
 → 并行关闭或形成可审计隔离结论：安全、共享会话、网络隔离、采集待审和 iOS 真机体验
-→ 建立正式 YouYu 项目、阶段和任务 Context
-→ 配置修改边界、检查关卡和人工确认节点
-→ 执行业务实现并完成静态、运行和模拟用户三层验证
+→ 创建受控正式业务实现任务并完成静态、运行和模拟用户三层验证
 → 记录成本、遗漏、冲突和人工修正
 → 回写 Framework，判断候选资产成熟度和里程碑 A 是否退出
 ```
@@ -178,3 +188,4 @@ sensitivity: proprietary
 | 2026-07-15 | YouYu 产品和体验完成，高保真 `draft.5` 进入人工确认 | TASK-20260715-011 |
 | 2026-07-15 | 候选原型远程检查被外部服务阻塞并按维护者决定暂缓 | TASK-20260715-012 / TASK-20260715-013 |
 | 2026-07-15 | YouYu 高保真更新为 `draft.6`，协议双状态和轻量检查拆分完成同步 | TASK-20260715-014 |
+| 2026-07-15 | YouYu 启动 TASK-009，工程差异、候选数据模型、接口、错误码和字段映射完成同步 | TASK-20260715-015 |
