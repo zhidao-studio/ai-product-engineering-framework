@@ -18,9 +18,10 @@
 执行状态：active
 业务准备：in_progress
 高保真候选：v0.1.0-draft.5 / conditional_pass / 待维护者批准
+候选原型远程检查：blocked（GitHub Actions 账户账单或额度限制，任务未启动）
 正式业务实现：blocked
 正式业务验证：not_started
-阻塞原因：高保真人工批准、接口与数据约定、历史敏感信息、共享会话与下游网络隔离、采集待审入库运行验证和 iOS 真机人工体验验收尚未关闭
+阻塞原因：高保真人工批准、候选原型远程检查服务恢复、接口与数据约定、历史敏感信息、共享会话与下游网络隔离、采集待审入库运行验证和 iOS 真机人工体验验收尚未关闭
 许可证：Proprietary / All Rights Reserved
 仓库可见性：Public，待维护者手动切换为 Private
 ```
