@@ -14,11 +14,13 @@
 当前稳定版本：v0.1.6
 目标开发版本：v0.2.0
 当前开发里程碑：A / Context 可执行化
-当前工作段：A2 / YouYu 业务功能准备
+当前工作段：A2 / YouYu 高保真确认与工程规格准备
 执行状态：active
 业务准备：in_progress
+高保真候选：v0.1.0-draft.5 / conditional_pass / 待维护者批准
 正式业务实现：blocked
-阻塞原因：历史敏感信息、共享会话与下游网络隔离、采集待审入库运行验证和 iOS 真机人工体验验收尚未关闭
+正式业务验证：not_started
+阻塞原因：高保真人工批准、接口与数据约定、历史敏感信息、共享会话与下游网络隔离、采集待审入库运行验证和 iOS 真机人工体验验收尚未关闭
 许可证：Proprietary / All Rights Reserved
 仓库可见性：Public，待维护者手动切换为 Private
 ```
@@ -35,7 +37,7 @@
 - [术语与易懂表达规范](01_框架定义/术语与易懂表达规范.md)
 - [Roadmap](10_版本演进/Roadmap.md)
 
-`A/B/C` 是 v0.2.0 的开发里程碑，不是发布版本。`main` 中存在的候选 Context 资产不代表已经稳定发布。
+`A/B/C` 是 v0.2.0 的开发里程碑，不是发布版本。`main` 中存在的候选 Context、数据库规范和参考工程资产不代表已经稳定发布。
 
 ## 这是什么
 
@@ -186,11 +188,13 @@ flowchart LR
 ## 当前进展
 
 - Context 规范、检查清单、候选模板和 Framework 自应用已经完成；
-- YouYu 工程基础经过修复后为 `conditional_pass`：iOS 真机构建、安装与启动已有证据，远程检查已通过服务端、采集工程和 iOS 的可重复构建；
-- 当前进入里程碑 A 的业务功能准备段；可开始产品、体验和接口约定整理，正式业务实现仍为 `blocked`；
-- 正式业务参考任务尚未建立；
-- YouYu PR #1 只作为初步工程证据，不代表正式验证已经开始或部分通过；
-- Context 模板保持 `candidate`；Harness 里程碑 B 尚未正式开始。
+- YouYu 工程基础经过修复后为 `conditional_pass`，本地真机和远程可重复构建证据已具备；
+- 首个正式业务切片“手机号验证码登录注册与个人资料管理”已经确认，产品定义和体验定义已经完成；
+- YouYu 已采用统一数据库基础规范，Framework 已将其登记为候选工程规格，尚未经过正式业务表运行验证；
+- 高保真候选已修订至 `v0.1.0-draft.5`，范围和交互检查为 `conditional_pass`，等待维护者逐页批准；
+- OpenAPI、账号/资料/验证码表、实现任务边界和三层验证尚未完成，正式业务实现仍为 `blocked`；
+- YouYu 正式业务参考工程验证仍为 `not_started`；
+- Context 模板保持 `candidate`，Harness 里程碑 B 尚未正式开始。
 
 详细执行状态、阻塞和下一步只在 [Framework 项目 Context](12_框架项目Context/README.md) 维护。
 
