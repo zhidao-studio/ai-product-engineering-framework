@@ -21,62 +21,65 @@
 - Harness B 保持 `not_started`；
 - 未完成能力不得重复描述为 v0.2.0 已稳定交付。
 
-## [0.1.9] - 2026-07-16
+## [0.1.10] - 2026-07-16
 
-版本定位：全仓事实源收敛、YouYu v0.1.3 静态正确性修订同步与发布治理修订版本。
+版本定位：Framework 提交可追溯性、发布一致性检查和 YouYu v0.1.4 并发发送修订同步版本。
 
-### YouYu v0.1.3 同步
+### Framework 事实源与发布检查
 
-- 同步数据库审计触发器修订和创建时间不可篡改规则；
-- 同步触发器正文、主键和必要唯一索引逐项断言；
-- 同步验证码数据库行锁、失败次数并发安全和单次消费；
-- 同步 App/Admin Profile、数据库默认值、SQL 参数日志和 Gateway 地址修订；
-- 同步协议数组、Unicode 长度、Trace ID 和短信适配边界；
-- 同步 YouYu Project Context Pack、TASK-011、TASK-012 和 SERVER-CHECK-003；
-- 同步本地等价检查脚本和调用相同脚本的 Actions；
-- YouYu 静态复核为 `passed`，运行验证继续 `blocked_external_runtime_evidence`。
+- 修正项目 Context 和 TASK-020 中不可解析的基线 SHA；
+- 区分 Framework `source_commit` 与 YouYu `reference_source_commit`；
+- 发布脚本从 Framework 项目 Context 读取动态状态，不再硬编码 YouYu 版本、里程碑和成熟度；
+- 使用 `git cat-file -e` 校验 Framework 基线与来源提交；
+- 支持通过 `YOUYU_REPO_DIR` 校验 YouYu SHA 仓库归属与 VERSION；
+- Harness B 状态检查限定在 Roadmap 里程碑 B 段落；
+- CHANGELOG 当前版本日期由脚本从版本段解析；
+- AGENTS 继续只维护长期规则。
 
-### Framework 治理
+### YouYu v0.1.4 同步
 
-- AGENTS 删除动态稳定版本、工作段、YouYu 版本、任务和检查结果；
-- 动态状态统一由 Framework 项目 Context 管理；
-- 版本规范明确示例不是当前版本，当前稳定版本由 `VERSION` 决定；
-- 历史版本表补齐 v0.1.7、v0.1.8、v0.1.9；
-- 新增 `scripts/check-release-state.sh`；
-- README、Roadmap、阶段 Context 和参考工程统一到 YouYu v0.1.3；
-- 历史任务、验证和报告增加快照和替代边界。
+- 同步 Redis Lua 原子发送频控与发送幂等键；
+- 同步 Redis 故障失败关闭、供应商失败补偿和防重复发送边界；
+- 同步非法 `failed_count` 失败关闭；
+- 同步 App 基础数据源、启动期配置校验、严格 Bearer 和 Trace 响应头；
+- 同步 OpenAPI v0.1.4、错误码、字段映射和 SERVER-CHECK-004；
+- 同步动态测试命名空间、并发发送、Redis 计数和幂等验证定义；
+- YouYu 服务端保持 `implemented_not_runtime_validated`；
+- YouYu 静态复核保持 `conditional_pass`，运行验证继续 `blocked_external_runtime_evidence`。
 
 ### 不提升项
 
-- YouYu Maven、MySQL、Redis、端到端和 GitHub Actions 成功证据尚未形成；
-- 网络来源频控、Redis 故障验证和真实短信尚未完成；
-- 高保真仍未批准，iOS 正式实现仍未开始；
+- YouYu Maven、MySQL、Redis、接口和 GitHub Actions 成功证据尚未形成；
+- 网络来源频控、完整短信 Outbox、Redis 故障验证和真实短信尚未完成；
+- 高保真未批准，iOS 正式实现未开始；
 - YouYu 正式业务验证保持 `not_started`；
 - Context 模板和数据库规范保持 `candidate`；
 - Harness B 保持 `not_started`；
 - 核心模型和许可模式未改变。
 
-报告：[v0.1.9 YouYu静态正确性修订同步报告](10_版本演进/v0.1.9YouYu静态正确性修订同步报告.md)。
+报告：[v0.1.10 YouYu并发发送与事实源修订同步报告](10_版本演进/v0.1.10YouYu并发发送与事实源修订同步报告.md)。
+
+## [0.1.9] - 2026-07-16
+
+> 历史快照：记录 YouYu v0.1.3 静态修订和 Framework 动态事实源治理，当前由 v0.1.10 与项目 Context 替代。
+
+- 同步 v0.1.3 数据库审计、验证码消费行锁、配置、契约和初版等价检查脚本；
+- AGENTS 删除动态状态，新增初版发布一致性脚本；
+- 后续复核发现发送频控并发和 Context SHA 问题，由 v0.1.10 修订；
+- 未取得运行验证证据。
 
 ## [0.1.8] - 2026-07-16
 
-> 历史快照：记录 YouYu v0.1.2 当时的验证加固状态，当前由 v0.1.9 和 Framework 项目 Context 替代。
+> 历史快照：记录 YouYu v0.1.2 当时状态，当前由后续版本和项目 Context 替代。
 
-- 同步 YouYu v0.1.2 初步静态修复、测试、数据库断言和联合工作流；
-- 同步 SERVER-CHECK-002 与 TASK-011 外部运行阻塞；
-- 稳定版本更新为 v0.1.8；
+- 同步初步静态修复、测试和联合工作流；
 - 候选资产成熟度未提升，Harness B 未启动。
-
-报告：[v0.1.8 YouYu验证加固同步报告](10_版本演进/v0.1.8YouYu验证加固同步报告.md)。
 
 ## [0.1.7] - 2026-07-16
 
-> 历史快照：记录 YouYu v0.1.1 服务端基础实现，当前由后续版本和项目 Context 替代。
+> 历史快照：记录 YouYu v0.1.1 服务端基础实现，当前由后续版本替代。
 
-- 同步 YouYu 参数、数据库、OpenAPI 和服务端基础实现；
-- 同步字符串身份、Bearer 网关和失败关闭边界；
-- 新增 TASK-011；
-- 稳定版本更新为 v0.1.7；
+- 同步参数、数据库、OpenAPI 和服务端基础实现；
 - 正式业务验证保持 `not_started`。
 
 ## [0.1.6] - 2026-07-14
@@ -84,33 +87,27 @@
 > 历史快照：当前状态以 Framework 项目 Context 为准。
 
 - 同步 YouYu 工程修复和业务准备；
-- 稳定版本更新为 v0.1.6；
 - Context 模板保持 `candidate`，Harness B 未启动。
 
 ## [0.1.5] - 2026-07-12
 
-- 收敛当前状态入口和历史边界；
-- 稳定版本更新为 v0.1.5。
+- 收敛当前状态入口和历史边界。
 
 ## [0.1.4] - 2026-07-12
 
-- 统一中文术语和表达；
-- 稳定版本更新为 v0.1.4。
+- 统一中文术语和表达。
 
 ## [0.1.3] - 2026-07-12
 
-- 同步早期工程证据并建立历史验证记录；
-- 稳定版本更新为 v0.1.3。
+- 同步早期工程证据并建立历史验证记录。
 
 ## [0.1.2] - 2026-07-12
 
-- 采用 Proprietary / All Rights Reserved；
-- 稳定版本更新为 v0.1.2。
+- 采用 Proprietary / All Rights Reserved。
 
 ## [0.1.1] - 2026-07-12
 
-- 完成全仓复核、事实源清理和版本治理；
-- 稳定版本更新为 v0.1.1。
+- 完成全仓复核、事实源清理和版本治理。
 
 ## [0.1.0] - 2026-07-12
 
