@@ -36,6 +36,24 @@ else:
 PY
 }
 
+assert_summary_value() {
+  local label="$1" expected="$2" file="$3"
+  python3 - "$file" "$label" "$expected" <<'PY'
+import re,sys
+text=open(sys.argv[1],encoding='utf-8').read()
+label,expected=sys.argv[2],sys.argv[3]
+def normalize(value):
+    return re.sub(r'\s+','',value)
+for line in text.splitlines():
+    if line.startswith(label+'：'):
+        actual=line.split('：',1)[1]
+        if normalize(actual)==normalize(expected):
+            raise SystemExit(0)
+        raise SystemExit(f'{label}不一致: {actual} != {expected}')
+raise SystemExit(f'{label}不存在')
+PY
+}
+
 release="$(tr -d '[:space:]' < VERSION)"
 [[ "$release" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || fail "VERSION格式错误: $release"
 release_tag="v$release"
@@ -70,7 +88,7 @@ else
 fi
 
 heading "稳定版本与发布日期"
-grep -Fq "当前稳定版本：$release_tag" README.md || fail "README稳定版本不一致"
+assert_summary_value "当前稳定版本" "$release_tag" README.md
 python3 - CHANGELOG.md "$release" <<'PY'
 import re,sys,datetime
 text=open(sys.argv[1],encoding='utf-8').read()
@@ -83,25 +101,23 @@ PY
 grep -Fq "| $release_tag | 已完成 |" 10_版本演进/Roadmap.md || fail "Roadmap缺少当前版本历史行"
 
 heading "目标版本、里程碑与工作段"
-grep -Fq "目标开发版本：$target_release" README.md || fail "README目标版本不一致"
-grep -Fq "当前里程碑：$current_milestone" README.md || fail "README当前里程碑不一致"
-grep -Fq "当前工作段：${current_work_segment// /}" README.md \
-  || grep -Fq "当前工作段：$current_work_segment" README.md \
-  || fail "README当前工作段不一致"
+assert_summary_value "目标开发版本" "$target_release" README.md
+assert_summary_value "当前里程碑" "$current_milestone" README.md
+assert_summary_value "当前工作段" "$current_work_segment" README.md
 grep -Fq "### 里程碑 A：Context 可执行化" 10_版本演进/Roadmap.md || fail "Roadmap里程碑A缺失"
 
 heading "YouYu参考工程一致性"
-grep -Fq "YouYu版本：$youyu_release" README.md || fail "README YouYu版本不一致"
-grep -Fq "YouYu版本：$youyu_release" 09_参考工程/README.md || fail "参考工程YouYu版本不一致"
+assert_summary_value "YouYu版本" "$youyu_release" README.md
+assert_summary_value "YouYu版本" "$youyu_release" 09_参考工程/README.md
 grep -Fq "reference_release: $youyu_release" 12_框架项目Context/阶段/v0.2-A_Context可执行化.md || fail "阶段Context YouYu版本不一致"
 grep -Fq "reference_source_commit: $youyu_source_commit" 12_框架项目Context/阶段/v0.2-A_Context可执行化.md || fail "阶段Context YouYu提交不一致"
-grep -Fq "静态复核：$youyu_static_review" README.md || fail "README YouYu静态状态不一致"
+assert_summary_value "静态复核" "$youyu_static_review" README.md
 
 heading "验证与成熟度一致性"
-grep -Fq "正式业务验证：$formal_validation" README.md || fail "README正式业务验证状态不一致"
-grep -Fq "Context模板：$context_maturity" README.md || fail "README Context成熟度不一致"
-grep -Fq "数据库规范：$database_maturity" README.md || fail "README数据库成熟度不一致"
-grep -Fq "Harness里程碑B：$harness_b" README.md || fail "README Harness B状态不一致"
+assert_summary_value "正式业务验证" "$formal_validation" README.md
+assert_summary_value "Context模板" "$context_maturity" README.md
+assert_summary_value "数据库规范" "$database_maturity" README.md
+assert_summary_value "Harness里程碑B" "$harness_b" README.md
 
 python3 - 10_版本演进/Roadmap.md "$harness_b" <<'PY'
 import re,sys
