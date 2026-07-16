@@ -1,16 +1,17 @@
 # AI 产品工程框架：项目 Context Pack
 
-> 本文件是 Framework 当前版本、里程碑、工作段、参考工程状态、阻塞和下一步的唯一入口。README、Roadmap、AGENTS、历史任务、验证和发布报告不得覆盖本文件。
+> 本文件是 Framework 当前版本、工作段、参考工程状态、阻塞和下一步的唯一动态入口。README、Roadmap、AGENTS、历史任务、验证和发布报告不得覆盖本文件。
 
 ```yaml
 project_context_id: PROJ-CONTEXT-AIPEF
 project: AI Product Engineering Framework
 status: active
-execution_status: active
-project_context_pack_version: 0.2-A.24
+execution_status: paused
+project_context_pack_version: 0.2-A.25
 owner: zhidao-studio
-current_stage: 质量与安全验证
-current_work_segment: A2 / YouYu 运行验证
+current_stage: 参考工程运行开发
+current_work_segment: A2 / 冻结Framework并本地跑通YouYu
+current_action: freeze_framework_and_run_reference_project
 stable_release: v0.1.10
 target_release: v0.2.0
 current_milestone: A / Context 可执行化
@@ -21,138 +22,181 @@ youyu_release: v0.1.4
 youyu_source_commit: c1f7763323cc7b6fe2086247be2d901700265339
 youyu_server_implementation_status: implemented_not_runtime_validated
 youyu_static_review_status: conditional_pass
-youyu_runtime_validation_status: blocked_external_runtime_evidence
+youyu_runtime_validation_status: pending_local_macos_execution
 youyu_formal_business_validation: not_started
 youyu_high_fidelity_status: draft_for_confirmation
 youyu_ios_business_implementation_status: not_started
-youyu_sms_send_atomic_rate_limit_status: implemented_not_runtime_validated
-youyu_network_rate_limit_status: not_implemented
-youyu_sms_outbox_status: not_implemented
+youyu_local_ci_platform: local_macos_homebrew
+youyu_local_ci_status: defined_not_executed
+framework_sync_status: frozen
+framework_change_policy: frozen_until_youyu_core_path_runtime_passed
 context_template_maturity: candidate
 database_standard_maturity: candidate
 harness_milestone_b: not_started
-framework_sync_task: TASK-20260716-021
 license_model: proprietary_all_rights_reserved
-last_verified_at: 2026-07-16
+last_verified_at: 2026-07-17
 sensitivity: proprietary
 ```
 
 ## 1. 当前结论
 
-| 项目 | 当前事实 |
-|---|---|
-| 稳定版本 | `v0.1.10` |
-| 目标版本 | `v0.2.0` |
-| 当前里程碑 | A / Context 可执行化 |
-| 当前工作段 | A2 / YouYu 运行验证 |
-| YouYu 版本 | `v0.1.4` |
-| YouYu 服务端 | `implemented_not_runtime_validated` |
-| YouYu 静态复核 | `conditional_pass` |
-| YouYu 运行验证 | `blocked_external_runtime_evidence` |
-| YouYu 正式业务验证 | `not_started` |
-| YouYu 高保真 | `draft_for_confirmation` |
-| YouYu iOS 正式实现 | `not_started` |
-| Context 模板 | `candidate` |
-| 数据库规范 | `candidate` |
-| Harness B | `not_started` |
+Framework 保持 `v0.1.10`，不发布 `v0.1.11`，不新增同步报告，不修改 Roadmap，不新建 Framework 同步任务。
 
-v0.1.10 是 Framework 提交可追溯性、发布一致性检查和 YouYu v0.1.4 静态修订同步版本，不代表 YouYu 运行验证完成，也不代表里程碑 A 已退出。
+当前唯一主动作是：
 
-## 2. 当前 A2 事实
+```text
+冻结 Framework
+→ 在本地 macOS 编译和启动 YouYu v0.1.4
+→ 只修阻止首个账号业务路径运行的问题
+→ 取得真实运行日志
+→ 登录注册与“我”核心路径跑通后再回写 Framework
+```
 
-### 已完成
+当前没有新的 Maven、MySQL、Redis、App、Gateway、接口或 iOS 成功证据。Framework 文档数量和修订版本不构成参考工程通过证据。
 
-- YouYu 产品规则、体验定义和高保真候选；
-- App 账号域与管理员账号域隔离；
-- 四张账号域表、数据库规范和 v0.1.3 审计触发器修订；
-- 验证码消费数据库行锁、失败次数和单次消费；
-- v0.1.4 Redis Lua 原子发送门禁、幂等键和 Redis 失败关闭；
-- App 基础数据源、启动期配置校验、严格 Bearer 和 Trace 响应头；
-- OpenAPI v0.1.4、错误码、字段映射和 SERVER-CHECK-004；
-- 可重复本地检查脚本与调用相同脚本的 Actions；
-- Framework 无效基线修正、跨仓库 SHA 字段区分和发布脚本动态解析；
-- TASK-20260716-021 和 v0.1.10 同步报告。
+## 2. 为什么冻结 Framework
 
-### 尚未完成
+YouYu 当前不是缺少更多静态 Review，而是尚未进入完整运行开发：
 
-- YouYu Maven 测试和打包实际成功；
-- MySQL 迁移、审计行为、约束和回滚实际成功；
-- Redis Lua 并发发送、幂等和计数实际结果；
-- Gateway、App、MySQL 和 Redis 联合运行；
-- Redis 停机、网络分区和配置不一致验证；
-- 完整短信 Outbox、Token/数据库一致性验证和网络来源频控；
+- Maven 测试和打包没有实际成功证据；
+- MySQL 迁移和结构检查没有实际执行证据；
+- Redis Lua 没有实际执行证据；
+- App 与 Gateway 没有联合启动证据；
+- 登录、个人资料和退出没有端到端结果；
+- 本地自动脚本仍为 `defined_not_executed`。
+
+此前形成了以下低效循环：
+
+```text
+静态Review
+→ 发现更多生产级问题
+→ 修改代码与文档
+→ 同步Framework版本
+→ 没有实际启动环境
+→ 无法证明可运行
+→ 再次静态Review
+```
+
+Framework 已从“帮助参考工程交付”逐渐变成“同步成本”。在 YouYu 核心路径跑通前，继续沉淀候选规范会扩大这一问题。
+
+## 3. 当前交付阶段重新分层
+
+### 阶段一：本地开发完成
+
+本阶段只要求：
+
+- 服务可以编译和启动；
+- MySQL 和 Redis 可以连接；
+- 可以发送模拟验证码；
+- 新手机号可以注册登录；
+- 可以查询当前用户和账号；
+- 可以修改昵称与简介；
+- 可以退出，旧 Token 不再可用。
+
+### 阶段二：工程验证完成
+
+后续再完成：
+
+- 单元测试；
+- MySQL 行为和回滚测试；
+- Redis 与并发测试；
+- 配置和日志测试；
+- 自动化重复执行。
+
+### 阶段三：生产安全完成
+
+不阻塞当前本地闭环：
+
 - 真实短信供应商；
-- 高保真逐页批准；
-- iOS、Keychain、真机和模拟用户验收；
-- 失败、成本、人工修正和 Framework 改进回写；
-- 里程碑 A 人工退出批准。
+- 完整短信 Outbox；
+- 网络来源频控；
+- Redis 网络分区与 Cluster 优化；
+- Token 与数据库最终一致性重构；
+- 灰度、监控和完整生产日志审计。
 
-## 3. v0.1.10 治理修订
+## 4. 当前版本 P0 定义
 
-```text
-长期规则 → AGENTS
-动态状态 → Framework项目Context
-稳定版本 → VERSION与CHANGELOG
-参考工程事实 → YouYu Context与Framework reference字段
-提交归属 → Framework source_commit / YouYu reference_source_commit
-```
+只有以下问题可以阻塞 YouYu 首个业务切片：
 
-- `baseline_commit` 已修正为真实 Framework 提交；
-- TASK-020 保留历史结论，但修正提交字段语义并标记由 TASK-021 替代；
-- `scripts/check-release-state.sh` 从本 Context 解析动态状态；
-- Framework 基线和来源提交通过 `git cat-file -e` 校验；
-- 设置 `YOUYU_REPO_DIR` 后可校验 YouYu 提交归属和 VERSION；
-- 未提供 YouYu 仓库时只校验 SHA 格式，并明确不宣称仓库归属已验证；
-- Harness B 状态只在 Roadmap 里程碑 B 段落检查；
-- 检查定义不等于运行通过；
-- 候选资产不因修订版本发布自动提升成熟度。
+1. 编译失败；
+2. 服务无法启动；
+3. 数据库迁移失败；
+4. Redis 无法连接；
+5. 模拟验证码无法发送；
+6. 注册或登录失败；
+7. `/users/me` 或账号查询失败；
+8. 昵称和简介修改失败；
+9. 退出失败或旧 Token 仍可访问；
+10. 明确的数据安全漏洞。
 
-## 4. 当前权威入口
+其他发现进入 backlog，不再触发 Framework 版本、报告、Roadmap 或任务同步。
 
-| 主题 | 权威来源 |
-|---|---|
-| 许可 | [LICENSE](../LICENSE) |
-| 框架定义 | [愿景与定位](../01_框架定义/AI产品工程框架愿景与定位.md) |
-| Context 工程 | [Context 工程](../04_Context工程/README.md) |
-| Harness | [执行控制与检查关卡](../05_Harness工程/执行控制与检查关卡.md) |
-| 数据库候选规范 | [数据库设计基础规范](../08_模板资产/工程规格/数据库设计基础规范.md) |
-| 当前参考工程 | [参考工程入口](../09_参考工程/README.md) |
-| 当前阶段 | [v0.2-A 阶段 Context](阶段/v0.2-A_Context可执行化.md) |
-| 版本路线 | [Roadmap](../10_版本演进/Roadmap.md) |
-| v0.1.10 报告 | [YouYu并发发送与事实源修订同步报告](../10_版本演进/v0.1.10YouYu并发发送与事实源修订同步报告.md) |
-
-## 5. 当前任务
-
-| 任务 | 状态 |
-|---|---|
-| [TASK-20260716-021](任务/TASK-20260716-021_同步YouYuv0.1.4并发发送修订.md) | `completed` |
-| YouYu TASK-011 服务端运行验证 | `blocked_external_runtime_evidence` |
-| YouYu TASK-012 网络来源频控 | `not_started` |
-| YouYu 完整短信 Outbox | `not_started` |
-| YouYu 高保真人工确认 | `in_review` |
-| YouYu iOS 正式实现 | `not_started` |
-
-## 6. 当前阻塞
-
-| 阻塞 | 当前处理 |
-|---|---|
-| YouYu 缺少 Maven/MySQL/Redis/接口证据 | 在等价环境运行本地检查脚本并回写 |
-| Redis 故障未验证 | 独立安全环境执行，不从待办删除 |
-| Outbox 与网络来源频控未实现 | 建立独立后续任务，不宣称完整短信安全闭环 |
-| 真实短信未接入 | 保持生产失败关闭 |
-| 高保真未批准、iOS 未开始 | 不形成体验和端到端结论 |
-
-## 7. 下一步
+## 5. 本地执行顺序
 
 ```text
-运行YouYu scripts/check-account-slice.sh
-→ 保存Maven/MySQL/Redis/并发发送/接口证据
-→ 修复运行问题并完成TASK-011
-→ 完成Redis故障、Outbox与TASK-012
-→ 高保真人工批准
-→ 单独创建iOS正式实现任务
-→ 真机和模拟用户验收
-→ 回写Framework并评估A2退出
+准备 Homebrew、JDK 21、Maven、MySQL、Redis
+→ 使用固定 youyu 数据库执行 v0.1.1 与 v0.1.3 SQL
+→ 注入本地开发环境变量
+→ mvn clean test
+→ mvn package
+→ 启动 youyu-app
+→ 启动 youyu-gateway
+→ 按核心接口路径执行 curl
+→ 从第一个真实错误开始修复
 ```
 
-在真实运行证据完成前，YouYu 正式业务验证保持 `not_started`，Context 模板和数据库规范保持 `candidate`，Harness B 保持 `not_started`。
+核心接口路径：
+
+```text
+查询当前协议
+→ 发送模拟验证码
+→ 使用 123456 注册登录
+→ 获取 Token
+→ 查询 /users/me
+→ 查询 /users/me/account
+→ 修改昵称和简介
+→ 再次查询 /users/me
+→ 退出
+→ 验证旧 Token 失效
+```
+
+到上述路径实际成功并保存日志后，才可以声明首个账号登录注册与“我”模块跑通。
+
+## 6. Framework 冻结规则
+
+在 YouYu 核心路径真实跑通前：
+
+- 不升级 Framework 版本；
+- 不新增 Framework 同步报告；
+- 不修改 Roadmap；
+- 不新建 Framework 同步任务；
+- 不提升 Context、数据库规范或 Harness 资产成熟度；
+- 不把新的 YouYu 静态问题立即抽象成 Framework 规范；
+- 不用 Framework 自应用代替参考工程运行证据。
+
+允许的唯一 Framework 变更是修复会直接阻止读取当前状态的严重事实错误。
+
+## 7. Framework 解冻条件
+
+必须同时满足：
+
+1. YouYu v0.1.4 在本地 macOS 完成 Maven 构建；
+2. MySQL 迁移执行成功；
+3. Redis、App 和 Gateway 联合启动成功；
+4. 账号核心接口路径完整成功；
+5. 真实命令、错误、修复和日志位置已记录；
+6. 项目维护者确认首个业务路径可操作。
+
+解冻后只做一次经验回写，优先萃取“本地运行开发优先、完成标准分层、Review 终止条件和 Framework 同步节奏”，而不是逐问题同步版本。
+
+## 8. 当前状态边界
+
+- Framework 稳定版本保持 `v0.1.10`；
+- YouYu 稳定版本保持 `v0.1.4`；
+- YouYu 服务端仍为 `implemented_not_runtime_validated`；
+- YouYu 本地 CI 仍为 `defined_not_executed`；
+- 正式业务验证保持 `not_started`；
+- Context 模板和数据库规范保持 `candidate`；
+- Harness B 保持 `not_started`。
+
+下一轮输入必须是本地 macOS 的编译、启动或接口日志，不再以仓库新增了多少文档作为进展依据。
