@@ -16,7 +16,7 @@ target_release: v0.2.0
 current_milestone: A / Context 可执行化
 working_branch: main
 baseline_commit: 651c87e28bf38b07a02d36ff1b93550f802cda70
-source_commit: 2b051bd365e54f039d0d09f8f6511b1e7174525b
+source_commit: b149785d6c5a840b4c13c4682a3ca29a235dfe1a
 youyu_release: v0.1.3
 youyu_source_commit: affcc8a6c3f8000433861dcd42f56dc4be8220ac
 youyu_server_implementation_status: implemented_not_runtime_validated
