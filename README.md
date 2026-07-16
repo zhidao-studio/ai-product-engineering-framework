@@ -9,54 +9,53 @@
 ## 当前版本
 
 ```text
-当前稳定版本：v0.1.8
+当前稳定版本：v0.1.9
 目标开发版本：v0.2.0
 当前里程碑：A / Context 可执行化
-当前工作段：A2 / YouYu v0.1.2 运行验证待执行
+当前工作段：A2 / YouYu运行验证
 执行状态：active
-YouYu版本：v0.1.2
+YouYu版本：v0.1.3
 服务端实现：implemented_not_runtime_validated
-静态复核：conditional_pass
-自动检查：defined / not_executed
-高保真：v0.1.0-draft.6 / conditional_pass / 待维护者批准
+静态复核：passed
+运行验证：blocked_external_runtime_evidence
+高保真：v0.1.0-draft.6 / draft_for_confirmation
 正式业务验证：not_started
 Context模板：candidate
 数据库规范：candidate
 Harness里程碑B：not_started
-仓库可见性：Public，待维护者手动切换 Private
 ```
 
-当前状态的唯一入口：[Framework 项目 Context](12_框架项目Context/README.md)。
+动态状态的唯一入口：[Framework 项目 Context](12_框架项目Context/README.md)。
 
-- [v0.1.8 YouYu 验证加固同步报告](10_版本演进/v0.1.8YouYu验证加固同步报告.md)
+- [v0.1.9 YouYu 静态正确性修订同步报告](10_版本演进/v0.1.9YouYu静态正确性修订同步报告.md)
 - [Roadmap](10_版本演进/Roadmap.md)
 - [CHANGELOG](CHANGELOG.md)
 - [版本管理规范](10_版本演进/版本管理规范.md)
 
-## v0.1.8 更新
+## v0.1.9 更新
 
-Framework 同步了 YouYu `v0.1.2` 的验证加固：
+Framework 同步 YouYu `v0.1.3` 的静态正确性和验证链修订：
 
-- 修正 Sa-Token 编译包路径；
-- 修正验证码错误次数与过期状态被事务回滚的问题；
-- 将账号、资料和协议记录更新收敛到主键和最小字段；
-- 统一 Admin、App、Gateway 的共享 Redis 数据库配置；
-- 补齐 App MySQL 数据源和明确 Mapper 扫描；
-- 修正成功码、Token 响应、资料字段和未知 JSON 字段契约；
-- 新增安全、请求、资料和字符串身份单元测试；
-- 新增数据库结构断言和账号业务切片联合工作流；
-- 新增 SERVER-CHECK-002，结论为 `conditional_pass`；
-- TASK-011 因缺少运行证据保持阻塞。
+- 数据库审计触发器无条件覆盖插入时间并保护历史创建时间；
+- 数据库检查逐项断言触发器正文、主键和唯一索引；
+- 验证码通过 `SELECT ... FOR UPDATE` 收口并发失败次数和单次消费；
+- App/Admin Profile、数据库默认值和 SQL 参数日志完成安全收敛；
+- Gateway 下游地址环境化；
+- 协议数组、Unicode 长度、Trace ID 和短信适配边界与 OpenAPI 对齐；
+- YouYu Project Context Pack、TASK-011、TASK-012 和 SERVER-CHECK-003 完成回写；
+- GitHub Actions 与本地统一调用账号业务切片检查脚本；
+- Framework AGENTS 改为只保存长期规则；
+- 新增 Framework 发布状态一致性检查脚本。
 
-本轮最重要的事实约束：
+本轮最重要的状态约束：
 
 ```text
-代码已实现
-≠ 检查已定义
-≠ 检查已执行通过
+静态复核通过
+≠ Maven/MySQL/Redis/接口运行通过
+≠ 正式业务验证通过
 ```
 
-GitHub Actions 当前没有 YouYu v0.1.2 的运行状态，因此 Framework 不把自动检查文件写成 Maven、数据库、共享会话或接口已经通过。
+当前没有新的 YouYu Maven、MySQL、Redis、端到端或 GitHub Actions 成功证据。
 
 ## 这是什么
 
@@ -125,19 +124,17 @@ flowchart TB
 
 [YouYu](09_参考工程/README.md) 用真实产品切片验证 Framework。
 
-当前已形成：
+当前追溯链：
 
 ```text
 产品与体验
-→ 工程规格
-→ 服务端实现
-→ 静态缺陷修复
-→ 单元测试与数据库断言
-→ 联合工作流
+→ 工程规格和受控实现
+→ v0.1.3静态正确性修订
+→ 本地等价检查脚本与自动工作流
 → 等待真实运行证据
 ```
 
-仍未完成：Maven、MySQL、Redis、Gateway/App 联合运行，高保真批准，iOS、真机与模拟用户验收。因此 YouYu 尚不能作为 `single_project_validated` 证据。
+尚未完成 Maven、MySQL、Redis、Gateway/App 联合运行，高保真批准，iOS、真机和模拟用户验收。YouYu 不能作为 `single_project_validated` 证据。
 
 ## 文档导航
 
@@ -158,17 +155,15 @@ flowchart TB
 
 ## 当前边界
 
-- v0.1.8 不代表 v0.2.0 里程碑 A 已退出；
+- v0.1.9 不代表 v0.2.0 里程碑 A 已退出；
 - Context 模板和数据库规范保持 `candidate`；
-- Harness B 尚未开始；
+- Harness B 保持 `not_started`；
 - 检查定义不等于检查执行；
 - Framework 自应用不替代真实业务验证；
-- 专有许可证限制使用权，Private 才能限制仓库访问。
+- 本版本没有改变三平面、十阶段、五大基础设施或许可模式。
 
 ## 贡献与许可
 
 - 受邀协作者：[CONTRIBUTING.md](CONTRIBUTING.md)
 - AI 执行规则：[AGENTS.md](AGENTS.md)
 - 专有许可证：[LICENSE](LICENSE)
-
-> 当前仓库仍为 Public。要形成真实访问控制，维护者需要在 GitHub 设置中切换为 Private。
