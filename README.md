@@ -9,14 +9,14 @@
 ## 当前版本
 
 ```text
-当前稳定版本：v0.1.9
+当前稳定版本：v0.1.10
 目标开发版本：v0.2.0
 当前里程碑：A / Context 可执行化
 当前工作段：A2 / YouYu运行验证
 执行状态：active
-YouYu版本：v0.1.3
+YouYu版本：v0.1.4
 服务端实现：implemented_not_runtime_validated
-静态复核：passed
+静态复核：conditional_pass
 运行验证：blocked_external_runtime_evidence
 高保真：v0.1.0-draft.6 / draft_for_confirmation
 正式业务验证：not_started
@@ -27,30 +27,28 @@ Harness里程碑B：not_started
 
 动态状态的唯一入口：[Framework 项目 Context](12_框架项目Context/README.md)。
 
-- [v0.1.9 YouYu 静态正确性修订同步报告](10_版本演进/v0.1.9YouYu静态正确性修订同步报告.md)
+- [v0.1.10 同步报告](10_版本演进/v0.1.10YouYu并发发送与事实源修订同步报告.md)
 - [Roadmap](10_版本演进/Roadmap.md)
 - [CHANGELOG](CHANGELOG.md)
 - [版本管理规范](10_版本演进/版本管理规范.md)
 
-## v0.1.9 更新
+## v0.1.10 更新
 
-Framework 同步 YouYu `v0.1.3` 的静态正确性和验证链修订：
+Framework 本轮同时修复自身事实源与 YouYu v0.1.4 参考工程静态缺陷：
 
-- 数据库审计触发器无条件覆盖插入时间并保护历史创建时间；
-- 数据库检查逐项断言触发器正文、主键和唯一索引；
-- 验证码通过 `SELECT ... FOR UPDATE` 收口并发失败次数和单次消费；
-- App/Admin Profile、数据库默认值和 SQL 参数日志完成安全收敛；
-- Gateway 下游地址环境化；
-- 协议数组、Unicode 长度、Trace ID 和短信适配边界与 OpenAPI 对齐；
-- YouYu Project Context Pack、TASK-011、TASK-012 和 SERVER-CHECK-003 完成回写；
-- GitHub Actions 与本地统一调用账号业务切片检查脚本；
-- Framework AGENTS 改为只保存长期规则；
-- 新增 Framework 发布状态一致性检查脚本。
+- 修正不可解析的 Framework `baseline_commit`；
+- 将 Framework 提交与 YouYu 参考提交分字段管理；
+- 发布检查脚本从项目 Context 解析动态状态；
+- 增加 Framework Git 提交真实性校验和可选 YouYu 仓库归属校验；
+- 修复 Harness B 状态泛化匹配；
+- 同步 YouYu Redis Lua 原子发送频控、发送幂等键和故障失败关闭；
+- 同步 App 基础数据源、配置启动校验、严格 Bearer 和 Trace 响应头；
+- 同步 OpenAPI v0.1.4、SERVER-CHECK-004 和可重复验证脚本。
 
-本轮最重要的状态约束：
+状态边界：
 
 ```text
-静态复核通过
+静态修订已完成
 ≠ Maven/MySQL/Redis/接口运行通过
 ≠ 正式业务验证通过
 ```
@@ -59,11 +57,7 @@ Framework 同步 YouYu `v0.1.3` 的静态正确性和验证链修订：
 
 ## 这是什么
 
-本项目不是 Prompt 合集、Coding Skill 收藏库，也不是某个模型或 Agent 平台的配置示例。
-
-它回答的是：
-
-> 当 AI Agent 已能执行复杂任务时，人和团队如何定义目标、管理 Context、约束执行、验证结果，并通过真实反馈持续改进产品？
+本项目不是 Prompt 合集、Coding Skill 收藏库，也不是某个模型或 Agent 平台的配置示例。它回答：当 AI Agent 已能执行复杂任务时，人和团队如何定义目标、管理 Context、约束执行、验证结果，并通过真实反馈持续改进产品？
 
 框架包含三个平面：
 
@@ -124,12 +118,11 @@ flowchart TB
 
 [YouYu](09_参考工程/README.md) 用真实产品切片验证 Framework。
 
-当前追溯链：
-
 ```text
 产品与体验
 → 工程规格和受控实现
-→ v0.1.3静态正确性修订
+→ v0.1.3数据库审计与验证码消费修订
+→ v0.1.4并发发送与事实源修订
 → 本地等价检查脚本与自动工作流
 → 等待真实运行证据
 ```
@@ -155,7 +148,7 @@ flowchart TB
 
 ## 当前边界
 
-- v0.1.9 不代表 v0.2.0 里程碑 A 已退出；
+- v0.1.10 不代表 v0.2.0 里程碑 A 已退出；
 - Context 模板和数据库规范保持 `candidate`；
 - Harness B 保持 `not_started`；
 - 检查定义不等于检查执行；
