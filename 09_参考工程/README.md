@@ -17,7 +17,7 @@
 ## 2. 当前参考工程：YouYu
 
 ```text
-YouYu版本：v0.1.3
+YouYu版本：v0.1.4
 当前里程碑：A / Context 可执行化
 当前工作段：A2 / YouYu运行验证
 首个业务切片：手机号验证码登录注册与个人资料管理
@@ -25,11 +25,13 @@ YouYu版本：v0.1.3
 体验定义：confirmed
 高保真：v0.1.0-draft.6 / draft_for_confirmation
 数据库迁移：implemented_not_executed
-OpenAPI：implemented_for_v0.1.3
+OpenAPI：implemented_for_v0.1.4
 服务端实现：implemented_not_runtime_validated
-静态复核：passed
+静态复核：conditional_pass
 运行验证：blocked_external_runtime_evidence
+手机号与设备原子发送频控：implemented_not_runtime_validated
 网络来源频控：not_implemented
+完整短信Outbox：not_implemented
 iOS正式实现：not_started
 正式业务验证：not_started
 Context模板成熟度：candidate
@@ -42,41 +44,42 @@ Harness里程碑B：not_started
 ```text
 产品规则与体验定义
 → 高保真候选
-→ 工程规格与旧实现扫描
-→ 参数确认与受控例外
-→ 数据库和OpenAPI
-→ 服务端实现
-→ v0.1.2初步验证加固
-→ v0.1.3审计、并发、配置和契约静态修订
-→ 本地等价验证脚本与SERVER-CHECK-003
+→ 工程规格与受控例外
+→ v0.1.3数据库审计和验证码消费并发修订
+→ v0.1.4验证码发送并发、配置与契约修订
+→ OpenAPI v0.1.4与SERVER-CHECK-004
+→ 本地等价验证脚本
 → TASK-011等待运行证据
 ```
 
-## 4. v0.1.3 已形成事实
+## 4. v0.1.4 已形成的仓库事实
 
 - App 普通用户与管理员 `sys_user` 保持隔离；
-- 四张账号域表、历史建表迁移和 v0.1.3 审计触发器修订已建立；
-- 插入审计时间不可由调用方指定，更新时创建时间受保护；
-- 数据库检查逐项验证主键、唯一索引和触发器正文；
-- 验证码通过数据库行锁收口失败次数与单次消费；
-- App/Admin Profile、数据库默认值和 SQL 参数输出已收敛；
-- Gateway 下游地址环境化；
-- 协议数组、Unicode 字符长度、Trace ID 和短信适配边界与 OpenAPI 对齐；
-- YouYu Project Context Pack、TASK-011、TASK-012 和 SERVER-CHECK-003 已建立；
+- 四张账号域表、历史建表迁移和 v0.1.3 审计触发器修订继续有效；
+- 验证码消费通过数据库行锁收口失败次数与单次消费；
+- Redis Lua 原子完成手机号冷却、手机号日限额、设备日限额和幂等预占；
+- 相同发送幂等键不会重复进入短信供应商；
+- Redis 不可用时失败关闭，不回退 JVM 本地计数；
+- 非法 `failed_count` 按主键锁定；
+- App 基础数据源覆盖所有 Profile，账号安全参数增加启动校验；
+- Gateway 只接受标准 Bearer，Trace ID 在响应提交前写入；
+- OpenAPI v0.1.4 成为当前唯一权威契约；
+- SERVER-CHECK-003 转为历史快照，当前验证记录为 SERVER-CHECK-004；
 - GitHub Actions 与本地统一调用 `scripts/check-account-slice.sh`。
 
 ## 5. 检查定义与执行证据
 
 ```text
 代码已实现
-≠ 静态复核通过
+≠ 静态条件通过
 ≠ 运行检查已执行通过
 ```
 
-当前只有静态复核结论 `passed`。未取得：
+当前静态状态为 `conditional_pass`。尚未取得：
 
 - Maven 测试与打包成功日志；
 - MySQL 迁移、行为和回滚成功日志；
+- Redis Lua 并发发送、计数和幂等实际结果；
 - Redis 跨进程共享会话证据；
 - Gateway/App 端到端证据；
 - Redis 故障验证；
@@ -87,12 +90,13 @@ Harness里程碑B：not_started
 
 ## 6. 当前明确缺口
 
+- 完整短信 Outbox 与供应商成功后数据库失败恢复；
+- Token 签发与数据库提交一致性验证；
 - 网络来源频控，YouYu TASK-012 `not_started`；
 - 真实短信供应商；
 - 高保真逐页批准；
 - iOS 正式业务实现与 Keychain；
 - 真机和模拟用户验收；
-- 历史安全、网络隔离和采集待审链路证据；
 - 失败、成本、人工修正和 Framework 改进回写。
 
 ## 7. 正式参考工程通过标准
@@ -114,9 +118,9 @@ Harness里程碑B：not_started
 
 ```text
 在等价环境运行YouYu scripts/check-account-slice.sh
-→ 回写Maven/MySQL/Redis/接口证据
+→ 回写Maven/MySQL/Redis/并发发送/接口证据
 → 修复运行问题并完成TASK-011
-→ 完成Redis故障验证与TASK-012
+→ 完成Redis故障、Outbox与TASK-012
 → 高保真人工批准
 → 单独创建iOS正式实现任务
 → 真机与模拟用户验收
