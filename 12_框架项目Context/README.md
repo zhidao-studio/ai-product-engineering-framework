@@ -16,9 +16,9 @@ target_release: v0.2.0
 current_milestone: A / Context 可执行化
 working_branch: main
 baseline_commit: 651c87e28bf38b07a02d36ff1b93550f802cda70
-source_commit: b149785d6c5a840b4c13c4682a3ca29a235dfe1a
+source_commit: 59c42addf58f4cfc69b8d33e06015d2cd3e11c4e
 youyu_release: v0.1.3
-youyu_source_commit: affcc8a6c3f8000433861dcd42f56dc4be8220ac
+youyu_source_commit: f881c219c6ebeb869a9fcb6eaa4b322dffe1e907
 youyu_server_implementation_status: implemented_not_runtime_validated
 youyu_static_review_status: passed
 youyu_runtime_validation_status: blocked_external_runtime_evidence
@@ -78,8 +78,8 @@ v0.1.9 是事实源收敛和参考工程静态修订同步版本，不代表 You
 - 四张账号域表、迁移、回滚、OpenAPI 和服务端实现；
 - v0.1.3 数据库审计触发器和创建时间保护；
 - 验证码数据库行锁、并发失败次数和单次消费修订；
-- Profile、数据库默认值、SQL 参数日志和 Gateway 地址修订；
-- 协议数组、Unicode、Trace ID 和短信适配边界修订；
+- App/Admin 显式数据库配置、H2 测试范围、SQL 参数日志和 Gateway 地址修订；
+- 协议数组、去空白后的 Unicode 码点、Trace ID 和短信适配边界修订；
 - YouYu Project Context Pack、TASK-011、TASK-012 和 SERVER-CHECK-003；
 - 本地等价检查脚本和调用该脚本的 Actions；
 - Framework AGENTS 与版本规范动态状态收敛；
