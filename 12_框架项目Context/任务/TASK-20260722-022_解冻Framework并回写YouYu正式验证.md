@@ -55,7 +55,7 @@ completed_at: 2026-07-22
 - [x] A2 保持进行中，未完成项和下一步明确；
 - [x] README、Roadmap、Context、参考工程与 CHANGELOG 无事实冲突；
 - [x] Framework 发布状态一致性脚本通过；
-- [ ] 修改使用中文提交并推送 `main`。
+- [x] 修改使用中文提交并推送 `main`。
 
 ## 6. 结果
 
@@ -68,3 +68,4 @@ completed_at: 2026-07-22
 - GitHub Billing 与计划额度按维护者决定未检查；
 - 全仓链接检查发现并修复 `README结构规范.md` 的既有图片相对路径错误；
 - 没有修改 YouYu、生产配置或 `ai-product-engineering-in-action`。
+- 实质回写提交：`886e4d1c5a93a83224392a52faa82918d7aced35`，已推送 `main`。

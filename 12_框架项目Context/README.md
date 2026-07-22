@@ -17,7 +17,7 @@ target_release: v0.2.0
 current_milestone: A / Context 可执行化
 working_branch: main
 baseline_commit: dd7c7f88932eb2f45b8ab66ce3158d7101fe0454
-source_commit: 4b9f66b8b8aa5ab4c61419ef22bd77f272084e1f
+source_commit: 886e4d1c5a93a83224392a52faa82918d7aced35
 youyu_release: v0.1.4
 youyu_source_commit: f2685d66c2f7733f160f11d1e93c9726aebd61d1
 youyu_merge_commit: 047cf099f869227d2085e9837abbd2cbfebccfc4
@@ -31,7 +31,7 @@ youyu_formal_business_validation: passed_core_path_by_maintainer
 youyu_ios_business_implementation_status: merged_to_main_core_path_validated
 youyu_local_ci_status: executed_passed
 framework_sync_status: active
-framework_change_policy: one_time_reference_writeback_in_progress_before_new_capability_work
+framework_change_policy: one_time_reference_writeback_completed_before_new_capability_work
 context_template_maturity: candidate
 project_context_template_maturity: single_project_validated
 task_context_template_maturity: single_project_validated
