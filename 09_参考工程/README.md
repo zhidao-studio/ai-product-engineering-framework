@@ -7,7 +7,7 @@
 ```text
 YouYu版本：v0.1.4
 当前里程碑：A / Context 可执行化
-当前工作段：A2 / YouYu正式业务验证回写与资产成熟度评估
+当前工作段：A2 / 里程碑A退出人工审查
 首个业务切片：手机号验证码登录注册与个人资料管理
 产品规则：confirmed
 体验定义：confirmed
@@ -41,7 +41,7 @@ Harness里程碑B：not_started
 → 项目 Context 与 Framework 回写
 ```
 
-维护者于 2026-07-22 在真机确认“账号和我验证通过”。YouYu 当前 `main` 为 `f2685d66`，PR #3 合并提交为 `047cf099`。
+维护者于 2026-07-22 在真机确认“账号和我验证通过”。YouYu 当前参考 `main` 为 `50d9a1b6`，PR #3 合并提交为 `047cf099`；后续提交只修正阶段 Context 和记录 Context 成本，没有修改业务代码。
 
 ## 3. 通过范围
 
@@ -71,7 +71,7 @@ Harness里程碑B：not_started
 |---|---|---|
 | 项目 Context Pack | 单项目已验证 | 支撑跨会话恢复与动态事实索引；提交字段更新成本仍需改进 |
 | 任务 Context Pack | 单项目已验证 | TASK-013 串联范围、实现、验证、批准、PR 与回写 |
-| 阶段 Context | 未通过成熟度提升 | YouYu 阶段文件未随执行和验收持续更新 |
+| 阶段 Context | 当前阶段复验通过，继续候选 | 漂移已修订；下一次真实阶段转换尚未观察 |
 | 冲突记录 | 继续候选 | 有真实安全冲突，但未完成关闭复验 |
 | 经验回写 | 继续候选 | 有候选经验，尚未完成统一采纳与效果复验 |
 | 数据库基础规范 | 单项目已验证 | 在账号域迁移、触发器、检查和业务路径中实际使用 |
@@ -82,9 +82,10 @@ Harness里程碑B：not_started
 
 YouYu 的账号与“我”切片已经提供正式核心路径参考证据，但这不是整个 YouYu 项目、生产安全或 Framework 全部资产的通过结论。
 
-A2 保持 `active`，Context 模板族整体保持 `candidate`，Harness B 保持 `not_started`。下一步先补 Context 成本记录、修复阶段 Context 漂移并由维护者审查 A2 退出。
+A2 保持 `active`，Context 模板族整体保持 `candidate`，Harness B 保持 `not_started`。Context 成本记录和阶段漂移复验已完成，当前只等待维护者审查 A2 退出。
 
 ## 7. 反馈入口
 
 - [从高保真到真机验收](YouYu账号切片反馈_从高保真到真机验收.md)；
+- [阶段 Context 防漂移复验](../12_框架项目Context/验证/CTX-CHECK-002_阶段Context防漂移复验.md)；
 - [历史首轮业务参考验证](../12_框架项目Context/验证/REF-CHECK-001_YouYu首轮业务参考任务验证.md)。

@@ -2,7 +2,7 @@
 
 ```yaml
 task_id: TASK-20260722-023
-status: in_progress
+status: completed
 project: AI Product Engineering Framework
 stage: 运行反馈与持续迭代
 risk_level: medium
@@ -11,7 +11,9 @@ executor: Codex
 human_approver: 项目维护者
 framework_baseline_commit: 7a23cb5d2aec02d10d993f861ac54380fff925e7
 reference_project: YouYu
-reference_source_commit: f2685d66c2f7733f160f11d1e93c9726aebd61d1
+reference_baseline_commit: f2685d66c2f7733f160f11d1e93c9726aebd61d1
+reference_source_commit: 50d9a1b6e110fbe2f64fb89a1cdbca00ab13d474
+framework_source_commit: a302a9fd796d479a08d1d99ae211aff4ef8ce9ea
 created_at: 2026-07-22
 ```
 
@@ -56,14 +58,14 @@ created_at: 2026-07-22
 
 ## 5. 验收断言
 
-- [ ] YouYu 当前阶段入口不再指向业务功能准备；
-- [ ] 历史阶段不会与当前阶段并列有效；
-- [ ] Context 成本、人工修正和遗漏有证据边界；
-- [ ] 阶段 Context 模板具备可检查的过期与更新触发字段；
-- [ ] YouYu 实例满足修订后的阶段模板 P0 字段；
-- [ ] `CTX-CHECK-002` 给出通过、限制和成熟度结论；
-- [ ] A2 是否可退出仍保留维护者批准；
-- [ ] 两个仓库相关检查通过并分别使用中文提交推送 `main`。
+- [x] YouYu 当前阶段入口不再指向业务功能准备；
+- [x] 历史阶段不会与当前阶段并列有效；
+- [x] Context 成本、人工修正和遗漏有证据边界；
+- [x] 阶段 Context 模板具备可检查的过期与更新触发字段；
+- [x] YouYu 实例满足修订后的阶段模板 P0 字段；
+- [x] `CTX-CHECK-002` 给出通过、限制和成熟度结论；
+- [x] A2 是否可退出仍保留维护者批准；
+- [x] 两个仓库相关检查通过并分别使用中文提交推送 `main`。
 
 ## 6. 预期结论边界
 
@@ -71,4 +73,25 @@ created_at: 2026-07-22
 
 ## 7. 结果
 
-任务完成后填写。
+### YouYu 结果
+
+- TASK-015 已完成并推送 `main`；
+- 当前阶段切换为“质量与安全验证”，历史准备阶段已归档；
+- EXP-005 记录项目 Context 同期 23 次提交、阶段目录 0 次提交和至少 8 个明确修正事件；
+- Token、人工工时和模型或工具费用标为 `not_measured`；
+- 最终参考提交为 `50d9a1b6e110fbe2f64fb89a1cdbca00ab13d474`。
+
+### Framework 结果
+
+- 阶段规范、模板和完整性检查清单已增加防漂移字段；
+- CTX-CHECK-002 为 `passed_current_stage_revalidation_with_transition_pending`；
+- 阶段模板继续保持 `candidate`，因为修订后尚未经历下一次真实阶段转换；
+- A2 工程退出条件已满足，唯一剩余条件为维护者批准；
+- Harness B 保持 `not_started`，稳定版本保持 `v0.1.10`。
+
+### 验证
+
+- 两个仓库 `git diff --check`：通过；
+- 变更 Markdown 本地链接检查：通过；
+- Framework `scripts/check-release-state.sh`（绑定 YouYu 仓库）：通过；
+- 未修改任何业务代码、数据库、运行配置或 Billing 设置。

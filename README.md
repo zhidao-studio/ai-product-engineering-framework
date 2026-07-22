@@ -12,7 +12,7 @@
 当前稳定版本：v0.1.10
 目标开发版本：v0.2.0
 当前里程碑：A / Context 可执行化
-当前工作段：A2 / YouYu正式业务验证回写与资产成熟度评估
+当前工作段：A2 / 里程碑A退出人工审查
 执行状态：active
 YouYu版本：v0.1.4
 服务端实现：conditional_pass
@@ -129,7 +129,7 @@ flowchart TB
 → PR #3 合并与 Framework 回写
 ```
 
-账号与“我”核心路径已经通过维护者真机验收。项目 Context、任务 Context 与数据库基础规范获得 `single_project_validated` 证据；阶段、冲突、经验回写模板和 Context 模板族整体继续保持 `candidate`。
+账号与“我”核心路径已经通过维护者真机验收。项目 Context、任务 Context 与数据库基础规范获得 `single_project_validated` 证据；阶段 Context 已完成防漂移修订和当前阶段复验，但下一次真实阶段转换待验证，因此阶段、冲突、经验回写模板和 Context 模板族整体继续保持 `candidate`。
 
 ## 文档导航
 

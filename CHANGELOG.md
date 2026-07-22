@@ -15,6 +15,9 @@
 - YouYu 账号与“我”完成本地运行、模拟器严格路径、真机维护者验收和 PR #3 合并；
 - 项目 Context、任务 Context 与数据库基础规范提升为 `single_project_validated`；
 - 阶段 Context 漂移被记录为 A2 退出前必须修复的问题。
+- 记录 YouYu Context 维护成本、至少 8 个明确修正事件和不可测量项；
+- 阶段 Context 增加来源提交、最近确认、替代关系、复核触发和过期条件；
+- CTX-CHECK-002 完成 YouYu 当前阶段防漂移复验，真实阶段转换仍待验证；
 
 ### 当前开发边界
 
