@@ -9,7 +9,7 @@
 | 模板 | 用途 | 当前成熟度 |
 |---|---|---|
 | [项目 Context Pack 模板](项目Context-Pack模板.md) | 建立项目长期记忆入口 | `single_project_validated` |
-| [阶段 Context 模板](阶段Context模板.md) | 管理生命周期阶段的输入、产物和退出检查关卡 | `candidate` |
+| [阶段 Context 模板](阶段Context模板.md) | 管理生命周期阶段的输入、产物和退出检查关卡 | `candidate`（当前阶段复验通过，真实阶段转换待验证） |
 | [任务 Context Pack 模板](任务Context-Pack模板.md) | 为一次 AI 任务装配目标、事实、边界、约定和验证 | `single_project_validated` |
 | [Context 冲突记录模板](Context冲突记录模板.md) | 记录版本、文档、约定和责任冲突 | `candidate` |
 | [经验回写记录模板](经验回写记录模板.md) | 将验证、失败和人工修正沉淀为长期资产 | `candidate` |
@@ -49,4 +49,4 @@ candidate
 
 [REF-CHECK-002](../../12_框架项目Context/验证/REF-CHECK-002_YouYu账号与我正式业务参考验证.md) 证明项目与任务模板支撑了 YouYu 账号与“我”从批准高保真、受控实现、运行验证、真机验收到 PR 合并的核心闭环。
 
-本轮同时发现阶段 Context 在跨阶段推进中发生漂移，因此阶段、冲突和经验回写模板继续保持 `candidate`，模板族整体不打包提升。
+本轮同时发现阶段 Context 在跨阶段推进中发生漂移。经 [CTX-CHECK-002](../../12_框架项目Context/验证/CTX-CHECK-002_阶段Context防漂移复验.md) 修订并在 YouYu 当前阶段复验通过，但尚未经历下一次真实阶段转换，因此阶段模板继续保持 `candidate`；冲突和经验回写模板也保持 `candidate`，模板族整体不打包提升。

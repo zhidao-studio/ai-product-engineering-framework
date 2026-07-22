@@ -10,15 +10,29 @@ stage_context_pack_version:
 project:
 stage:
 status: preparing
+record_status: current
 owner:
 reviewer:
 human_approver:
 started_at:
 project_context_pack_version:
 baseline_commit:
+source_commit:
+last_verified_at:
+supersedes:
+superseded_by:
+review_triggers:
+  - project_stage_changed
+  - task_completed_or_blocked
+  - human_approval_recorded
+  - pull_request_merged_closed_or_reverted
+  - release_or_reference_baseline_changed
+expires_when:
+  - 项目Context的current_stage与本文件stage不一致
+  - 出现影响阶段结论的新证据且尚未复核
 ```
 
-> `status` 使用统一机器枚举；`stage_context_pack_version` 与 `project_context_pack_version` 不得混用。
+> `status` 使用统一阶段状态枚举；`record_status` 使用 `current`、`archived` 或 `superseded`；`stage_context_pack_version` 与 `project_context_pack_version` 不得混用。
 
 ## 1. 阶段身份
 
@@ -30,6 +44,15 @@ baseline_commit:
 - 人工批准人：
 - 计划进入时间：
 - 目标退出时间：
+
+### 新鲜度与替代关系
+
+- 最近确认日期：
+- 最近确认所依据的提交：
+- 替代的阶段 Context：
+- 被哪个阶段 Context 替代：
+- 触发复核的事件：
+- 何时不得继续作为当前事实使用：
 
 ## 2. 进入依据
 
@@ -87,6 +110,10 @@ baseline_commit:
 - [ ] 剩余风险在允许范围；
 - [ ] 下一阶段依赖已经准备；
 - [ ] 项目 Context Pack 已同步长期变化；
+- [ ] 项目 Context、阶段索引和本文件指向同一当前阶段；
+- [ ] `source_commit`、`last_verified_at` 和 Pack 版本已更新；
+- [ ] 复核触发事件已逐项判断；
+- [ ] 历史阶段已归档并链接当前阶段；
 - [ ] 人工批准人确认退出。
 
 ## 9. 退出证据
@@ -113,3 +140,5 @@ baseline_commit:
 
 | 日期 | 变化 | 修改人 | 关联任务、提交或决策 |
 |---|---|---|---|
+
+> 项目阶段变化、任务完成或阻塞、人工批准、PR 合并或关闭、版本或参考基线变化时，即使阶段名称不变，也必须新增一条复核记录。

@@ -43,21 +43,61 @@ stage_context_pack_version: 1.0
 project: 项目名称
 stage: 工程规格设计
 status: active
+record_status: current
 owner: 工程责任人
 reviewer: 架构评审人
 human_approver: 产品负责人
 started_at: 2026-07-12
 project_context_pack_version: 0.2-A.2
 baseline_commit: abc1234
+source_commit: def5678
+last_verified_at: 2026-07-12
+supersedes: 上一阶段Context路径或null
+superseded_by: null
+review_triggers:
+  - project_stage_changed
+  - task_completed_or_blocked
+  - human_approval_recorded
+  - pull_request_merged_closed_or_reverted
+  - release_or_reference_baseline_changed
+expires_when:
+  - 项目Context的current_stage与本文件stage不一致
+  - 出现影响阶段结论的新证据且尚未复核
 ```
 
 字段要求：
 
 - `status` 使用统一机器值：`not_started`、`preparing`、`active`、`in_review`、`approved`、`blocked`、`stopped`；
+- `record_status` 区分文件是否参与当前装配，使用 `current`、`archived`、`superseded`；
 - `stage_context_pack_version` 表示阶段 Pack 自身版本；
 - `project_context_pack_version` 表示引用的项目 Pack 版本；
 - `stage` 必须严格映射 Framework 十阶段名称；
 - `baseline_commit` 固定阶段开始时的代码或文档基线。
+- `source_commit` 固定最近一次阶段事实复核所依据的提交；
+- `last_verified_at` 记录最近一次按项目、任务和证据复核的日期；
+- `supersedes`、`superseded_by` 建立新旧阶段文件的替代关系，历史阶段不得继续标记为 `current`；
+- `review_triggers` 使用稳定机器值列出必须复核的事件；
+- `expires_when` 写明触发后不得继续把本文件当作当前事实的判断条件。
+
+## 3.1 新鲜度与防漂移规则
+
+发生以下任一事件时，必须复核阶段 Context，而不是只更新项目 Context：
+
+1. 项目 Context 的 `current_stage` 变化；
+2. 当前任务完成、阻塞、停止或被替代；
+3. 人工批准、拒绝、豁免或验收结论形成；
+4. 业务 PR 合并、关闭或回退；
+5. 稳定版本、目标版本、参考工程或关键来源提交变化；
+6. 新证据改变阶段进入、退出、风险或阻塞判断。
+
+复核结果只能是以下之一：
+
+- 更新当前阶段的来源、状态、风险和退出检查；
+- 归档当前阶段，并建立新的当前阶段文件；
+- 标记 `blocked` 或退回上一阶段；
+- 明确事件不影响阶段结论，并记录原因和最近确认时间。
+
+项目 Context、阶段索引和当前阶段文件必须指向同一阶段。发现不一致时，阶段文件视为疑似过期，不得参与新任务装配，直至完成复核。
 
 ## 4. 最小结构
 
@@ -173,6 +213,10 @@ stateDiagram-v2
 - 长期变化会同步项目 Context Pack；
 - 阶段内任务均能追溯到本阶段目标；
 - Pack 版本与项目 Pack 引用字段没有混淆。
+- 项目 Context、阶段索引和阶段文件指向同一当前阶段；
+- `source_commit` 与 `last_verified_at` 可追溯；
+- 复核触发和过期条件明确；
+- 历史阶段已归档并通过 `superseded_by` 指向当前阶段。
 
 ## 8. 反模式
 
@@ -183,4 +227,6 @@ stateDiagram-v2
 - 未决事项没有责任人和截止条件；
 - 质量验证失败只修代码，不判断是否退回设计或工程规格；
 - 阶段结束后项目 Context 仍停留在旧状态；
+- 项目 Context 已进入新阶段，但阶段索引和阶段文件仍停留在旧阶段；
+- 任务完成、人工批准或 PR 合并后只更新项目摘要，不复核阶段 Context；
 - 状态字段中混用英文机器值和中文自由文本。
