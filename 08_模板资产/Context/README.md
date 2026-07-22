@@ -1,6 +1,6 @@
-# Context 候选模板
+# Context 模板
 
-> 本目录提供 Context Engineering 的第一批可复制模板。当前机器成熟度为 `candidate`，需要在真实参考工程中使用、发现问题并复验后，才能升级。
+> 本目录提供 Context Engineering 的第一批可复制模板。模板族整体仍为 `candidate`；项目与任务模板已获得 YouYu 单项目证据，其他模板继续收集验证。
 
 中文术语遵循：[术语与易懂表达规范](../../01_框架定义/术语与易懂表达规范.md)。
 
@@ -8,9 +8,9 @@
 
 | 模板 | 用途 | 当前成熟度 |
 |---|---|---|
-| [项目 Context Pack 模板](项目Context-Pack模板.md) | 建立项目长期记忆入口 | `candidate` |
+| [项目 Context Pack 模板](项目Context-Pack模板.md) | 建立项目长期记忆入口 | `single_project_validated` |
 | [阶段 Context 模板](阶段Context模板.md) | 管理生命周期阶段的输入、产物和退出检查关卡 | `candidate` |
-| [任务 Context Pack 模板](任务Context-Pack模板.md) | 为一次 AI 任务装配目标、事实、边界、约定和验证 | `candidate` |
+| [任务 Context Pack 模板](任务Context-Pack模板.md) | 为一次 AI 任务装配目标、事实、边界、约定和验证 | `single_project_validated` |
 | [Context 冲突记录模板](Context冲突记录模板.md) | 记录版本、文档、约定和责任冲突 | `candidate` |
 | [经验回写记录模板](经验回写记录模板.md) | 将验证、失败和人工修正沉淀为长期资产 | `candidate` |
 
@@ -44,3 +44,9 @@ candidate
 | `deprecated` | 已废弃 | 不用于新任务 |
 
 模板状态变化必须记录验证证据；重大结构变化应形成设计决策。
+
+## 单项目验证证据
+
+[REF-CHECK-002](../../12_框架项目Context/验证/REF-CHECK-002_YouYu账号与我正式业务参考验证.md) 证明项目与任务模板支撑了 YouYu 账号与“我”从批准高保真、受控实现、运行验证、真机验收到 PR 合并的核心闭环。
+
+本轮同时发现阶段 Context 在跨阶段推进中发生漂移，因此阶段、冲突和经验回写模板继续保持 `candidate`，模板族整体不打包提升。

@@ -1,6 +1,6 @@
 # 项目 Context Pack
 
-> 模板状态：`candidate` / 候选。填写时优先使用链接和索引，不复制形成第二套事实源。
+> 模板状态：`single_project_validated` / 单项目已验证。已在 YouYu 账号与“我”切片的多轮执行、真机验收和最终回写中使用；可供相似项目参考，不代表跨项目稳定。
 
 中文术语遵循：[术语与易懂表达规范](../../01_框架定义/术语与易懂表达规范.md)。
 
@@ -23,6 +23,8 @@ sensitivity:
 ```
 
 > `context_pack_version`、`stable_release` 和 `target_release` 含义不同，不得合并为通用 `version` 字段。`status` 表示项目长期状态，`execution_status` 表示当前工作是否进行、阻塞或停止。
+
+> 验证证据：[REF-CHECK-002](../../12_框架项目Context/验证/REF-CHECK-002_YouYu账号与我正式业务参考验证.md)。已知限制：提交字段在高频变更中维护成本较高，阶段状态仍需独立防漂移检查。
 
 ## 1. 项目身份
 

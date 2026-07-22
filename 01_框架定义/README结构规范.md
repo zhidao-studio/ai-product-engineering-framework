@@ -98,7 +98,7 @@ README 不得：
 顶部展示 ChatGPT 生成的真实概念图或仓库内 SVG/PNG：
 
 ```markdown
-![AI 产品工程框架概念总览](assets/图片/AI产品工程框架v0.1概念总览.png)
+![AI 产品工程框架概念总览](../assets/图片/AI产品工程框架v0.1概念总览.png)
 ```
 
 图片下必须声明：

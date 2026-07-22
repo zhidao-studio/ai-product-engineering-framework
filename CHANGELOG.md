@@ -12,12 +12,15 @@
 - 建立事实源、装配、冲突、裁剪和回写规范；
 - 建立候选模板和 Framework 自应用；
 - 使用 YouYu 真实参考工程验证 Context 能否支撑受控实现和证据回写。
+- YouYu 账号与“我”完成本地运行、模拟器严格路径、真机维护者验收和 PR #3 合并；
+- 项目 Context、任务 Context 与数据库基础规范提升为 `single_project_validated`；
+- 阶段 Context 漂移被记录为 A2 退出前必须修复的问题。
 
 ### 当前开发边界
 
-- YouYu 仍处于运行验证等待阶段；
-- YouYu 正式业务验证保持 `not_started`；
-- Context 模板和数据库规范保持 `candidate`；
+- YouYu 账号与“我”核心路径为 `passed_core_path_by_maintainer`，不等于生产或全部专项通过；
+- Context 模板族整体保持 `candidate`，仅项目与任务模板获得单项目证据；
+- 数据库基础规范为 `single_project_validated`；
 - Harness B 保持 `not_started`；
 - 未完成能力不得重复描述为 v0.2.0 已稳定交付。
 

@@ -2,129 +2,89 @@
 
 > 参考工程用于证明 Framework 能够控制真实产品交付，而不是只形成文档。当前状态以 [Framework 项目 Context](../12_框架项目Context/README.md) 为准。
 
-## 1. 参考工程必须覆盖
-
-- 价值与产品范围；
-- 用户流程与高保真；
-- 工程架构、API 和数据约定；
-- 项目、阶段和任务 Context；
-- 受控实现任务；
-- 静态、数据库、运行、安全和模拟用户验证；
-- 发布或可运行交付；
-- 用户反馈或代理指标；
-- 对 Framework 的反向改进。
-
-## 2. 当前参考工程：YouYu
+## 1. 当前参考工程：YouYu
 
 ```text
 YouYu版本：v0.1.4
 当前里程碑：A / Context 可执行化
-当前工作段：A2 / YouYu运行验证
+当前工作段：A2 / YouYu正式业务验证回写与资产成熟度评估
 首个业务切片：手机号验证码登录注册与个人资料管理
 产品规则：confirmed
 体验定义：confirmed
-高保真：v0.1.0-draft.6 / draft_for_confirmation
-数据库迁移：implemented_not_executed
+高保真：v0.1.2 / maintenance_approved
+数据库迁移：conditional_pass
 OpenAPI：implemented_for_v0.1.4
-服务端实现：implemented_not_runtime_validated
+服务端实现：conditional_pass
 静态复核：conditional_pass
-运行验证：blocked_external_runtime_evidence
-手机号与设备原子发送频控：implemented_not_runtime_validated
-网络来源频控：not_implemented
-完整短信Outbox：not_implemented
-iOS正式实现：not_started
-正式业务验证：not_started
-Context模板成熟度：candidate
-数据库规范成熟度：candidate
+运行验证：conditional_pass
+iOS正式实现：merged_to_main_core_path_validated
+正式业务验证：passed_core_path_by_maintainer
+Context模板族成熟度：candidate
+项目Context模板：single_project_validated
+任务Context模板：single_project_validated
+数据库规范成熟度：single_project_validated
 Harness里程碑B：not_started
 ```
 
-## 3. 当前追溯链
+## 2. 已完成的完整核心链路
 
 ```text
-产品规则与体验定义
-→ 高保真候选
-→ 工程规格与受控例外
-→ v0.1.3数据库审计和验证码消费并发修订
-→ v0.1.4验证码发送并发、配置与契约修订
-→ OpenAPI v0.1.4与SERVER-CHECK-004
-→ 本地等价验证脚本
-→ TASK-011等待运行证据
+产品定义与不做清单
+→ 用户流程与页面状态
+→ 高保真 v0.1.2 维护者批准
+→ 工程规格、数据库迁移与 OpenAPI
+→ TASK-013 受控实现
+→ 服务端、本地数据库、Redis 和接口运行验证
+→ iOS 严格模拟器路径
+→ 真机构建、安装、启动和维护者操作验收
+→ PR #3 合并到 main
+→ 项目 Context 与 Framework 回写
 ```
 
-## 4. v0.1.4 已形成的仓库事实
+维护者于 2026-07-22 在真机确认“账号和我验证通过”。YouYu 当前 `main` 为 `f2685d66`，PR #3 合并提交为 `047cf099`。
 
-- App 普通用户与管理员 `sys_user` 保持隔离；
-- 四张账号域表、历史建表迁移和 v0.1.3 审计触发器修订继续有效；
-- 验证码消费通过数据库行锁收口失败次数与单次消费；
-- Redis Lua 原子完成手机号冷却、手机号日限额、设备日限额和幂等预占；
-- 相同发送幂等键不会重复进入短信供应商；
-- Redis 不可用时失败关闭，不回退 JVM 本地计数；
-- 非法 `failed_count` 按主键锁定；
-- App 基础数据源覆盖所有 Profile，账号安全参数增加启动校验；
-- Gateway 只接受标准 Bearer，Trace ID 在响应提交前写入；
-- OpenAPI v0.1.4 成为当前唯一权威契约；
-- SERVER-CHECK-003 转为历史快照，当前验证记录为 SERVER-CHECK-004；
-- GitHub Actions 与本地统一调用 `scripts/check-account-slice.sh`。
+## 3. 通过范围
 
-## 5. 检查定义与执行证据
+- 手机号验证码登录或自动注册；
+- 协议确认和 App 内协议阅读；
+- Keychain Token 保存、恢复和清理；
+- 已登录与未登录“我”；
+- 账号信息、昵称和个人简介；
+- 退出及旧 Token 失效；
+- 已批准高保真核心页面与协议行对齐；
+- Maven、MySQL、Redis、Gateway、App 和 iOS 开发环境核心路径。
 
-```text
-代码已实现
-≠ 静态条件通过
-≠ 运行检查已执行通过
-```
+## 4. 未通过或未覆盖范围
 
-当前静态状态为 `conditional_pass`。尚未取得：
+- 真机相册、拍照、裁剪、头像上传和受保护头像显示专项；
+- 异常网络、服务失败、深色模式、小屏、动态字体和 VoiceOver 专项；
+- Redis 故障和网络分区；
+- 完整短信 Outbox、网络来源频控和真实短信；
+- Token 与数据库事务一致性；
+- 历史敏感信息等既有安全事项；
+- 正式法律协议、生产部署和发布批准；
+- GitHub Billing 与计划额度检查（维护者决定暂缓）。
 
-- Maven 测试与打包成功日志；
-- MySQL 迁移、行为和回滚成功日志；
-- Redis Lua 并发发送、计数和幂等实际结果；
-- Redis 跨进程共享会话证据；
-- Gateway/App 端到端证据；
-- Redis 故障验证；
-- 并发验证码实际请求结果；
-- 日志安全实际运行结果。
+## 5. 对 Framework 的验证结果
 
-因此不能将 YouYu 标记为 `single_project_validated`。
+| Framework 资产或假设 | 结果 | 说明 |
+|---|---|---|
+| 项目 Context Pack | 单项目已验证 | 支撑跨会话恢复与动态事实索引；提交字段更新成本仍需改进 |
+| 任务 Context Pack | 单项目已验证 | TASK-013 串联范围、实现、验证、批准、PR 与回写 |
+| 阶段 Context | 未通过成熟度提升 | YouYu 阶段文件未随执行和验收持续更新 |
+| 冲突记录 | 继续候选 | 有真实安全冲突，但未完成关闭复验 |
+| 经验回写 | 继续候选 | 有候选经验，尚未完成统一采纳与效果复验 |
+| 数据库基础规范 | 单项目已验证 | 在账号域迁移、触发器、检查和业务路径中实际使用 |
 
-## 6. 当前明确缺口
+完整验证记录见 [REF-CHECK-002](../12_框架项目Context/验证/REF-CHECK-002_YouYu账号与我正式业务参考验证.md)。
 
-- 完整短信 Outbox 与供应商成功后数据库失败恢复；
-- Token 签发与数据库提交一致性验证；
-- 网络来源频控，YouYu TASK-012 `not_started`；
-- 真实短信供应商；
-- 高保真逐页批准；
-- iOS 正式业务实现与 Keychain；
-- 真机和模拟用户验收；
-- 失败、成本、人工修正和 Framework 改进回写。
+## 6. 当前结论
 
-## 7. 正式参考工程通过标准
+YouYu 的账号与“我”切片已经提供正式核心路径参考证据，但这不是整个 YouYu 项目、生产安全或 Framework 全部资产的通过结论。
 
-只有下列证据完整，才能评估 `single_project_validated`：
+A2 保持 `active`，Context 模板族整体保持 `candidate`，Harness B 保持 `not_started`。下一步先补 Context 成本记录、修复阶段 Context 漂移并由维护者审查 A2 退出。
 
-1. 产品、体验和工程事实可追溯且人工批准；
-2. Context 可由新 Agent 独立恢复；
-3. 修改边界、接口和检查关卡真实生效；
-4. 静态、数据库、运行、安全和模拟用户验证完成；
-5. iOS 与服务端完成真实端到端路径；
-6. 失败、人工修正、成本和遗漏有记录；
-7. 运行结果和 Framework 改进完成回写；
-8. 人类责任人批准最终结论。
+## 7. 反馈入口
 
-当前正式业务验证保持 `not_started`，Context 模板与数据库规范保持 `candidate`，Harness B 保持 `not_started`。
-
-## 8. 下一步
-
-```text
-在等价环境运行YouYu scripts/check-account-slice.sh
-→ 回写Maven/MySQL/Redis/并发发送/接口证据
-→ 修复运行问题并完成TASK-011
-→ 完成Redis故障、Outbox与TASK-012
-→ 高保真人工批准
-→ 单独创建iOS正式实现任务
-→ 真机与模拟用户验收
-→ 回写Framework成熟度评估
-```
-
-历史首轮复核保留在 REF-CHECK-001，其早期结论不代表当前参考工程通过。
+- [从高保真到真机验收](YouYu账号切片反馈_从高保真到真机验收.md)；
+- [历史首轮业务参考验证](../12_框架项目Context/验证/REF-CHECK-001_YouYu首轮业务参考任务验证.md)。
