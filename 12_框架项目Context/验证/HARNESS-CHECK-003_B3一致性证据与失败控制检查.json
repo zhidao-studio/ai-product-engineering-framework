@@ -1,0 +1,71 @@
+{
+  "manifest_version": "0.1",
+  "task_id": "TASK-20260723-027",
+  "repository": "zhidao-studio/ai-product-engineering-framework",
+  "baseline_commit": "fd6095d46a4abacc7721a6069aeab73aee20c9fd",
+  "risk_level": "medium",
+  "overall_result": "passed",
+  "formal_business_validation": "not_executed",
+  "required_layers": [
+    "static",
+    "runtime"
+  ],
+  "evidence": [
+    {
+      "id": "S-001",
+      "layer": "static",
+      "assertion": "TASK-027 的实际修改路径全部位于批准边界内",
+      "required": true,
+      "status": "passed",
+      "executed": true,
+      "step": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/check_task_boundary.py --manifest 12_框架项目Context/任务/TASK-20260723-027_任务控制清单.json --mode worktree",
+      "exit_code": 0,
+      "result_summary": "13 个实际修改路径通过；首次越界的模板总目录修改已撤回",
+      "evidence_path": "12_框架项目Context/验证/HARNESS-CHECK-003_B3一致性证据与失败控制检查.md",
+      "actor": "Codex",
+      "executed_at": "2026-07-23T11:01:45+08:00"
+    },
+    {
+      "id": "S-002",
+      "layer": "static",
+      "assertion": "变更文档链接、补丁格式和发布状态保持一致",
+      "required": true,
+      "status": "passed",
+      "executed": true,
+      "step": "本地链接检查；git diff --check；YOUYU_REPO_DIR=... bash scripts/check-release-state.sh",
+      "exit_code": 0,
+      "result_summary": "9 个变更 Markdown 文件的 27 个本地链接通过，补丁和发布状态一致性通过",
+      "evidence_path": "12_框架项目Context/验证/HARNESS-CHECK-003_B3一致性证据与失败控制检查.md",
+      "actor": "Codex",
+      "executed_at": "2026-07-23T11:01:45+08:00"
+    },
+    {
+      "id": "R-001",
+      "layer": "runtime",
+      "assertion": "任务边界与证据清单检查器的正反例通过",
+      "required": true,
+      "status": "passed",
+      "executed": true,
+      "step": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest scripts/tests/test_check_task_boundary.py scripts/tests/test_check_evidence_manifest.py",
+      "exit_code": 0,
+      "result_summary": "18 项单元测试通过",
+      "evidence_path": "12_框架项目Context/验证/HARNESS-CHECK-003_B3一致性证据与失败控制检查.md",
+      "actor": "Codex",
+      "executed_at": "2026-07-23T11:01:45+08:00"
+    },
+    {
+      "id": "R-002",
+      "layer": "runtime",
+      "assertion": "候选证据模板可被证据清单检查器接受",
+      "required": true,
+      "status": "passed",
+      "executed": true,
+      "step": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/check_evidence_manifest.py --manifest 08_模板资产/Harness/验证证据清单模板.json",
+      "exit_code": 0,
+      "result_summary": "三层未执行模板结构有效，总体结果保持 not_executed",
+      "evidence_path": "12_框架项目Context/验证/HARNESS-CHECK-003_B3一致性证据与失败控制检查.md",
+      "actor": "Codex",
+      "executed_at": "2026-07-23T11:01:45+08:00"
+    }
+  ]
+}
