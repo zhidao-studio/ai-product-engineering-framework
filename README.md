@@ -11,9 +11,9 @@
 ```text
 当前稳定版本：v0.1.10
 目标开发版本：v0.2.0
-当前里程碑：A / Context 可执行化（已完成）
-当前工作段：A2 / completed
-执行状态：awaiting_next_milestone_decision
+当前里程碑：B / Harness 可执行化
+当前工作段：B1 / Harness控制基线设计
+执行状态：in_progress
 YouYu版本：v0.1.4
 服务端实现：conditional_pass
 静态复核：conditional_pass
@@ -22,7 +22,7 @@ YouYu版本：v0.1.4
 正式业务验证：passed_core_path_by_maintainer
 Context模板：candidate
 数据库规范：single_project_validated
-Harness里程碑B：not_started
+Harness里程碑B：active
 ```
 
 动态状态的唯一入口：[Framework 项目 Context](12_框架项目Context/README.md)。
@@ -129,7 +129,7 @@ flowchart TB
 → PR #3 合并与 Framework 回写
 ```
 
-账号与“我”核心路径已经通过维护者真机验收。项目 Context、任务 Context 与数据库基础规范获得 `single_project_validated` 证据；阶段 Context 已完成防漂移修订和当前阶段复验，但下一次真实阶段转换待验证，因此阶段、冲突、经验回写模板和 Context 模板族整体继续保持 `candidate`。维护者已于 2026-07-23 批准里程碑 A 退出，Harness B 尚未启动。
+账号与“我”核心路径已经通过维护者真机验收。项目 Context、任务 Context 与数据库基础规范获得 `single_project_validated` 证据；阶段 Context 已完成防漂移修订并经历从 A 到 B1 的真实阶段转换。维护者已于 2026-07-23 批准启动 Harness B，当前只开展 B1 控制基线设计，候选检查尚未宣称在参考工程执行通过。
 
 ## 文档导航
 
@@ -153,7 +153,7 @@ flowchart TB
 - v0.1.10 不代表 v0.2.0 里程碑 A 已退出；
 - Context 模板族保持 `candidate`，项目与任务模板为 `single_project_validated`；
 - 数据库基础规范为 `single_project_validated`；
-- Harness B 保持 `not_started`；
+- Harness B 为 `active`，当前工作段为 B1 控制基线设计；
 - 检查定义不等于检查执行；
 - Framework 自应用不替代真实业务验证；
 - 本版本没有改变三平面、十阶段、五大基础设施或许可模式。

@@ -19,14 +19,20 @@
 - 阶段 Context 增加来源提交、最近确认、替代关系、复核触发和过期条件；
 - CTX-CHECK-002 完成 YouYu 当前阶段防漂移复验，真实阶段转换仍待验证；
 - 维护者于 2026-07-23 批准里程碑 A 退出，A2 标记完成并归档；
-- Harness B 保持 `not_started`，不因 A 完成自动启动；
+- 维护者于 2026-07-23 授权启动 Harness B，当前进入 B1 控制基线设计；
+
+### Harness 可执行化
+
+- 建立 B1 当前阶段 Context 和 TASK-20260723-025；
+- 明确 B1 只设计风险分级、阶段检查和人工控制基线，不批量实现未验证脚本；
+- Harness 候选资产必须经过 YouYu 真实任务验证后才能评估成熟度；
 
 ### 当前开发边界
 
 - YouYu 账号与“我”核心路径为 `passed_core_path_by_maintainer`，不等于生产或全部专项通过；
 - Context 模板族整体保持 `candidate`，仅项目与任务模板获得单项目证据；
 - 数据库基础规范为 `single_project_validated`；
-- Harness B 保持 `not_started`；
+- Harness B 为 `active`，当前仅进入 B1 控制基线设计；
 - 未完成能力不得重复描述为 v0.2.0 已稳定交付。
 
 ## [0.1.10] - 2026-07-16
