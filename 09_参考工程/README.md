@@ -7,7 +7,7 @@
 ```text
 YouYu版本：v0.1.4
 当前里程碑：B / Harness 可执行化
-当前工作段：B5 / YouYu TASK-016参考执行
+当前工作段：B5 / YouYu TASK-016结果评审
 首个业务切片：手机号验证码登录注册与个人资料管理
 产品规则：confirmed
 体验定义：confirmed
@@ -24,7 +24,7 @@ Context模板族成熟度：candidate
 任务Context模板：single_project_validated
 数据库规范成熟度：single_project_validated
 Harness里程碑B：active
-Harness参考任务：TASK-016 / ready_for_execution
+Harness参考任务：TASK-016 / conditional_pass
 ```
 
 ## 2. 已完成的完整核心链路
@@ -42,7 +42,7 @@ Harness参考任务：TASK-016 / ready_for_execution
 → 项目 Context 与 Framework 回写
 ```
 
-维护者于 2026-07-22 在真机确认“账号和我验证通过”。YouYu 当前参考 `main` 为 `00900d2b`，PR #3 合并提交为 `047cf099`；`00900d2b` 只建立 TASK-016 设计、任务、控制和证据基线，尚未修改业务代码。
+维护者于 2026-07-22 在真机确认“账号和我验证通过”。TASK-016 在 `8064df68` 完成三维网络来源频控、故障注入和模拟器用户回归证据，`c0fe7d79` 校准当前事实源；PR #3 合并提交仍为 `047cf099`。
 
 ## 3. 通过范围
 
@@ -59,8 +59,8 @@ Harness参考任务：TASK-016 / ready_for_execution
 
 - 真机相册、拍照、裁剪、头像上传和受保护头像显示专项；
 - 异常网络、服务失败、深色模式、小屏、动态字体和 VoiceOver 专项；
-- Redis 故障和网络分区；
-- 完整短信 Outbox、网络来源频控和真实短信；
+- Redis 网络分区、超时抖动和集群切换；
+- 完整短信 Outbox、生产网络来源参数、共享出口误伤监控和真实短信；
 - Token 与数据库事务一致性；
 - 历史敏感信息等既有安全事项；
 - 正式法律协议、生产部署和发布批准；
@@ -83,10 +83,11 @@ Harness参考任务：TASK-016 / ready_for_execution
 
 YouYu 的账号与“我”切片已经提供正式核心路径参考证据，但这不是整个 YouYu 项目、生产安全或 Framework 全部资产的通过结论。
 
-A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；Harness B 已完成 B1 至 B4，YouYu TASK-016 已建立执行基线但尚未开始真实实现。
+A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；Harness B5 已完成 YouYu TASK-016 真实执行并进入人工结果评审，候选资产成熟度暂不变化。
 
 ## 7. 反馈入口
 
 - [从高保真到真机验收](YouYu账号切片反馈_从高保真到真机验收.md)；
 - [阶段 Context 防漂移复验](../12_框架项目Context/验证/CTX-CHECK-002_阶段Context防漂移复验.md)；
+- [YouYu TASK-016 Harness 真实执行验证](../12_框架项目Context/验证/HARNESS-REF-CHECK-001_YouYuTASK016真实执行验证.md)；
 - [历史首轮业务参考验证](../12_框架项目Context/验证/REF-CHECK-001_YouYu首轮业务参考任务验证.md)。

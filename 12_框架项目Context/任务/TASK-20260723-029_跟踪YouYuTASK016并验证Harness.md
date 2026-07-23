@@ -2,7 +2,7 @@
 
 ```yaml
 task_id: TASK-20260723-029
-status: in_progress
+status: pending_human_approval
 project: AI Product Engineering Framework
 lifecycle_stage: 受控任务执行
 risk_level: high
@@ -10,11 +10,13 @@ owner: zhidao-studio
 executor: Codex
 reviewer: Codex
 human_approver: 项目维护者
-project_context_pack_version: 0.2-B.6
-stage_context_pack_version: 1.0
-source_commit: a6715ef
+project_context_pack_version: 0.2-B.7
+stage_context_pack_version: 1.1
+source_commit: 150aebd
 youyu_task: TASK-016
 youyu_task_commit: 00900d2b
+youyu_result_commit: 8064df6857e881c449a248d1340ed01b6960a551
+youyu_context_commit: c0fe7d79d4a9d90679a02543477f2155fae90423
 created_at: 2026-07-23
 ```
 
@@ -44,6 +46,17 @@ created_at: 2026-07-23
 - 用户回归和维护者结论；
 - 可复用反馈及其适用范围。
 
-## 5. 当前状态
+## 5. 实际结果
 
-TASK-016 已完成准备并推送，真实实现和验证尚未开始。
+TASK-016 已完成真实实现与验证：
+
+- 5 个小步中文提交覆盖任务基线、Gateway、App/Redis、三层证据和 Context；
+- 59 项相关测试、Maven、MySQL、Redis、Gateway/App 和 Redis 不可达故障注入通过；
+- iPhone 17 Pro Max 模拟器验证码登录、协议、账号信息和退出路径通过；
+- 两个不同失败类别各只自动修复一轮；
+- 任务边界和证据清单机器检查通过；
+- YouYu 结论保持 `conditional_pass`，没有扩大为生产安全通过。
+
+详细证据见 [HARNESS-REF-CHECK-001](../验证/HARNESS-REF-CHECK-001_YouYuTASK016真实执行验证.md)。
+
+当前等待维护者确认 B5 有限结论和候选规范修订，Framework 版本与资产成熟度不变。

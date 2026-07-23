@@ -12,7 +12,7 @@ require_file() { [[ -f "$1" ]] || fail "缺少文件: $1"; }
 require_cmd() { command -v "$1" >/dev/null 2>&1 || fail "缺少命令: $1"; }
 
 for file in VERSION README.md AGENTS.md CHANGELOG.md 10_版本演进/Roadmap.md \
-  12_框架项目Context/README.md 12_框架项目Context/阶段/v0.2-A_Context可执行化.md \
+  12_框架项目Context/README.md \
   09_参考工程/README.md; do
   require_file "$file"
 done
@@ -61,6 +61,7 @@ stable_release="$(context_value stable_release)"
 target_release="$(context_value target_release)"
 current_milestone="$(context_value current_milestone)"
 current_work_segment="$(context_value current_work_segment)"
+current_stage_context="$(context_value current_stage_context)"
 framework_source_commit="$(context_value source_commit)"
 framework_baseline_commit="$(context_value baseline_commit)"
 youyu_release="$(context_value youyu_release)"
@@ -72,6 +73,7 @@ database_maturity="$(context_value database_standard_maturity)"
 harness_b="$(context_value harness_milestone_b)"
 
 [[ "$stable_release" = "$release_tag" ]] || fail "VERSION与Context稳定版本不一致"
+require_file "$current_stage_context"
 
 heading "提交真实性"
 git cat-file -e "${framework_baseline_commit}^{commit}" 2>/dev/null || fail "Framework baseline_commit不存在: $framework_baseline_commit"
@@ -109,8 +111,8 @@ grep -Fq "### 里程碑 A：Context 可执行化" 10_版本演进/Roadmap.md || 
 heading "YouYu参考工程一致性"
 assert_summary_value "YouYu版本" "$youyu_release" README.md
 assert_summary_value "YouYu版本" "$youyu_release" 09_参考工程/README.md
-grep -Fq "reference_release: $youyu_release" 12_框架项目Context/阶段/v0.2-A_Context可执行化.md || fail "阶段Context YouYu版本不一致"
-grep -Fq "reference_source_commit: $youyu_source_commit" 12_框架项目Context/阶段/v0.2-A_Context可执行化.md || fail "阶段Context YouYu提交不一致"
+grep -Fq "record_status: current" "$current_stage_context" || fail "当前阶段Context未标记为current"
+grep -Fq "youyu_context_commit: $youyu_source_commit" "$current_stage_context" || fail "当前阶段Context YouYu提交不一致"
 assert_summary_value "静态复核" "$youyu_static_review" README.md
 
 heading "验证与成熟度一致性"

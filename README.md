@@ -12,8 +12,8 @@
 当前稳定版本：v0.1.10
 目标开发版本：v0.2.0
 当前里程碑：B / Harness 可执行化
-当前工作段：B5 / YouYu TASK-016参考执行
-执行状态：in_progress
+当前工作段：B5 / YouYu TASK-016结果评审
+执行状态：pending_human_approval
 YouYu版本：v0.1.4
 服务端实现：conditional_pass
 静态复核：conditional_pass
@@ -129,7 +129,7 @@ flowchart TB
 → PR #3 合并与 Framework 回写
 ```
 
-账号与“我”核心路径已经通过维护者真机验收。项目 Context、任务 Context 与数据库基础规范获得 `single_project_validated` 证据；Harness B1 至 B3 已完成 Framework 自应用，B4 已选择并准备 YouYu TASK-016。当前进入 B5 真实执行；候选检查尚未宣称在参考工程执行通过。
+账号与“我”核心路径已经通过维护者真机验收。项目 Context、任务 Context 与数据库基础规范获得 `single_project_validated` 证据；Harness B1 至 B3 已完成 Framework 自应用，B4 已选择并准备 YouYu TASK-016，B5 已完成真实执行和三层证据并进入人工结果评审。候选检查暂不提升成熟度。
 
 ## 文档导航
 
@@ -153,7 +153,7 @@ flowchart TB
 - v0.1.10 不代表 v0.2.0 里程碑 A 已退出；
 - Context 模板族保持 `candidate`，项目与任务模板为 `single_project_validated`；
 - 数据库基础规范为 `single_project_validated`；
-- Harness B 为 `active`，当前工作段为 B5 YouYu TASK-016 参考执行；
+- Harness B 为 `active`，当前工作段为 B5 YouYu TASK-016 结果评审；
 - 检查定义不等于检查执行；
 - Framework 自应用不替代真实业务验证；
 - 本版本没有改变三平面、十阶段、五大基础设施或许可模式。
