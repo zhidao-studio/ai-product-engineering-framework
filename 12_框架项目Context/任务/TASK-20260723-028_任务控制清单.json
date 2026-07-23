@@ -1,0 +1,36 @@
+{
+  "manifest_version": "0.1",
+  "task_id": "TASK-20260723-028",
+  "risk_level": "medium",
+  "baseline_commit": "a6715ef",
+  "allowed_paths": [
+    "README.md",
+    "CHANGELOG.md",
+    "09_参考工程/README.md",
+    "10_版本演进/Roadmap.md",
+    "12_框架项目Context/"
+  ],
+  "forbidden_paths": [
+    "LICENSE",
+    "VERSION",
+    "AGENTS.md",
+    "01_框架定义/",
+    "02_全局模型/",
+    "05_Harness工程/",
+    "08_模板资产/",
+    "scripts/"
+  ],
+  "high_risk_paths": [],
+  "approved_high_risk_paths": [],
+  "dependency_files": [
+    "package.json",
+    "package-lock.json",
+    "pom.xml",
+    "**/pom.xml",
+    "Podfile",
+    "Podfile.lock",
+    "Package.swift",
+    "Package.resolved"
+  ],
+  "approved_dependency_files": []
+}

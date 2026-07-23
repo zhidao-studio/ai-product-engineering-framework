@@ -7,7 +7,7 @@
 ```text
 YouYu版本：v0.1.4
 当前里程碑：B / Harness 可执行化
-当前工作段：B2 / 任务边界与依赖控制
+当前工作段：B5 / YouYu TASK-016参考执行
 首个业务切片：手机号验证码登录注册与个人资料管理
 产品规则：confirmed
 体验定义：confirmed
@@ -24,6 +24,7 @@ Context模板族成熟度：candidate
 任务Context模板：single_project_validated
 数据库规范成熟度：single_project_validated
 Harness里程碑B：active
+Harness参考任务：TASK-016 / ready_for_execution
 ```
 
 ## 2. 已完成的完整核心链路
@@ -41,7 +42,7 @@ Harness里程碑B：active
 → 项目 Context 与 Framework 回写
 ```
 
-维护者于 2026-07-22 在真机确认“账号和我验证通过”。YouYu 当前参考 `main` 为 `50d9a1b6`，PR #3 合并提交为 `047cf099`；后续提交只修正阶段 Context 和记录 Context 成本，没有修改业务代码。
+维护者于 2026-07-22 在真机确认“账号和我验证通过”。YouYu 当前参考 `main` 为 `00900d2b`，PR #3 合并提交为 `047cf099`；`00900d2b` 只建立 TASK-016 设计、任务、控制和证据基线，尚未修改业务代码。
 
 ## 3. 通过范围
 
@@ -82,7 +83,7 @@ Harness里程碑B：active
 
 YouYu 的账号与“我”切片已经提供正式核心路径参考证据，但这不是整个 YouYu 项目、生产安全或 Framework 全部资产的通过结论。
 
-A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；Harness B 已完成 B1 并进入 B2，YouYu 尚未开始 B 阶段的候选检查验证。
+A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；Harness B 已完成 B1 至 B4，YouYu TASK-016 已建立执行基线但尚未开始真实实现。
 
 ## 7. 反馈入口
 
