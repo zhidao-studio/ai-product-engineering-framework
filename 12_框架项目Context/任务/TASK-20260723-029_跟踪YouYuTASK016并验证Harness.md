@@ -12,7 +12,7 @@ reviewer: Codex
 human_approver: 项目维护者
 project_context_pack_version: 0.2-B.7
 stage_context_pack_version: 1.1
-source_commit: 150aebd
+source_commit: c858a8d14ba6278cd11d03e6289bbc726fac8079
 youyu_task: TASK-016
 youyu_task_commit: 00900d2b
 youyu_result_commit: 8064df6857e881c449a248d1340ed01b6960a551

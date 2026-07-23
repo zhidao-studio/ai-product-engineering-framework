@@ -8,6 +8,7 @@ reference_task: TASK-016
 status: in_review
 framework_release: v0.1.10
 target_release: v0.2.0
+framework_result_commit: c858a8d14ba6278cd11d03e6289bbc726fac8079
 youyu_result_commit: 8064df6857e881c449a248d1340ed01b6960a551
 youyu_context_commit: c0fe7d79d4a9d90679a02543477f2155fae90423
 executed_at: 2026-07-23
