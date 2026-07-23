@@ -7,7 +7,7 @@
 ```text
 YouYu版本：v0.1.4
 当前里程碑：B / Harness 可执行化
-当前工作段：B1 / in_review
+当前工作段：B2 / 任务边界与依赖控制
 首个业务切片：手机号验证码登录注册与个人资料管理
 产品规则：confirmed
 体验定义：confirmed
@@ -82,7 +82,7 @@ Harness里程碑B：active
 
 YouYu 的账号与“我”切片已经提供正式核心路径参考证据，但这不是整个 YouYu 项目、生产安全或 Framework 全部资产的通过结论。
 
-A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；Harness B 已进入 B1 控制基线设计，YouYu 尚未开始 B 阶段的候选检查验证。
+A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；Harness B 已完成 B1 并进入 B2，YouYu 尚未开始 B 阶段的候选检查验证。
 
 ## 7. 反馈入口
 
