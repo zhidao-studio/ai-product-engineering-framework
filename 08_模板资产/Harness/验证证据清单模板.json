@@ -1,0 +1,58 @@
+{
+  "manifest_version": "0.1",
+  "task_id": "TASK-YYYYMMDD-NNN",
+  "repository": "owner/repository",
+  "baseline_commit": "HEAD",
+  "risk_level": "medium",
+  "overall_result": "not_executed",
+  "formal_business_validation": "not_executed",
+  "required_layers": [
+    "static",
+    "runtime",
+    "user"
+  ],
+  "evidence": [
+    {
+      "id": "S-001",
+      "layer": "static",
+      "assertion": "示例静态断言",
+      "required": true,
+      "status": "not_executed",
+      "executed": false,
+      "step": "",
+      "exit_code": null,
+      "result_summary": "",
+      "evidence_path": "",
+      "actor": "",
+      "executed_at": ""
+    },
+    {
+      "id": "R-001",
+      "layer": "runtime",
+      "assertion": "示例运行断言",
+      "required": true,
+      "status": "not_executed",
+      "executed": false,
+      "step": "",
+      "exit_code": null,
+      "result_summary": "",
+      "evidence_path": "",
+      "actor": "",
+      "executed_at": ""
+    },
+    {
+      "id": "U-001",
+      "layer": "user",
+      "assertion": "示例用户断言",
+      "required": true,
+      "status": "not_executed",
+      "executed": false,
+      "step": "",
+      "exit_code": null,
+      "result_summary": "",
+      "evidence_path": "",
+      "actor": "",
+      "executed_at": ""
+    }
+  ]
+}

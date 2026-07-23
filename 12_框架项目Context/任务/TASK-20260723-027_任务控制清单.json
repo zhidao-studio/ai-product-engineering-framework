@@ -1,0 +1,49 @@
+{
+  "manifest_version": "0.1",
+  "task_id": "TASK-20260723-027",
+  "risk_level": "medium",
+  "baseline_commit": "583549b75e73db9fa97e1925db958fdbfc6fcce5",
+  "allowed_paths": [
+    "README.md",
+    "CHANGELOG.md",
+    "05_Harness工程/",
+    "08_模板资产/Harness/",
+    "10_版本演进/Roadmap.md",
+    "12_框架项目Context/",
+    "scripts/check_evidence_manifest.py",
+    "scripts/tests/test_check_evidence_manifest.py"
+  ],
+  "forbidden_paths": [
+    "LICENSE",
+    "VERSION",
+    "AGENTS.md",
+    "01_框架定义/",
+    "02_全局模型/",
+    "09_参考工程/",
+    "11_设计决策/"
+  ],
+  "high_risk_paths": [
+    "scripts/",
+    "**/*.sql",
+    "pom.xml",
+    "**/pom.xml",
+    "Podfile",
+    "Podfile.lock",
+    ".github/workflows/"
+  ],
+  "approved_high_risk_paths": [
+    "scripts/check_evidence_manifest.py",
+    "scripts/tests/test_check_evidence_manifest.py"
+  ],
+  "dependency_files": [
+    "package.json",
+    "package-lock.json",
+    "pom.xml",
+    "**/pom.xml",
+    "Podfile",
+    "Podfile.lock",
+    "Package.swift",
+    "Package.resolved"
+  ],
+  "approved_dependency_files": []
+}
