@@ -7,7 +7,7 @@
 ```text
 YouYu版本：v0.1.4
 当前里程碑：B / Harness 可执行化
-当前工作段：B1 / Harness控制基线设计
+当前工作段：B1 / in_review
 首个业务切片：手机号验证码登录注册与个人资料管理
 产品规则：confirmed
 体验定义：confirmed

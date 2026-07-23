@@ -12,8 +12,8 @@
 当前稳定版本：v0.1.10
 目标开发版本：v0.2.0
 当前里程碑：B / Harness 可执行化
-当前工作段：B1 / Harness控制基线设计
-执行状态：in_progress
+当前工作段：B1 / in_review
+执行状态：pending_human_approval
 YouYu版本：v0.1.4
 服务端实现：conditional_pass
 静态复核：conditional_pass
