@@ -1,0 +1,34 @@
+{
+  "manifest_version": "0.1",
+  "task_id": "TASK-YYYYMMDD-NNN",
+  "risk_level": "medium",
+  "baseline_commit": "HEAD",
+  "allowed_paths": [
+    "允许修改的目录/",
+    "允许修改的文件.md"
+  ],
+  "forbidden_paths": [
+    "LICENSE",
+    "VERSION"
+  ],
+  "high_risk_paths": [
+    "**/*.sql",
+    "pom.xml",
+    "**/pom.xml",
+    "Podfile",
+    "Podfile.lock",
+    ".github/workflows/"
+  ],
+  "approved_high_risk_paths": [],
+  "dependency_files": [
+    "package.json",
+    "package-lock.json",
+    "pom.xml",
+    "**/pom.xml",
+    "Podfile",
+    "Podfile.lock",
+    "Package.swift",
+    "Package.resolved"
+  ],
+  "approved_dependency_files": []
+}

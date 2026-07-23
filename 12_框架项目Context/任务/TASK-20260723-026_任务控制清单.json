@@ -1,0 +1,48 @@
+{
+  "manifest_version": "0.1",
+  "task_id": "TASK-20260723-026",
+  "risk_level": "medium",
+  "baseline_commit": "ee8adf56036f952a7c75881c09e8ad30b8254225",
+  "allowed_paths": [
+    "README.md",
+    "CHANGELOG.md",
+    "05_Harness工程/",
+    "08_模板资产/",
+    "10_版本演进/Roadmap.md",
+    "12_框架项目Context/",
+    "scripts/check_task_boundary.py",
+    "scripts/tests/test_check_task_boundary.py"
+  ],
+  "forbidden_paths": [
+    "LICENSE",
+    "VERSION",
+    "AGENTS.md",
+    "01_框架定义/",
+    "02_全局模型/",
+    "11_设计决策/"
+  ],
+  "high_risk_paths": [
+    "scripts/",
+    "**/*.sql",
+    "pom.xml",
+    "**/pom.xml",
+    "Podfile",
+    "Podfile.lock",
+    ".github/workflows/"
+  ],
+  "approved_high_risk_paths": [
+    "scripts/check_task_boundary.py",
+    "scripts/tests/test_check_task_boundary.py"
+  ],
+  "dependency_files": [
+    "package.json",
+    "package-lock.json",
+    "pom.xml",
+    "**/pom.xml",
+    "Podfile",
+    "Podfile.lock",
+    "Package.swift",
+    "Package.resolved"
+  ],
+  "approved_dependency_files": []
+}
