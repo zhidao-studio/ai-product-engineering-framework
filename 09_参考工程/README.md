@@ -6,8 +6,8 @@
 
 ```text
 YouYu版本：v0.1.4
-当前里程碑：A / Context 可执行化
-当前工作段：A2 / 里程碑A退出人工审查
+当前里程碑：A / Context 可执行化（已完成）
+当前工作段：A2 / completed
 首个业务切片：手机号验证码登录注册与个人资料管理
 产品规则：confirmed
 体验定义：confirmed
@@ -82,7 +82,7 @@ Harness里程碑B：not_started
 
 YouYu 的账号与“我”切片已经提供正式核心路径参考证据，但这不是整个 YouYu 项目、生产安全或 Framework 全部资产的通过结论。
 
-A2 保持 `active`，Context 模板族整体保持 `candidate`，Harness B 保持 `not_started`。Context 成本记录和阶段漂移复验已完成，当前只等待维护者审查 A2 退出。
+A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`，Harness B 保持 `not_started`，等待独立启动决定。
 
 ## 7. 反馈入口
 
