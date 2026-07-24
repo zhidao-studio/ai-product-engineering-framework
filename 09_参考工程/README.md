@@ -7,7 +7,7 @@
 ```text
 YouYu版本：v0.1.4
 当前里程碑：B / Harness 可执行化
-当前工作段：B6 / Harness成熟度评估与退出准备
+当前工作段：B6 / Harness成熟度与退出评审
 首个业务切片：手机号验证码登录注册与个人资料管理
 产品规则：confirmed
 体验定义：confirmed
@@ -42,7 +42,7 @@ Harness参考任务：TASK-016 / conditional_pass
 → 项目 Context 与 Framework 回写
 ```
 
-维护者于 2026-07-22 在真机确认“账号和我验证通过”。TASK-016 在 `8064df68` 完成三维网络来源频控、故障注入和模拟器用户回归证据，`c0fe7d79` 校准当前事实源；PR #3 合并提交仍为 `047cf099`。
+维护者于 2026-07-22 在真机确认“账号和我验证通过”。TASK-016 在 `8064df68` 完成三维网络来源频控、故障注入和模拟器用户回归证据，维护者于 `d2c277a7` 接受有限结论，`11c8a652` 同步当前 Context；PR #3 合并提交仍为 `047cf099`。
 
 ## 3. 通过范围
 
@@ -83,11 +83,12 @@ Harness参考任务：TASK-016 / conditional_pass
 
 YouYu 的账号与“我”切片已经提供正式核心路径参考证据，但这不是整个 YouYu 项目、生产安全或 Framework 全部资产的通过结论。
 
-A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；维护者已接受 Harness B5 的有限结论，当前进入 B6 逐资产成熟度评估，候选资产尚未自动变化。
+A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；维护者已接受 Harness B5 的有限结论，B6 已形成逐资产成熟度与里程碑 B 有限退出建议，候选资产尚未自动变化。
 
 ## 7. 反馈入口
 
 - [从高保真到真机验收](YouYu账号切片反馈_从高保真到真机验收.md)；
 - [阶段 Context 防漂移复验](../12_框架项目Context/验证/CTX-CHECK-002_阶段Context防漂移复验.md)；
 - [YouYu TASK-016 Harness 真实执行验证](../12_框架项目Context/验证/HARNESS-REF-CHECK-001_YouYuTASK016真实执行验证.md)；
+- [B6 逐资产成熟度评估](../12_框架项目Context/验证/HARNESS-MATURITY-001_B6逐资产成熟度评估.md)；
 - [历史首轮业务参考验证](../12_框架项目Context/验证/REF-CHECK-001_YouYu首轮业务参考任务验证.md)。

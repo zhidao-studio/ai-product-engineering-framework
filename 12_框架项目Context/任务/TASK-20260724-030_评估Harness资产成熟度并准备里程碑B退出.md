@@ -2,7 +2,7 @@
 
 ```yaml
 task_id: TASK-20260724-030
-status: in_progress
+status: pending_human_approval
 project: AI Product Engineering Framework
 lifecycle_stage: 质量与安全验证
 risk_level: medium
@@ -10,10 +10,10 @@ owner: zhidao-studio
 executor: Codex
 reviewer: Codex
 human_approver: 项目维护者
-project_context_pack_version: 0.2-B.8
-stage_context_pack_version: 1.0
+project_context_pack_version: 0.2-B.9
+stage_context_pack_version: 1.1
 baseline_commit: bc70b9fe33dfa1f6d9383c81e1c20c4a22c7090c
-source_commit: bc70b9fe33dfa1f6d9383c81e1c20c4a22c7090c
+source_commit: b0b5c7a43946eb518bee5badf0c1d295fb38015c
 created_at: 2026-07-24
 ```
 
@@ -40,13 +40,13 @@ created_at: 2026-07-24
 
 ## 4. 验收断言
 
-- [ ] 每项建议均引用 B1 至 B5 或 YouYu TASK-016 直接证据；
-- [ ] 未执行的依赖、全链一致性、发布和回滚分支保持候选；
-- [ ] Harness 整体不打包提升；
-- [ ] Framework 稳定版本保持 `v0.1.10`；
-- [ ] 状态一致性、机器测试、链接和 Git 补丁检查通过；
+- [x] 每项建议均引用 B1 至 B5 或 YouYu TASK-016 直接证据；
+- [x] 未执行的依赖、全链一致性、发布和回滚分支保持候选；
+- [x] Harness 整体不打包提升；
+- [x] Framework 稳定版本保持 `v0.1.10`；
+- [x] 状态一致性、机器测试、链接和 Git 补丁检查通过；
 - [ ] 成熟度变化与里程碑 B 退出交由维护者最终批准。
 
 ## 5. 当前状态
 
-B5 有限结论已获维护者批准。当前开始逐资产评估，尚未形成成熟度提升或里程碑 B 退出结论。
+B5 有限结论已获维护者批准。[HARNESS-MATURITY-001](../验证/HARNESS-MATURITY-001_B6逐资产成熟度评估.md) 已形成逐资产建议，当前等待维护者批准成熟度变化和里程碑 B 有限退出；尚未实际提升资产状态。
