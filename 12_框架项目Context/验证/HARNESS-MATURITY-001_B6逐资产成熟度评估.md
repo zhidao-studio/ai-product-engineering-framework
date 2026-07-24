@@ -3,7 +3,7 @@
 ```yaml
 validation_id: HARNESS-MATURITY-001
 task_id: TASK-20260724-030
-status: pending_human_approval
+status: approved_limited
 milestone: B / Harness 可执行化
 framework_release: v0.1.10
 target_release: v0.2.0
@@ -15,7 +15,10 @@ youyu_approval_commit: d2c277a710b996186a8eaebc01b23b8fef077bfe
 youyu_context_commit: 11c8a65250940552c72213ab0eaddbb9e7825e62
 assessed_at: 2026-07-24
 assessor: Codex
-human_approval_status: pending
+human_approval_status: approved
+human_approval_at: 2026-07-24
+human_approval_statement: 继续呢
+approval_scope: 接受B6成熟度建议并批准里程碑B以conditional_pass有限退出
 ```
 
 ## 1. 结论摘要
@@ -97,11 +100,19 @@ Harness整体：candidate
 里程碑C：不得在批准前启动
 ```
 
-## 5. 需要维护者决定
+## 5. 维护者决定
 
-1. 是否接受上述九项资产提升为 `single_project_validated`；
-2. 是否接受其余资产继续保持 `candidate`；
-3. 是否批准里程碑 B 以 `conditional_pass` 有限退出；
-4. 是否允许下一步进入里程碑 C 的正式规划，而不是直接批量创建 Skills 或 Agents。
+维护者在收到明确的 B6 批准范围后回复“继续呢”。本记录按上下文将其解释为：
 
-在维护者批准前，本文件只是成熟度建议，不改变任何资产的当前状态。
+1. 接受上述九项资产提升为 `single_project_validated`；
+2. 接受其余资产继续保持 `candidate`；
+3. 批准里程碑 B 以 `conditional_pass` 有限退出；
+4. 允许进入里程碑 C 的正式规划，不直接批量创建 Skills 或 Agents。
+
+## 6. 应用结果
+
+- 九项资产成熟度已按本记录更新；
+- Harness 整体仍为 `candidate`；
+- 里程碑 B 结果为 `conditional_pass`；
+- Framework 稳定版本仍为 `v0.1.10`；
+- 里程碑 C 只进入首个 Skill 封装规划。

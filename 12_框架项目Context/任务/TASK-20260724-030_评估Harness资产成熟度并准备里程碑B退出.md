@@ -2,7 +2,7 @@
 
 ```yaml
 task_id: TASK-20260724-030
-status: pending_human_approval
+status: completed
 project: AI Product Engineering Framework
 lifecycle_stage: 质量与安全验证
 risk_level: medium
@@ -10,11 +10,14 @@ owner: zhidao-studio
 executor: Codex
 reviewer: Codex
 human_approver: 项目维护者
-project_context_pack_version: 0.2-B.9
-stage_context_pack_version: 1.1
+project_context_pack_version: 0.2-C.1
+stage_context_pack_version: 1.2
 baseline_commit: bc70b9fe33dfa1f6d9383c81e1c20c4a22c7090c
-source_commit: 47bd8ac372f6d5b487044906a017670cf26d9283
+source_commit: 0f67227f42850eda8f085e7c44f68f8f608ce917
 created_at: 2026-07-24
+completed_at: 2026-07-24
+human_approval_statement: 继续呢
+approval_scope: 接受B6成熟度建议并批准里程碑B以conditional_pass有限退出
 ```
 
 ## 1. 目标
@@ -45,8 +48,8 @@ created_at: 2026-07-24
 - [x] Harness 整体不打包提升；
 - [x] Framework 稳定版本保持 `v0.1.10`；
 - [x] 状态一致性、机器测试、链接和 Git 补丁检查通过；
-- [ ] 成熟度变化与里程碑 B 退出交由维护者最终批准。
+- [x] 成熟度变化与里程碑 B 退出交由维护者最终批准。
 
 ## 5. 当前状态
 
-B5 有限结论已获维护者批准。[HARNESS-MATURITY-001](../验证/HARNESS-MATURITY-001_B6逐资产成熟度评估.md) 已形成逐资产建议，当前等待维护者批准成熟度变化和里程碑 B 有限退出；尚未实际提升资产状态。
+B5 有限结论已获维护者批准。[HARNESS-MATURITY-001](../验证/HARNESS-MATURITY-001_B6逐资产成熟度评估.md) 已完成逐资产评估并获维护者批准。九项资产已提升为 `single_project_validated`，其余资产和 Harness 整体保持 `candidate`；里程碑 B 以 `conditional_pass` 退出。

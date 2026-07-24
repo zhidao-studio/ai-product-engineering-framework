@@ -6,8 +6,8 @@
 
 ```text
 YouYu版本：v0.1.4
-当前里程碑：B / Harness 可执行化
-当前工作段：B6 / Harness成熟度与退出评审
+当前里程碑：C / Skills、Agents 与 Loop
+当前工作段：C1 / 首个Skill封装规划
 首个业务切片：手机号验证码登录注册与个人资料管理
 产品规则：confirmed
 体验定义：confirmed
@@ -23,7 +23,7 @@ Context模板族成熟度：candidate
 项目Context模板：single_project_validated
 任务Context模板：single_project_validated
 数据库规范成熟度：single_project_validated
-Harness里程碑B：active
+Harness里程碑B：conditional_pass
 Harness参考任务：TASK-016 / conditional_pass
 ```
 
@@ -83,7 +83,7 @@ Harness参考任务：TASK-016 / conditional_pass
 
 YouYu 的账号与“我”切片已经提供正式核心路径参考证据，但这不是整个 YouYu 项目、生产安全或 Framework 全部资产的通过结论。
 
-A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；维护者已接受 Harness B5 的有限结论，B6 已形成逐资产成熟度与里程碑 B 有限退出建议，候选资产尚未自动变化。
+A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；Harness B 以 `conditional_pass` 有限退出，九项具体资产获得 `single_project_validated`，Harness 整体继续为 `candidate`。当前进入 C1 首个 Skill 封装规划。
 
 ## 7. 反馈入口
 
