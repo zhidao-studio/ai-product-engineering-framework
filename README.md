@@ -12,8 +12,8 @@
 当前稳定版本：v0.1.10
 目标开发版本：v0.2.0
 当前里程碑：C / Skills、Agents 与 Loop
-当前工作段：C3 / YouYu首个Skill参考验证
-执行状态：active
+当前工作段：C3 / YouYu首个Skill参考验证有限结论评审
+执行状态：pending_human_approval
 YouYu版本：v0.1.4
 服务端实现：conditional_pass
 静态复核：conditional_pass
@@ -129,7 +129,7 @@ flowchart TB
 → PR #3 合并与 Framework 回写
 ```
 
-账号与“我”核心路径已经通过维护者真机验收。项目 Context、任务 Context 与数据库基础规范获得 `single_project_validated` 证据；Harness B 已以 `conditional_pass` 有限退出，风险、任务边界、任务控制、证据规则和两个确定性检查器获得单项目证据。首个受控任务验证 Skill 已完成 Framework 自应用并进入 YouYu 新任务参考验证；本阶段不批量创建 Skills 或 Agents。
+账号与“我”核心路径已经通过维护者真机验收。项目 Context、任务 Context 与数据库基础规范获得 `single_project_validated` 证据；Harness B 已以 `conditional_pass` 有限退出，风险、任务边界、任务控制、证据规则和两个确定性检查器获得单项目证据。首个受控任务验证 Skill 已完成 Framework 自应用和 YouYu TASK-017 首次真实参考验证，两次均为有限通过；当前等待维护者确认 C3 结论，本阶段不批量创建 Skills 或 Agents。
 
 ## 文档导航
 
@@ -154,7 +154,7 @@ flowchart TB
 - Context 模板族保持 `candidate`，项目与任务模板为 `single_project_validated`；
 - 数据库基础规范为 `single_project_validated`；
 - Harness B 以 `conditional_pass` 有限退出，Harness 整体仍为 `candidate`；
-- 当前工作段为 C3 YouYu 首个 Skill 参考验证；
+- 当前工作段为 C3 YouYu 首个 Skill 参考验证有限结论评审；
 - 检查定义不等于检查执行；
 - Framework 自应用不替代真实业务验证；
 - 本版本没有改变三平面、十阶段、五大基础设施或许可模式。
