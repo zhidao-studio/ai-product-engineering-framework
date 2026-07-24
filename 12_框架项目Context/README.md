@@ -19,7 +19,7 @@ target_release: v0.2.0
 current_milestone: B / Harness 可执行化
 working_branch: main
 baseline_commit: a6715ef
-source_commit: b0b5c7a43946eb518bee5badf0c1d295fb38015c
+source_commit: 47bd8ac372f6d5b487044906a017670cf26d9283
 youyu_release: v0.1.4
 youyu_source_commit: 11c8a65250940552c72213ab0eaddbb9e7825e62
 youyu_reference_task_commit: 00900d2b

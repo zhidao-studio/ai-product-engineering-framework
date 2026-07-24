@@ -8,6 +8,7 @@ milestone: B / Harness 可执行化
 framework_release: v0.1.10
 target_release: v0.2.0
 framework_baseline_commit: b0b5c7a43946eb518bee5badf0c1d295fb38015c
+framework_result_commit: 47bd8ac372f6d5b487044906a017670cf26d9283
 youyu_task: TASK-016
 youyu_result_commit: 8064df6857e881c449a248d1340ed01b6960a551
 youyu_approval_commit: d2c277a710b996186a8eaebc01b23b8fef077bfe

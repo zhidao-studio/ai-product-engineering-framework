@@ -13,7 +13,7 @@ human_approver: 项目维护者
 project_context_pack_version: 0.2-B.9
 stage_context_pack_version: 1.1
 baseline_commit: bc70b9fe33dfa1f6d9383c81e1c20c4a22c7090c
-source_commit: b0b5c7a43946eb518bee5badf0c1d295fb38015c
+source_commit: 47bd8ac372f6d5b487044906a017670cf26d9283
 created_at: 2026-07-24
 ```
 
