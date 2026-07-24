@@ -15,11 +15,12 @@ description: "检查受控工程任务的修改边界、风险授权和验证证
 - 当前项目、阶段和任务 Context；
 - 与任务 ID、风险等级和基线一致的任务控制清单 JSON；
 - 验证证据清单 JSON；
+- 边界检查器和证据检查器路径；优先使用项目内入口，也可使用任务 Context 明确批准的 Framework 权威入口；
 - `worktree`、`staged` 或 `range` 检查模式；
 - `range` 模式的基线与目标提交；
 - 命中高风险路径时的人工授权记录。
 
-确认仓库存在项目内边界检查器和证据检查器。缺少检查器时输出 `blocked`，不要临时编写替代规则。
+确认两个检查器均为项目规则或任务 Context 明确批准的 Framework 权威入口。缺少批准记录或检查器不可用时输出 `blocked`；不要复制脚本，也不要临时编写替代规则。
 
 ## 执行流程
 
@@ -30,19 +31,20 @@ description: "检查受控工程任务的修改边界、风险授权和验证证
    - 使用 `worktree` 盘点干净工作区；
    - 使用 `staged` 检查脏工作区中显式暂存的当前任务文件；
    - 使用 `range` 复核提交、PR 或历史范围。
-5. 调用项目内边界检查器并保留命令、退出码和输出。Framework 默认入口：
+5. 调用已批准的边界检查器并保留命令、退出码和输出。检查器位于目标仓库外时必须显式传入 `--repo`，并在任务 Context 记录其来源。Framework 默认入口：
 
    ```bash
-   python3 scripts/check_task_boundary.py \
+   python3 "<边界检查器路径>" \
+     --repo "<目标仓库路径>" \
      --manifest "<任务控制清单>" \
      --mode "<worktree|staged|range>"
    ```
 
    `range` 模式按需增加 `--base` 和 `--head`。
-6. 调用项目内证据检查器并保留命令、退出码和输出。Framework 默认入口：
+6. 调用已批准的证据检查器并保留命令、退出码和输出。Framework 默认入口：
 
    ```bash
-   python3 scripts/check_evidence_manifest.py \
+   python3 "<证据检查器路径>" \
      --manifest "<验证证据清单>"
    ```
 
