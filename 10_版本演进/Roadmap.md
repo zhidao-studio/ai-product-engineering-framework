@@ -70,7 +70,7 @@ v0.1.10 报告：[YouYu 并发发送与事实源修订同步报告](v0.1.10YouYu
 - 项目与任务 Context 模板：`single_project_validated`；
 - 数据库基础规范：`single_project_validated`；
 - Context 模板族整体：`candidate`；
-- Harness B：`not_started`；
+- Harness B：`conditional_pass`；
 - 检查定义不得写成运行通过。
 
 A2 退出条件已满足：真实业务切片完成静态、数据库、运行和模拟用户核心路径验收；Context 可恢复；修改边界真实生效；失败、人工修正、成本和遗漏有记录；Framework 改进完成回写；剩余安全专项被明确隔离；人类责任人已批准。
@@ -95,9 +95,9 @@ B1 至 B3 已建立候选控制并完成 Framework 自应用；B4 至 B5 完成 
 
 #### C1：首个 Skill 封装规划
 
-状态：`active`
+状态：`in_review`
 
-只选择已经取得 YouYu 单项目证据的风险、任务边界和证据检查能力，设计首个“受控任务验证 Skill”。本工作段不批量生成 Skills，不启动多 Agent 编排，也不把单项目证据写成稳定能力。
+只选择已经取得 YouYu 单项目证据的风险、任务边界和证据检查能力，设计首个“受控任务验证 Skill”。设计已完成并通过结构与边界检查，当前等待维护者确认；尚未创建实际 Skill 包。本工作段不批量生成 Skills，不启动多 Agent 编排，也不把单项目证据写成稳定能力。
 
 ## 当前最高优先级
 
@@ -107,5 +107,5 @@ B1 至 B3 已建立候选控制并完成 Framework 自应用；B4 至 B5 完成 
 → B4已完成YouYu参考任务准备
 → B5有限结论已获维护者批准
 → B6成熟度变化与里程碑B有限退出已获批准
-→ C1规划首个受控任务验证Skill
+→ C1首个Skill设计完成，等待维护者确认实际封装
 ```
