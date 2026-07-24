@@ -19,7 +19,7 @@ target_release: v0.2.0
 current_milestone: C / Skills、Agents 与 Loop
 working_branch: main
 baseline_commit: a6715ef
-source_commit: 7bf95b6795f7b334ac7fe8c788addecfd443c14f
+source_commit: fe45e6d3d42f97ad4befdc62d20e4a07c196f81b
 youyu_release: v0.1.4
 youyu_source_commit: 11c8a65250940552c72213ab0eaddbb9e7825e62
 youyu_reference_task_commit: 00900d2b

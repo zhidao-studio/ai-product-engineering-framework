@@ -10,6 +10,7 @@ framework_release: v0.1.10
 target_release: v0.2.0
 baseline_commit: 0f7bc520ac6b7a17b227e05a28cf63cb74a41693
 skill_commit: 7bf95b6795f7b334ac7fe8c788addecfd443c14f
+result_commit: fe45e6d3d42f97ad4befdc62d20e4a07c196f81b
 verified_at: 2026-07-24
 verifier: Codex
 asset_maturity: candidate
