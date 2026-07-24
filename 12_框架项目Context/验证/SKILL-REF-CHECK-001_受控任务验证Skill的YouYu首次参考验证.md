@@ -13,6 +13,7 @@ formal_business_validation: not_executed
 human_approval: approved_limited
 human_approved_at: 2026-07-24
 human_approval_record: 接受 C3 的有限结论。
+approval_commit: fd3fbdb5ac0f8aa96786629a3a8756968425d883
 ```
 
 ## 1. 参考任务
