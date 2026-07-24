@@ -12,8 +12,8 @@
 当前稳定版本：v0.1.10
 目标开发版本：v0.2.0
 当前里程碑：C / Skills、Agents 与 Loop
-当前工作段：C1 / 首个Skill设计评审
-执行状态：pending_human_approval
+当前工作段：C2 / 首个Skill候选包实现与自应用
+执行状态：in_progress
 YouYu版本：v0.1.4
 服务端实现：conditional_pass
 静态复核：conditional_pass

@@ -3,7 +3,7 @@
 ```yaml
 check_id: SKILL-DESIGN-CHECK-001
 task_id: TASK-20260724-031
-status: passed_pending_human_approval
+status: approved
 milestone: C / Skills、Agents 与 Loop
 work_segment: C1 / 首个Skill设计评审
 framework_release: v0.1.10
@@ -14,6 +14,8 @@ verified_at: 2026-07-24
 verifier: Codex
 skill_package_created: false
 asset_maturity: candidate
+human_approval_at: 2026-07-24
+human_approval_statement: 批准 C1 设计，允许创建 controlled-task-validation Skill 候选包。
 ```
 
 ## 1. 检查范围
@@ -69,4 +71,4 @@ asset_maturity: candidate
 
 ## 5. 结论
 
-设计检查通过，状态为 `passed_pending_human_approval`。维护者批准前不得创建 `skills/controlled-task-validation/`；批准后仍只能创建 `candidate` 候选包，并先完成 Framework 自应用和 YouYu 真实任务验证。
+设计检查通过并获得维护者批准。下一步只能创建 `candidate` 候选包，并先完成 Framework 自应用和 YouYu 真实任务验证；批准不提升 Skill 成熟度，也不授权批量创建其他 Skills 或 Agents。
