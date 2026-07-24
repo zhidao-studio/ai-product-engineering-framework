@@ -21,7 +21,7 @@ working_branch: main
 baseline_commit: a6715ef
 source_commit: fd3fbdb5ac0f8aa96786629a3a8756968425d883
 youyu_release: v0.1.4
-youyu_source_commit: 0b6b3f581385235015469ab2949186f962f9a72e
+youyu_source_commit: 0b6b3f589c1d9c1000159e822528329957d415f9
 youyu_reference_task_commit: 00900d2b
 youyu_merge_commit: 047cf099f869227d2085e9837abbd2cbfebccfc4
 youyu_candidate_acceptance_commit: 8dfe62b8822482d9417c20b22a7fdad93158974b
