@@ -107,7 +107,7 @@ B1 至 B3 已建立候选控制并完成 Framework 自应用；B4 至 B5 完成 
 
 #### C3：YouYu 首个 Skill 参考验证
 
-状态：`conditional_pass / pending_maintainer_confirmation`
+状态：`completed / approved_limited`
 
 以 YouYu“账号与‘我’明暗模式、小屏和基础可读性专项验证”作为第一个真实参考任务。首轮只做验证，不在任务中扩大到产品、高保真、接口、数据库或业务代码修改；实际问题按责任分类回写后再决定 Skill 成熟度。
 
@@ -121,5 +121,6 @@ B1 至 B3 已建立候选控制并完成 Framework 自应用；B4 至 B5 完成 
 → B6成熟度变化与里程碑B有限退出已获批准
 → C1首个Skill设计已获批准
 → C2候选包与Framework自应用有限结论已获批准
-→ C3已完成YouYu首个Skill参考验证并等待维护者确认有限结论
+→ C3有限结论已获维护者批准
+→ 等待明确下一工作段
 ```

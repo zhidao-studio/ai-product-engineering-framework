@@ -10,7 +10,9 @@ skill: controlled-task-validation
 skill_maturity: candidate
 youyu_result_commit: d4ab69a7a3ed9d47ee7e83691b5fa80dd301c9e1
 formal_business_validation: not_executed
-human_approval: pending
+human_approval: approved_limited
+human_approved_at: 2026-07-24
+human_approval_record: 接受 C3 的有限结论。
 ```
 
 ## 1. 参考任务
@@ -107,7 +109,7 @@ human_approval: pending
 
 ## 6. 成熟度判断
 
-`controlled-task-validation` 已完成 Framework 自应用和一个 YouYu 真实任务参考验证，但仍只有一个参考工程，也尚未完成维护者对 C3 有限结论的确认。因此成熟度继续为：
+`controlled-task-validation` 已完成 Framework 自应用和一个 YouYu 真实任务参考验证，维护者也已接受 C3 有限结论；但目前仍只有一个参考工程，且未覆盖真机辅助功能、异常网络、生产与发布。因此成熟度继续为：
 
 ```text
 candidate
