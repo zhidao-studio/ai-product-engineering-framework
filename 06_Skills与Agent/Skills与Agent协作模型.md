@@ -97,4 +97,4 @@ Agent 协作不能只靠角色名称。每个交接必须明确：
 → Context、Harness 或 Skill 回写
 ```
 
-当前只完成设计，状态为 `pending_human_approval`，尚未创建实际 Skill 包。它只装配已获得 YouYu 单项目证据的能力，不包含依赖评估、全链一致性、完整安全审计、生产发布、自动回滚或多 Agent 编排。
+设计已获批准，[候选包](../skills/controlled-task-validation/SKILL.md) 已创建并完成 Framework 自应用，结果为 `conditional_pass`，成熟度仍为 `candidate`。它只装配已获得 YouYu 单项目证据的能力，不包含依赖评估、全链一致性、完整安全审计、生产发布、自动回滚或多 Agent 编排。

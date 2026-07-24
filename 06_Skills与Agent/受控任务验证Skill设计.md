@@ -1,12 +1,14 @@
 # 受控任务验证 Skill 设计
 
-> 设计状态：`pending_human_approval`
+> 设计状态：`approved`
 >
 > 候选标识：`controlled-task-validation`
 >
 > 资产成熟度：`candidate`
 >
-> 本文件只定义首个 Skill 的最小边界，尚未创建可被 Agent 加载的实际 Skill 包。
+> 候选包状态：`framework_self_validated / conditional_pass`
+>
+> 实际候选包：[controlled-task-validation](../skills/controlled-task-validation/SKILL.md)
 
 ## 1. 目标
 
@@ -191,7 +193,7 @@ flowchart TD
 
 ## 11. 候选包规划
 
-维护者批准本设计后，使用官方 `skill-creator` 初始化：
+维护者批准本设计后，已使用官方 `skill-creator` 初始化：
 
 ```text
 skills/controlled-task-validation/
@@ -200,7 +202,7 @@ skills/controlled-task-validation/
     └── openai.yaml
 ```
 
-首版不复制 Harness 脚本、模板和参考资料，也不创建额外 README。Skill 通过任务输入定位项目内权威文件与检查器；缺少时明确 `not_applicable` 或 `blocked`。
+首版没有复制 Harness 脚本、模板和参考资料，也没有创建额外 README。Skill 通过任务输入定位项目内权威文件与检查器；缺少时明确 `not_applicable` 或 `blocked`。
 
 ## 12. 验证计划
 

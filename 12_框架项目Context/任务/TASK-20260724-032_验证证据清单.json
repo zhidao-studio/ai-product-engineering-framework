@@ -1,0 +1,71 @@
+{
+  "manifest_version": "0.1",
+  "task_id": "TASK-20260724-032",
+  "repository": "zhidao-studio/ai-product-engineering-framework",
+  "baseline_commit": "0f7bc520ac6b7a17b227e05a28cf63cb74a41693",
+  "risk_level": "medium",
+  "overall_result": "conditional_pass",
+  "formal_business_validation": "not_executed",
+  "required_layers": [
+    "static",
+    "runtime"
+  ],
+  "evidence": [
+    {
+      "id": "S-001",
+      "layer": "static",
+      "assertion": "Skill 候选包结构、元数据和仓库状态一致性通过",
+      "required": true,
+      "status": "passed",
+      "executed": true,
+      "step": "quick_validate.py；18项Harness检查器单元测试；check-release-state.sh",
+      "exit_code": 0,
+      "result_summary": "Skill结构有效，SKILL.md为105行，18项测试及Framework状态一致性检查通过。",
+      "evidence_path": "12_框架项目Context/验证/SKILL-SELF-CHECK-001_受控任务验证Skill候选包自应用.md",
+      "actor": "Codex",
+      "executed_at": "2026-07-24"
+    },
+    {
+      "id": "R-001",
+      "layer": "runtime",
+      "assertion": "Skill 按真实任务基线执行边界和证据检查并形成有限结论",
+      "required": true,
+      "status": "passed",
+      "executed": true,
+      "step": "以0f7bc520至7bf95b6执行range边界检查；再检查本证据清单。",
+      "exit_code": 0,
+      "result_summary": "12个历史变更路径通过，4项证据结构通过；总体保持conditional_pass。",
+      "evidence_path": "12_框架项目Context/验证/SKILL-SELF-CHECK-001_受控任务验证Skill候选包自应用.md",
+      "actor": "Codex",
+      "executed_at": "2026-07-24"
+    },
+    {
+      "id": "U-001",
+      "layer": "user",
+      "assertion": "候选包没有用户界面变化，用户验收不适用于 Framework 自应用",
+      "required": false,
+      "status": "not_applicable",
+      "executed": false,
+      "step": "",
+      "exit_code": null,
+      "result_summary": "本轮仅创建 Framework Skill 候选包，不修改用户产品。",
+      "evidence_path": "",
+      "actor": "Codex",
+      "executed_at": "2026-07-24"
+    },
+    {
+      "id": "P-001",
+      "layer": "release",
+      "assertion": "生产发布检查",
+      "required": false,
+      "status": "not_executed",
+      "executed": false,
+      "step": "",
+      "exit_code": null,
+      "result_summary": "",
+      "evidence_path": "",
+      "actor": "",
+      "executed_at": ""
+    }
+  ]
+}

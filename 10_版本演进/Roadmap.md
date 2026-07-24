@@ -101,9 +101,9 @@ B1 至 B3 已建立候选控制并完成 Framework 自应用；B4 至 B5 完成 
 
 #### C2：首个 Skill 候选包实现与自应用
 
-状态：`active`
+状态：`in_review`
 
-使用官方 `skill-creator` 创建 `controlled-task-validation` 候选包，执行结构验证和 Framework 自应用。候选包成熟度保持 `candidate`；本工作段不批量生成 Skills，不启动多 Agent 编排，也不把自应用写成 YouYu 或跨项目验证通过。
+已使用官方 `skill-creator` 创建 `controlled-task-validation` 候选包，结构验证和 Framework 自应用结果为 `conditional_pass`。候选包成熟度保持 `candidate`，YouYu 新任务验证尚未开始；当前等待维护者确认是否进入参考验证。
 
 ## 当前最高优先级
 
@@ -114,5 +114,6 @@ B1 至 B3 已建立候选控制并完成 Framework 自应用；B4 至 B5 完成 
 → B5有限结论已获维护者批准
 → B6成熟度变化与里程碑B有限退出已获批准
 → C1首个Skill设计已获批准
-→ C2创建候选包并完成Framework自应用
+→ C2候选包与Framework自应用已完成
+→ 等待是否进入YouYu新任务参考验证
 ```
