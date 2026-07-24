@@ -1,0 +1,41 @@
+{
+  "manifest_version": "0.1",
+  "task_id": "TASK-20260724-033",
+  "risk_level": "medium",
+  "baseline_commit": "70eaa062c9c51b0fcc330194e4b41808d1f187f5",
+  "allowed_paths": [
+    "README.md",
+    "06_Skills与Agent/",
+    "07_Loop工程/",
+    "09_参考工程/",
+    "10_版本演进/Roadmap.md",
+    "12_框架项目Context/",
+    "skills/controlled-task-validation/"
+  ],
+  "forbidden_paths": [
+    "VERSION",
+    "LICENSE",
+    "AGENTS.md",
+    "01_框架定义/",
+    "02_全局模型/",
+    "03_角色体系/",
+    "04_Context工程/",
+    "05_Harness工程/",
+    "08_模板资产/",
+    "11_设计决策/",
+    "scripts/"
+  ],
+  "high_risk_paths": [],
+  "approved_high_risk_paths": [],
+  "dependency_files": [
+    "package.json",
+    "package-lock.json",
+    "pom.xml",
+    "**/pom.xml",
+    "Podfile",
+    "Podfile.lock",
+    "Package.swift",
+    "Package.resolved"
+  ],
+  "approved_dependency_files": []
+}

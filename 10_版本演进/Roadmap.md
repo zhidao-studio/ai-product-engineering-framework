@@ -101,9 +101,15 @@ B1 至 B3 已建立候选控制并完成 Framework 自应用；B4 至 B5 完成 
 
 #### C2：首个 Skill 候选包实现与自应用
 
-状态：`in_review`
+状态：`completed`
 
-已使用官方 `skill-creator` 创建 `controlled-task-validation` 候选包，结构验证和 Framework 自应用结果为 `conditional_pass`。候选包成熟度保持 `candidate`，YouYu 新任务验证尚未开始；当前等待维护者确认是否进入参考验证。
+已使用官方 `skill-creator` 创建 `controlled-task-validation` 候选包，结构验证和 Framework 自应用结果为 `conditional_pass`。维护者已接受 C2 有限结论，候选包成熟度保持 `candidate`。
+
+#### C3：YouYu 首个 Skill 参考验证
+
+状态：`in_progress`
+
+以 YouYu“账号与‘我’明暗模式、小屏和基础可读性专项验证”作为第一个真实参考任务。首轮只做验证，不在任务中扩大到产品、高保真、接口、数据库或业务代码修改；实际问题按责任分类回写后再决定 Skill 成熟度。
 
 ## 当前最高优先级
 
@@ -114,6 +120,6 @@ B1 至 B3 已建立候选控制并完成 Framework 自应用；B4 至 B5 完成 
 → B5有限结论已获维护者批准
 → B6成熟度变化与里程碑B有限退出已获批准
 → C1首个Skill设计已获批准
-→ C2候选包与Framework自应用已完成
-→ 等待是否进入YouYu新任务参考验证
+→ C2候选包与Framework自应用有限结论已获批准
+→ C3在YouYu执行首个Skill参考验证
 ```
