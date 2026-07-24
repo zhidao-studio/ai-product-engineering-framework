@@ -9,6 +9,7 @@ work_segment: C1 / 首个Skill设计评审
 framework_release: v0.1.10
 target_release: v0.2.0
 baseline_commit: 04e0b72984149e7c1b718f547bc2e924c13775c8
+design_commit: e7384480b71f38639638005f6f78689b48c91cec
 verified_at: 2026-07-24
 verifier: Codex
 skill_package_created: false
