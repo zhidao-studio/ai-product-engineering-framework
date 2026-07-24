@@ -5,14 +5,16 @@ validation_id: HARNESS-REF-CHECK-001
 framework_task: TASK-20260723-029
 reference_project: YouYu
 reference_task: TASK-016
-status: in_review
+status: approved_limited
 framework_release: v0.1.10
 target_release: v0.2.0
 framework_result_commit: c858a8d14ba6278cd11d03e6289bbc726fac8079
 youyu_result_commit: 8064df6857e881c449a248d1340ed01b6960a551
 youyu_context_commit: c0fe7d79d4a9d90679a02543477f2155fae90423
 executed_at: 2026-07-23
-human_approval_status: pending
+human_approval_status: approved
+human_approval_at: 2026-07-24
+human_approval_statement: 接受 B5 的有限结论
 ```
 
 ## 1. 结论
@@ -25,7 +27,7 @@ Harness B1 至 B3 已在 YouYu 高风险安全任务 TASK-016 中完成首次真
 - 证据清单真实记录静态、运行、用户三层证据，并将本地通过与生产安全、正式业务批准分开；
 - 任务通过 5 个小步中文提交完成实现、验证和 Context 回写。
 
-当前推荐结论是 `conditional_pass / pending_human_approval`。在维护者确认前，Harness 候选资产不提升成熟度，Framework 不升级稳定版本。
+维护者已于 2026-07-24 明确接受 B5 的有限结论。最终结论为 `conditional_pass / approved_limited`：允许进入 B6 逐资产成熟度评估，但不自动提升任何资产成熟度，Framework 不升级稳定版本。
 
 ## 2. YouYu 提交链
 
@@ -129,11 +131,18 @@ formal_business_validation: not_executed
 4. 长时运行服务必须由可控生命周期托管，不能假设启动 shell 退出后后台进程仍存活；
 5. 失败记录要区分代码、验证规则、环境和验证漂移，避免把不同根因误算成同类无限重试。
 
-## 8. 待维护者确认
+## 8. 维护者确认
 
-- 是否接受 B5 的有限结论；
-- 是否接受上述候选规范修订；
-- 是否允许具体 Harness 资产从 `candidate` 进入成熟度评估；
-- 是否进入 B6 总结与人工退出评审。
+维护者确认语句：
 
-在确认前，B5 状态保持 `in_review`。
+```text
+接受 B5 的有限结论
+```
+
+确认范围：
+
+- 接受 TASK-016 的 `conditional_pass` 有限结论；
+- 接受进入 B6 逐资产成熟度评估；
+- 不等于批准生产代理、生产阈值、正式发布或生产安全；
+- 不等于自动将 Harness 资产提升为 `single_project_validated`；
+- 具体成熟度和里程碑 B 退出仍需 B6 证据与人工批准。
