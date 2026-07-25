@@ -6,12 +6,12 @@
 
 ```text
 YouYu版本：v0.1.4
-当前里程碑：C / Skills、Agents 与 Loop
-当前工作段：C3 / 已批准并完成，等待下一工作段
+当前里程碑：D / 体验与设计工程
+当前工作段：D2 / YouYu统一移动端高保真参考采用
 首个业务切片：手机号验证码登录注册与个人资料管理
 产品规则：confirmed
 体验定义：confirmed
-高保真：v0.1.2 / maintenance_approved
+高保真：v0.1.2 / maintenance_approved；统一移动端 v0.2.0-draft.1 / draft_for_confirmation
 数据库迁移：conditional_pass
 OpenAPI：implemented_for_v0.1.4
 服务端实现：conditional_pass
@@ -26,6 +26,7 @@ Context模板族成熟度：candidate
 Harness里程碑B：conditional_pass
 Harness参考任务：TASK-016 / conditional_pass
 Skill参考任务：TASK-017 / completed / approved_limited
+体验与设计参考：D2 / v0.2.0-draft.1 / conditional_pass
 ```
 
 ## 2. 已完成的完整核心链路
@@ -84,6 +85,8 @@ Skill参考任务：TASK-017 / completed / approved_limited
 
 YouYu 的账号与“我”切片已经提供正式核心路径参考证据，但这不是整个 YouYu 项目、生产安全或 Framework 全部资产的通过结论。
 
+2026-07-25，YouYu 进一步使用 D1 候选基线完成统一移动端高保真：探索钓点、账号与“我”视觉更新、发布钓点形成同一可运行原型；账号和发布主路径、双主题、同组视觉比较与自动回归通过。该结果等待维护者确认，暂不提升体验与设计资产成熟度。
+
 A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持 `candidate`；Harness B 以 `conditional_pass` 有限退出，九项具体资产获得 `single_project_validated`，Harness 整体继续为 `candidate`。首个“受控任务验证 Skill”候选包已完成 Framework 自应用和 YouYu TASK-017 首次参考验证并保持 `candidate`。模拟器明暗模式、小屏和基础可读性结论为 `conditional_pass`，维护者已接受该有限结论，但未扩大为真机、辅助功能、生产或发布通过。
 
 ## 7. 反馈入口
@@ -93,4 +96,5 @@ A2 与里程碑 A 已获维护者批准并完成。Context 模板族整体保持
 - [YouYu TASK-016 Harness 真实执行验证](../12_框架项目Context/验证/HARNESS-REF-CHECK-001_YouYuTASK016真实执行验证.md)；
 - [B6 逐资产成熟度评估](../12_框架项目Context/验证/HARNESS-MATURITY-001_B6逐资产成熟度评估.md)；
 - [受控任务验证 Skill 的 YouYu 首次参考验证](../12_框架项目Context/验证/SKILL-REF-CHECK-001_受控任务验证Skill的YouYu首次参考验证.md)；
+- [YouYu 统一移动端高保真参考采用](../12_框架项目Context/验证/DESIGN-REF-CHECK-001_YouYu统一移动端高保真参考采用.md)；
 - [历史首轮业务参考验证](../12_框架项目Context/验证/REF-CHECK-001_YouYu首轮业务参考任务验证.md)。
