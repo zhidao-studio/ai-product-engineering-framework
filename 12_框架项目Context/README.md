@@ -6,17 +6,17 @@
 project_context_id: PROJ-CONTEXT-AIPEF
 project: AI Product Engineering Framework
 status: active
-execution_status: pending_confirmation
-project_context_pack_version: 0.2-C.5
+execution_status: pending_human_approval
+project_context_pack_version: 0.2-D.1
 owner: zhidao-studio
-current_stage: 运行反馈与持续迭代
-current_work_segment: C3 / 已批准并完成，等待下一工作段
-current_action: select_next_milestone_c_work_segment
-current_task: TASK-20260724-033
-current_stage_context: 12_框架项目Context/阶段/v0.2-C3_YouYu首个Skill参考验证.md
+current_stage: 用户体验设计
+current_work_segment: D1 / 跨平台体验与设计工程基线
+current_action: review_cross_platform_design_engineering_baseline
+current_task: TASK-20260725-034
+current_stage_context: 12_框架项目Context/阶段/v0.2-D1_跨平台体验与设计工程基线.md
 stable_release: v0.1.10
 target_release: v0.2.0
-current_milestone: C / Skills、Agents 与 Loop
+current_milestone: D / 体验与设计工程
 working_branch: main
 baseline_commit: a6715ef
 source_commit: fd3fbdb5ac0f8aa96786629a3a8756968425d883
@@ -33,7 +33,7 @@ youyu_runtime_validation_status: conditional_pass_task016_local
 youyu_formal_business_validation: passed_core_path_by_maintainer
 youyu_ios_business_implementation_status: merged_to_main_core_path_validated
 youyu_local_ci_status: executed_passed
-framework_sync_status: skills_c3_completed
+framework_sync_status: design_engineering_d1_in_review
 framework_change_policy: harness_b_candidate_assets_require_reference_validation
 harness_maturity_assessment_status: approved_limited
 harness_maturity_assessment_record: HARNESS-MATURITY-001
@@ -49,6 +49,12 @@ task_context_template_maturity: single_project_validated
 stage_context_template_maturity: candidate
 conflict_template_maturity: candidate
 experience_template_maturity: candidate
+design_engineering_maturity: candidate
+design_system_template_maturity: candidate
+page_design_spec_template_maturity: candidate
+platform_adaptation_template_maturity: candidate
+visual_acceptance_template_maturity: candidate
+design_consistency_check_maturity: candidate
 database_standard_maturity: single_project_validated
 harness_milestone_b: conditional_pass
 harness_family_maturity: candidate
@@ -62,6 +68,7 @@ harness_evidence_pack_maturity: single_project_validated
 harness_evidence_manifest_maturity: single_project_validated
 harness_evidence_checker_maturity: single_project_validated
 skills_milestone_c: active
+design_milestone_d: active
 first_skill_candidate: controlled-task-validation
 first_skill_design_status: approved
 first_skill_package_status: candidate_created
@@ -75,7 +82,7 @@ first_skill_c3_limited_approval: approved
 first_skill_c3_approved_at: 2026-07-24
 first_skill_c3_approval_record: 接受 C3 的有限结论
 license_model: proprietary_all_rights_reserved
-last_verified_at: 2026-07-24
+last_verified_at: 2026-07-25
 sensitivity: proprietary
 ```
 
@@ -94,6 +101,8 @@ Framework 保持 `v0.1.10`。YouYu 账号与“我”的真实交付、Context �
 ```
 
 维护者于 2026-07-22 在真机明确确认“账号和我验证通过”。该结论覆盖手机号验证码登录或自动注册、协议确认与 App 内阅读、已登录与未登录“我”、资料与账号信息、退出及高保真核心页面，不等于生产发布、全项目安全或全部专项验收通过。
+
+2026-07-25，Framework 根据 YouYu 探索钓点高保真迭代暴露的真实缺口，建立 D1 跨平台体验与设计工程候选基线。该基线区分共享体验语义和平台原生实现，覆盖 iOS/iPadOS、桌面、桌面 Web、H5 与 Android，并建立 Design Tokens、页面规范、高保真映射和视觉验收。当前等待维护者确认，尚未取得 YouYu 参考采用证据。
 
 ## 2. 解冻依据
 
@@ -136,12 +145,15 @@ Framework 不把“一个切片通过”扩大为“全部模板已验证”。�
 | Context 冲突记录模板 | `candidate` | 已有安全冲突记录，但关键事件尚未完整关闭并复验 |
 | 经验回写记录模板 | `candidate` | 已形成候选经验，但尚未完成统一审查、采纳和跨任务复验 |
 | Context 模板族整体 | `candidate` | 模板成熟度不整族打包提升 |
+| 体验与设计工程基线 | `candidate` | 规范和候选模板已建立；等待维护者确认和 YouYu 探索钓点参考采用 |
 
 ## 5. A2 里程碑结论
 
 A2 和里程碑 A 状态均为 `completed`。工程退出条件已具备证据，维护者于 2026-07-23 以“这个阶段没问题了”完成最终批准。
 
 维护者已授权并批准完整 B 阶段有限退出。九项具有 YouYu 直接证据的 Harness 资产已提升为 `single_project_validated`，其余资产和 Harness 整体保持 `candidate`。里程碑 B 结果为 `conditional_pass`。首个“受控任务验证 Skill”候选包已完成 Framework 自应用和 YouYu TASK-017 首次真实参考验证；维护者已接受 C3 有限结论，Skill 继续保持 `candidate`。
+
+D1 已建立体验与设计工程候选基线。它不新增生命周期阶段或 AI 工程基础设施；在维护者确认和 YouYu 参考采用前，不能写成已验证能力。
 
 ## 6. 未完成与风险边界
 
@@ -158,8 +170,9 @@ A2 和里程碑 A 状态均为 `completed`。工程退出条件已具备证据�
 
 ## 7. 当前任务与证据
 
-- 当前阶段：[C3 YouYu 首个 Skill 参考验证](阶段/v0.2-C3_YouYu首个Skill参考验证.md)；
-- 当前任务：[TASK-20260724-033](任务/TASK-20260724-033_准备并验证YouYu视觉专项任务.md)；
+- 当前阶段：[D1 跨平台体验与设计工程基线](阶段/v0.2-D1_跨平台体验与设计工程基线.md)；
+- 当前任务：[TASK-20260725-034](任务/TASK-20260725-034_建立跨平台体验与设计工程基线.md)；
+- 上一阶段：[C3 YouYu 首个 Skill 参考验证](阶段/v0.2-C3_YouYu首个Skill参考验证.md)；
 - C3 参考验证：[SKILL-REF-CHECK-001](验证/SKILL-REF-CHECK-001_受控任务验证Skill的YouYu首次参考验证.md)；
 - C2 已完成任务：[TASK-20260724-032](任务/TASK-20260724-032_创建并自应用受控任务验证Skill候选包.md)；
 - 当前自应用：[SKILL-SELF-CHECK-001](验证/SKILL-SELF-CHECK-001_受控任务验证Skill候选包自应用.md)；
@@ -191,7 +204,9 @@ A2 和里程碑 A 状态均为 `completed`。工程退出条件已具备证据�
 → C1首个Skill设计已获批准
 → C2候选包与Framework自应用有限结论已获批准
 → C3有限结论已获维护者批准
-→ 等待明确下一工作段
+→ D1跨平台体验与设计工程候选基线已建立
+→ 等待维护者确认
+→ 确认后以YouYu探索钓点进行首个参考采用
 ```
 
 ## 9. 更新记录
@@ -220,3 +235,4 @@ A2 和里程碑 A 状态均为 `completed`。工程退出条件已具备证据�
 | 2026-07-24 | YouYu TASK-017 预检暴露检查器来源限制，Skill 完成最小修订并通过结构验证 | TASK-20260724-033 / TASK-017 |
 | 2026-07-24 | YouYu TASK-017 完成两台模拟器的明暗模式、小屏和基础可读性检查，C3 进入有限结论评审 | SKILL-REF-CHECK-001 / TASK-017 |
 | 2026-07-24 | 维护者接受 C3 有限结论，C3 完成，Skill 继续保持候选 | TASK-20260724-033 / SKILL-REF-CHECK-001 |
+| 2026-07-25 | 建立跨平台体验与设计工程候选基线，进入维护者确认 | TASK-20260725-034 / DEC-011 |

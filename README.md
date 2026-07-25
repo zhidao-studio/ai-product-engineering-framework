@@ -11,9 +11,9 @@
 ```text
 当前稳定版本：v0.1.10
 目标开发版本：v0.2.0
-当前里程碑：C / Skills、Agents 与 Loop
-当前工作段：C3 / 已批准并完成，等待下一工作段
-执行状态：pending_confirmation
+当前里程碑：D / 体验与设计工程
+当前工作段：D1 / 跨平台体验与设计工程基线
+执行状态：pending_human_approval
 YouYu版本：v0.1.4
 服务端实现：conditional_pass
 静态复核：conditional_pass
@@ -147,6 +147,7 @@ flowchart TB
 | [版本路线](10_版本演进/Roadmap.md) | 版本与里程碑 |
 | [设计决策](11_设计决策/README.md) | 重大取舍和替代条件 |
 | [项目 Context](12_框架项目Context/README.md) | 当前状态、阻塞和下一步 |
+| [体验与设计工程](13_体验与设计工程/README.md) | 跨平台体验、设计系统、页面规范、高保真映射和视觉验收 |
 
 ## 当前边界
 
@@ -154,7 +155,8 @@ flowchart TB
 - Context 模板族保持 `candidate`，项目与任务模板为 `single_project_validated`；
 - 数据库基础规范为 `single_project_validated`；
 - Harness B 以 `conditional_pass` 有限退出，Harness 整体仍为 `candidate`；
-- C3 YouYu 首个 Skill 参考验证已获维护者有限批准并完成，等待明确下一工作段；
+- C3 YouYu 首个 Skill 参考验证已获维护者有限批准并完成；
+- D1 跨平台体验与设计工程候选基线已建立，等待维护者确认和 YouYu 探索钓点参考采用；
 - 检查定义不等于检查执行；
 - Framework 自应用不替代真实业务验证；
 - 本版本没有改变三平面、十阶段、五大基础设施或许可模式。

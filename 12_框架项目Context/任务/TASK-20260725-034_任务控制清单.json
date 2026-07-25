@@ -1,0 +1,49 @@
+{
+  "manifest_version": "0.1",
+  "task_id": "TASK-20260725-034",
+  "risk_level": "medium",
+  "baseline_commit": "260f5f4d1d44b4b0bc86f127e6707be85ba9de1a",
+  "allowed_paths": [
+    "README.md",
+    "CHANGELOG.md",
+    "02_全局模型/",
+    "03_角色体系/",
+    "05_Harness工程/",
+    "08_模板资产/",
+    "10_版本演进/Roadmap.md",
+    "11_设计决策/",
+    "12_框架项目Context/",
+    "13_体验与设计工程/"
+  ],
+  "forbidden_paths": [
+    "VERSION",
+    "LICENSE",
+    "AGENTS.md",
+    "01_框架定义/",
+    "04_Context工程/",
+    "06_Skills与Agent/",
+    "07_Loop工程/",
+    "09_参考工程/",
+    "scripts/",
+    "skills/"
+  ],
+  "high_risk_paths": [
+    "02_全局模型/",
+    "11_设计决策/"
+  ],
+  "approved_high_risk_paths": [
+    "02_全局模型/",
+    "11_设计决策/"
+  ],
+  "dependency_files": [
+    "package.json",
+    "package-lock.json",
+    "pom.xml",
+    "**/pom.xml",
+    "Podfile",
+    "Podfile.lock",
+    "Package.swift",
+    "Package.resolved"
+  ],
+  "approved_dependency_files": []
+}
