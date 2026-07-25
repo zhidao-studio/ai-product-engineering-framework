@@ -156,7 +156,7 @@ flowchart TB
 - 数据库基础规范为 `single_project_validated`；
 - Harness B 以 `conditional_pass` 有限退出，Harness 整体仍为 `candidate`；
 - C3 YouYu 首个 Skill 参考验证已获维护者有限批准并完成；
-- D1 跨平台体验与设计工程候选基线已获维护者确认，YouYu 已完成 D2 首轮采用与 `draft.9` 浏览器复核，等待维护者确认高保真；
+- D1 跨平台体验与设计工程候选基线已获维护者确认，YouYu 已完成 D2 `draft.10` 参考采用修订与浏览器复核，等待维护者确认高保真；
 - 检查定义不等于检查执行；
 - Framework 自应用不替代真实业务验证；
 - 本版本没有改变三平面、十阶段、五大基础设施或许可模式。

@@ -7,11 +7,11 @@ project_context_id: PROJ-CONTEXT-AIPEF
 project: AI Product Engineering Framework
 status: active
 execution_status: active
-project_context_pack_version: 0.2-D.3
+project_context_pack_version: 0.2-D.4
 owner: zhidao-studio
 current_stage: 高保真预览与确认
 current_work_segment: D2 / YouYu探索钓点参考采用
-current_action: review_youyu_spot_exploration_hifi_draft9
+current_action: review_youyu_spot_exploration_hifi_draft10
 current_task: TASK-20260725-035
 current_stage_context: 12_框架项目Context/阶段/v0.2-D2_YouYu探索钓点参考采用.md
 stable_release: v0.1.10
@@ -19,13 +19,13 @@ target_release: v0.2.0
 current_milestone: D / 体验与设计工程
 working_branch: main
 baseline_commit: a6715ef
-source_commit: c68ea2c0b8a06d4b411ff13110ab6e25ca1b1275
+source_commit: a1557f2
 youyu_release: v0.1.4
-youyu_source_commit: 93dcbb16
+youyu_source_commit: 99b9cc5d
 youyu_reference_task_commit: 00900d2b
 youyu_merge_commit: 047cf099f869227d2085e9837abbd2cbfebccfc4
 youyu_candidate_acceptance_commit: 8dfe62b8822482d9417c20b22a7fdad93158974b
-youyu_high_fidelity_version: exploration_spots_v0.1_draft.9
+youyu_high_fidelity_version: exploration_spots_v0.1_draft.10
 youyu_high_fidelity_status: draft_for_confirmation
 youyu_server_implementation_status: conditional_pass
 youyu_static_review_status: conditional_pass
@@ -73,7 +73,7 @@ d1_status: completed
 d1_approved_at: 2026-07-25
 d1_approval_record: 确认D1基线，同步基线到YouYu
 d2_reference_adoption_status: conditional_pass_pending_maintainer_confirmation
-d2_youyu_commit: 93dcbb16
+d2_youyu_commit: 99b9cc5d
 first_skill_candidate: controlled-task-validation
 first_skill_design_status: approved
 first_skill_package_status: candidate_created
@@ -107,7 +107,7 @@ Framework 保持 `v0.1.10`。YouYu 账号与“我”的真实交付、Context �
 
 维护者于 2026-07-22 在真机明确确认“账号和我验证通过”。该结论覆盖手机号验证码登录或自动注册、协议确认与 App 内阅读、已登录与未登录“我”、资料与账号信息、退出及高保真核心页面，不等于生产发布、全项目安全或全部专项验收通过。
 
-2026-07-25，Framework 根据 YouYu 探索钓点高保真迭代暴露的真实缺口，建立 D1 跨平台体验与设计工程候选基线。该基线区分共享体验语义和平台原生实现，覆盖 iOS/iPadOS、桌面、桌面 Web、H5 与 Android，并建立 Design Tokens、页面规范、高保真映射和视觉验收。维护者已明确确认 D1；YouYu 已在 `93dcbb16` 完成产品设计系统、iOS 平台适配矩阵、页面规格和 `draft.9` 高保真的首轮采用，当前等待维护者确认。
+2026-07-25，Framework 根据 YouYu 探索钓点高保真迭代暴露的真实缺口，建立 D1 跨平台体验与设计工程候选基线。该基线区分共享体验语义和平台原生实现，覆盖 iOS/iPadOS、桌面、桌面 Web、H5 与 Android，并建立 Design Tokens、页面规范、高保真映射和视觉验收。维护者已明确确认 D1；YouYu 已在 `99b9cc5d` 完成产品设计系统、iOS 平台适配矩阵、页面规格和 `draft.10` 高保真的参考采用修订：默认首页只显示悬浮搜索入口，距离、鱼种及后续条件进入统一搜索面板，首页收藏入口被删除，当前等待维护者确认。
 
 ## 2. 解冻依据
 
@@ -150,7 +150,7 @@ Framework 不把“一个切片通过”扩大为“全部模板已验证”。�
 | Context 冲突记录模板 | `candidate` | 已有安全冲突记录，但关键事件尚未完整关闭并复验 |
 | 经验回写记录模板 | `candidate` | 已形成候选经验，但尚未完成统一审查、采纳和跨任务复验 |
 | Context 模板族整体 | `candidate` | 模板成熟度不整族打包提升 |
-| 体验与设计工程基线 | `candidate` | YouYu 已完成首轮采用与浏览器复核；`draft.9` 等待维护者确认 |
+| 体验与设计工程基线 | `candidate` | YouYu 已完成参考采用与浏览器复核；`draft.10` 等待维护者确认 |
 
 ## 5. A2 里程碑结论
 
@@ -213,7 +213,7 @@ D1 已建立并获维护者确认。它不新增生命周期阶段或 AI 工程�
 → D1跨平台体验与设计工程候选基线已获维护者确认
 → D2以YouYu探索钓点进行首个参考采用
 → 设计系统、iOS平台适配矩阵和页面规格已补齐
-→ draft.9高保真与同尺寸浏览器复核已完成
+→ draft.10高保真、悬浮搜索与统一筛选面板复核已完成
 → 等待维护者确认
 → 确认后回写真实采用经验
 ```
@@ -247,3 +247,4 @@ D1 已建立并获维护者确认。它不新增生命周期阶段或 AI 工程�
 | 2026-07-25 | 建立跨平台体验与设计工程候选基线，进入维护者确认 | TASK-20260725-034 / DEC-011 |
 | 2026-07-25 | 维护者确认 D1，启动 YouYu 探索钓点参考采用 | TASK-20260725-035 / v0.2-D2 |
 | 2026-07-25 | YouYu 完成 D1 首轮采用、draft.9 高保真和浏览器复核，等待维护者确认 | YouYu 93dcbb16 / TASK-20260725-035 |
+| 2026-07-25 | YouYu 完成 draft.10 首页搜索与收藏入口收敛，浏览器和自动回归通过，继续等待维护者确认 | YouYu 99b9cc5d / TASK-20260725-035 |
